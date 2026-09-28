@@ -1,0 +1,8 @@
+glyphsLib
+fontmake
+fonttools
+ufo2ft
+fontbakery
+uharfbuzz
+pillow
+numpy

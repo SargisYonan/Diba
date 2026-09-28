@@ -1,0 +1,7904 @@
+{
+.appVersion = "3532";
+.formatVersion = 3;
+DisplayStrings = (
+"ܡ",
+"ܨ",
+"/uni0721.init",
+"/uni0721.medi",
+"/uni0721.fina",
+"/uni0726.init",
+"ܘ",
+"ܦ",
+"/uni0726.medi",
+"ܬ",
+"/uni072C.fina",
+"ܟ",
+"ܢ",
+"/uni071F.fina",
+"/uni0722.fina",
+"ܕ",
+"ܫ",
+"/uni072B.medi",
+"/uni072B.init",
+"/uni072B.fina",
+"/uni071B.init",
+"/uni071B.medi",
+"/uni071B.fina",
+"ܛ",
+"/uni0718.fina",
+"/uni0729.init",
+"ܩ",
+"/uni0725.init",
+"ܥ",
+"/uni0723.init",
+"ܣ",
+"/uni0722.init",
+"/uni0720.init",
+"/uni071F.init",
+"/uni071D.init",
+"ܝ",
+"/uni071A.init",
+"ܚ",
+"/uni0717.fina",
+"ܪ",
+"ܠ",
+"/uni072A.fina",
+"ܗ",
+"/uni0716.fina",
+"ܖ",
+"ܒ",
+"/uni0710.fin3",
+"/uni0710.fin2",
+"ܐ/uni0710.001",
+"/uni0715.fina",
+"/uni0720.medi",
+"/uni0712.medi",
+"/uni071A.medi",
+"/uni0713.medi",
+"/uni0713.init",
+"/uni071D.medi",
+"/uni071F.medi",
+"/uni0722.medi",
+"/uni0723.medi",
+"/uni0725.fina",
+"/uni0725.medi",
+"/uni0729.medi",
+"ܐ",
+"/uni0710.fina",
+"/uni0710.med2"
+);
+customParameters = (
+{
+name = panose;
+value = (
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+);
+},
+{
+name = unicodeRanges;
+value = (
+0,
+6,
+13,
+31,
+71
+);
+},
+{
+name = glyphOrder;
+value = (
+.notdef,
+NULL,
+CR,
+space,
+uni00A0,
+uni200C,
+uni200D,
+uni200E,
+uni200F,
+uni0640,
+uni070F,
+uni25CC,
+uni2670,
+uni2671,
+period,
+uni060C,
+uni061B,
+colon,
+uni061F,
+exclam,
+parenleft,
+parenright,
+bracketleft,
+bracketright,
+guillemotleft,
+guillemotright,
+asterisk,
+plus,
+minus,
+equal,
+slash,
+backslash,
+hyphen,
+degree,
+ellipsis,
+uni0710,
+uni0710.fina,
+uni0710.fin2,
+uni0710.fin3,
+uni0710.med2,
+uni0712,
+uni0712.fina,
+uni0712.medi,
+uni0712.init,
+uni0713,
+uni0713.fina,
+uni0713.medi,
+uni0713.init,
+uni0715,
+uni0715.fina,
+uni0716,
+uni0716.fina,
+uni0717,
+uni0717.fina,
+uni0718,
+uni0718.fina,
+uni0719,
+uni0719.fina,
+uni071A,
+uni071A.fina,
+uni071A.medi,
+uni071A.init,
+uni071B,
+uni071B.fina,
+uni071B.medi,
+uni071B.init,
+uni071D,
+uni071D.fina,
+uni071D.medi,
+uni071D.init,
+uni071E,
+uni071F,
+uni071F.fina,
+uni071F.medi,
+uni071F.init,
+uni0720.fina,
+uni0720.medi,
+uni0720.init,
+uni0721,
+uni0721.fina,
+uni0721.medi,
+uni0721.init,
+uni0722,
+uni0722.fina,
+uni0722.medi,
+uni0722.init,
+uni0723,
+uni0723.fina,
+uni0723.medi,
+uni0723.init,
+uni0724,
+uni0724.fina,
+uni0724.medi,
+uni0724.init,
+uni0725,
+uni0725.fina,
+uni0725.medi,
+uni0725.init,
+uni0726,
+uni0726.fina,
+uni0726.medi,
+uni0726.init,
+uni0727,
+uni0727.fina,
+uni0727.medi,
+uni0727.init,
+uni0728,
+uni0728.fina,
+uni0729,
+uni0729.fina,
+uni0729.medi,
+uni0729.init,
+uni072B,
+uni072B.fina,
+uni072B.medi,
+uni072B.init,
+uni072C,
+uni072C.fina,
+uni0720uni0710.isol,
+uni0720uni0710.fina,
+uni072Cuni0710.isol,
+uni072Cuni0710.fina,
+uni072Auni0308.isol,
+uni072Auni0308.fina,
+uni0716uni0308.isol,
+uni0716uni0308.fina,
+uni0700,
+uni0701,
+uni0702,
+uni0703,
+uni0704,
+uni0705,
+uni0706,
+uni0707,
+uni0708,
+uni0709,
+uni070A,
+uni070B,
+uni070C,
+uni070D,
+SAMin,
+SAMline,
+SAMdot,
+SAMout,
+uni0711,
+uni0730,
+uni0733,
+uni0735,
+uni0736,
+uni073A,
+uni073D,
+uni073F,
+uni0740,
+uni0741,
+uni0743,
+uni0745,
+uni0747,
+uni0749,
+uni074A,
+uni0303,
+uni0304,
+uni0307,
+uni0308,
+uni030A,
+uni0731,
+uni0734,
+uni0737,
+uni0738,
+uni0739,
+uni073B,
+uni073C,
+uni073E,
+uni0742,
+uni0744,
+uni0746,
+uni0748,
+uni0320,
+uni0323,
+uni0324,
+uni0325,
+uni032D,
+uni032E,
+uni0330,
+uni0331,
+uni0732,
+uni0732.above,
+uni0732.below,
+zero,
+one,
+two,
+three,
+four,
+five,
+six,
+seven,
+eight,
+nine,
+uni0660,
+uni0661,
+uni0662,
+uni0663,
+uni0664,
+uni0665,
+uni0666,
+uni0667,
+uni0668,
+uni0669,
+uni066A,
+uni066B,
+uni066C,
+uni072A.fina,
+uni0720,
+uni072A
+);
+}
+);
+date = "2026-09-08 05:06:58 +0000";
+familyName = Diba;
+featurePrefixes = (
+{
+automatic = 1;
+code = "languagesystem DFLT dflt;
+
+languagesystem syrc dflt;
+languagesystem syrc SYRN;
+
+languagesystem arab dflt;
+";
+name = Languagesystems;
+}
+);
+features = (
+{
+automatic = 1;
+code = "feature init;
+feature medi;
+feature med2;
+feature fina;
+feature fin2;
+feature fin3;
+feature stch;
+";
+tag = aalt;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_0 {
+	sub uni0732 by uni0732.above uni0732.below;
+} SUB_0;
+script syrc;
+language dflt;
+lookup SUB_0;
+language SYRN;
+lookup SUB_0;
+";
+tag = ccmp;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_1 {
+	sub uni0712 by uni0712.init;
+	sub uni0713 by uni0713.init;
+	sub uni071A by uni071A.init;
+	sub uni071B by uni071B.init;
+	sub uni071D by uni071D.init;
+	sub uni071F by uni071F.init;
+	sub uni0721 by uni0721.init;
+	sub uni0722 by uni0722.init;
+	sub uni0723 by uni0723.init;
+	sub uni0724 by uni0724.init;
+	sub uni0725 by uni0725.init;
+	sub uni0726 by uni0726.init;
+	sub uni0727 by uni0727.init;
+	sub uni0729 by uni0729.init;
+	sub uni072B by uni072B.init;
+	sub uni0720 by uni0720.init;
+} SUB_1;
+script syrc;
+language dflt;
+lookup SUB_1;
+language SYRN;
+lookup SUB_1;
+";
+tag = init;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_2 {
+	sub uni0712 by uni0712.medi;
+	sub uni0713 by uni0713.medi;
+	sub uni071A by uni071A.medi;
+	sub uni071B by uni071B.medi;
+	sub uni071D by uni071D.medi;
+	sub uni071F by uni071F.medi;
+	sub uni0721 by uni0721.medi;
+	sub uni0722 by uni0722.medi;
+	sub uni0723 by uni0723.medi;
+	sub uni0724 by uni0724.medi;
+	sub uni0725 by uni0725.medi;
+	sub uni0726 by uni0726.medi;
+	sub uni0727 by uni0727.medi;
+	sub uni0729 by uni0729.medi;
+	sub uni072B by uni072B.medi;
+	sub uni0720 by uni0720.medi;
+} SUB_2;
+script syrc;
+language dflt;
+lookup SUB_2;
+language SYRN;
+lookup SUB_2;
+";
+tag = medi;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_3 {
+	sub uni0710 by uni0710.med2;
+} SUB_3;
+script syrc;
+language dflt;
+lookup SUB_3;
+language SYRN;
+lookup SUB_3;
+";
+tag = med2;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_4 {
+	sub uni0710 by uni0710.fina;
+	sub uni0712 by uni0712.fina;
+	sub uni0713 by uni0713.fina;
+	sub uni0715 by uni0715.fina;
+	sub uni0716 by uni0716.fina;
+	sub uni0717 by uni0717.fina;
+	sub uni0718 by uni0718.fina;
+	sub uni0719 by uni0719.fina;
+	sub uni071A by uni071A.fina;
+	sub uni071B by uni071B.fina;
+	sub uni071D by uni071D.fina;
+	sub uni071F by uni071F.fina;
+	sub uni0721 by uni0721.fina;
+	sub uni0722 by uni0722.fina;
+	sub uni0723 by uni0723.fina;
+	sub uni0724 by uni0724.fina;
+	sub uni0725 by uni0725.fina;
+	sub uni0726 by uni0726.fina;
+	sub uni0727 by uni0727.fina;
+	sub uni0728 by uni0728.fina;
+	sub uni0729 by uni0729.fina;
+	sub uni072B by uni072B.fina;
+	sub uni072C by uni072C.fina;
+	sub uni0720 by uni0720.fina;
+	sub uni072A by uni072A.fina;
+} SUB_4;
+script syrc;
+language dflt;
+lookup SUB_4;
+language SYRN;
+lookup SUB_4;
+";
+tag = fina;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_5 {
+	sub uni0710 by uni0710.fin2;
+} SUB_5;
+script syrc;
+language dflt;
+lookup SUB_5;
+language SYRN;
+lookup SUB_5;
+";
+tag = fin2;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_6 {
+	sub uni0710 by uni0710.fin3;
+} SUB_6;
+script syrc;
+language dflt;
+lookup SUB_6;
+language SYRN;
+lookup SUB_6;
+";
+tag = fin3;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_7 {
+	lookupflag UseMarkFilteringSet [uni0308];
+} SUB_7;
+lookup SUB_8 {
+} SUB_8;
+script syrc;
+language dflt;
+lookup SUB_7;
+lookup SUB_8;
+language SYRN;
+lookup SUB_7;
+lookup SUB_8;
+";
+tag = rlig;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup SUB_9 {
+	sub uni070F by SAMin SAMline SAMdot SAMline SAMout;
+} SUB_9;
+script syrc;
+language dflt;
+lookup SUB_9;
+language SYRN;
+lookup SUB_9;
+";
+tag = stch;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup POS_0 {
+	markClass uni0731 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0734 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0737 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0738 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0739 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni073B <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni073C <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni073E <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0742 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0744 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0746 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0748 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0320 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0323 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0324 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0325 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni032D <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni032E <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0330 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0331 <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0732.below <anchor 0 -22> @POS_0_0_MARK_0;
+	markClass uni0711 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0730 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0733 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0735 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0736 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni073A <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni073D <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni073F <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0740 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0741 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0743 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0745 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0747 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0749 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni074A <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0303 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0304 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0307 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0308 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni030A <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0732 <anchor 0 530> @POS_0_0_MARK_1;
+	markClass uni0732.above <anchor 0 530> @POS_0_0_MARK_1;
+	pos base uni2670 <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base uni2671 <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base period <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base colon <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base exclam <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base parenleft <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base parenright <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base bracketleft <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base bracketright <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base guillemotleft <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base guillemotright <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base asterisk <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base plus <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base minus <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base equal <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base slash <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base backslash <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base hyphen <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base degree <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base ellipsis <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base zero <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base one <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base two <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base three <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base four <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base five <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base six <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base seven <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base eight <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+	pos base nine <anchor 250 -22> mark @POS_0_0_MARK_0 <anchor 250 530> mark @POS_0_0_MARK_1;
+} POS_0;
+lookup POS_1 {
+} POS_1;
+lookup POS_2 {
+	markClass uni0731 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0734 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0737 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0738 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0739 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni073B <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni073C <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni073E <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0742 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0744 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0746 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0748 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0320 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0323 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0324 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0325 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni032D <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni032E <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0330 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0331 <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0732.below <anchor 0 -22> @POS_2_0_MARK_0;
+	markClass uni0711 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0730 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0733 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0735 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0736 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni073A <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni073D <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni073F <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0740 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0741 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0743 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0745 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0747 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0749 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni074A <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0303 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0304 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0307 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0308 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni030A <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0732 <anchor 0 530> @POS_2_0_MARK_1;
+	markClass uni0732.above <anchor 0 530> @POS_2_0_MARK_1;
+	pos base uni25CC <anchor 250 -22> mark @POS_2_0_MARK_0 <anchor 250 530> mark @POS_2_0_MARK_1;
+} POS_2;
+lookup POS_3 {
+	markClass uni0731 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0734 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0737 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0738 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0739 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni073B <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni073C <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni073E <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0742 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0744 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0746 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0748 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0320 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0323 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0324 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0325 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni032D <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni032E <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0330 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0331 <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0732.below <anchor 0 -22> @POS_3_0_MARK_0;
+	markClass uni0711 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0730 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0733 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0735 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0736 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni073A <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni073D <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni073F <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0740 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0741 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0743 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0745 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0747 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0749 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni074A <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0303 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0304 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0307 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0308 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni030A <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0732 <anchor 0 530> @POS_3_0_MARK_1;
+	markClass uni0732.above <anchor 0 530> @POS_3_0_MARK_1;
+	pos base uni0640 <anchor 100 -22> mark @POS_3_0_MARK_0 <anchor 100 530> mark @POS_3_0_MARK_1;
+	pos base uni060C <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni061B <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni061F <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0660 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0661 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0662 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0663 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0664 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0665 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0666 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0667 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0668 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni0669 <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni066A <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni066B <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+	pos base uni066C <anchor 250 -22> mark @POS_3_0_MARK_0 <anchor 250 530> mark @POS_3_0_MARK_1;
+} POS_3;
+lookup POS_4 {
+	markClass uni0731 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0734 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0737 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0738 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0739 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni073B <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni073C <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni073E <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0742 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0744 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0746 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0748 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0320 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0323 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0324 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0325 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni032D <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni032E <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0330 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0331 <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0732.below <anchor 0 -22> @POS_4_0_MARK_0;
+	markClass uni0711 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0730 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0733 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0735 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0736 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni073A <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni073D <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni073F <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0740 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0741 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0743 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0745 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0747 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0749 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni074A <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0303 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0304 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0307 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0308 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni030A <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0732 <anchor 0 530> @POS_4_0_MARK_1;
+	markClass uni0732.above <anchor 0 530> @POS_4_0_MARK_1;
+	pos base uni0710 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0710.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0710.fin2 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0710.fin3 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0710.med2 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0712 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0712.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0712.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0712.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0713 <anchor 139 -22> mark @POS_4_0_MARK_0 <anchor 139 530> mark @POS_4_0_MARK_1;
+	pos base uni0713.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0713.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0713.init <anchor 139 -22> mark @POS_4_0_MARK_0 <anchor 139 530> mark @POS_4_0_MARK_1;
+	pos base uni0715 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0715.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0716 <anchor 301 -22> mark @POS_4_0_MARK_0 <anchor 301 530> mark @POS_4_0_MARK_1;
+	pos base uni0716.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0717 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0717.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0718 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0718.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0719 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0719.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071A <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071A.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071A.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071A.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071B <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071B.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071B.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071B.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071D <anchor 149 -22> mark @POS_4_0_MARK_0 <anchor 149 438> mark @POS_4_0_MARK_1;
+	pos base uni071D.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071D.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071D.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071E <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071F <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071F.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071F.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni071F.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0720.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0720.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0720.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0721 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0721.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0721.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0721.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0722 <anchor 146 -22> mark @POS_4_0_MARK_0 <anchor 146 530> mark @POS_4_0_MARK_1;
+	pos base uni0722.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0722.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0722.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0723 <anchor 503 1> mark @POS_4_0_MARK_0 <anchor 284 530> mark @POS_4_0_MARK_1;
+	pos base uni0723.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0723.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0723.init <anchor 503 1> mark @POS_4_0_MARK_0 <anchor 490 500> mark @POS_4_0_MARK_1;
+	pos base uni0724 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0724.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0724.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0724.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0725 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0725.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0725.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0725.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0726 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0726.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0726.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0726.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0727 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0727.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0727.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0727.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0728 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0728.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0729 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0729.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0729.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0729.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni072B <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni072B.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni072B.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni072B.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni072C <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni072C.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0700 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0701 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0702 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0703 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0704 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0705 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0706 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0707 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0708 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni0709 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni070A <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni070B <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni070C <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni070D <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni072A.fina <anchor 323 0> mark @POS_4_0_MARK_0 <anchor 323 699> mark @POS_4_0_MARK_1;
+	pos base uni0720 <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
+	pos base uni072A <anchor 301 -22> mark @POS_4_0_MARK_0 <anchor 301 530> mark @POS_4_0_MARK_1;
+} POS_4;
+script syrc;
+language dflt;
+lookup POS_0;
+lookup POS_1;
+lookup POS_2;
+lookup POS_3;
+lookup POS_4;
+language SYRN;
+lookup POS_0;
+lookup POS_1;
+lookup POS_2;
+lookup POS_3;
+lookup POS_4;
+";
+tag = mark;
+},
+{
+code = "script DFLT;
+language dflt;
+lookup POS_5 {
+	lookupflag UseMarkFilteringSet [uni0731 uni0734 uni0737 uni0738 uni0739 uni073B uni073C uni073E uni0742 uni0744 uni0746 uni0748 uni0320 uni0323 uni0324 uni0325 uni032D uni032E uni0330 uni0331 uni0732.below];
+	markClass uni0731 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0734 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0737 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0738 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0739 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni073B <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni073C <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni073E <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0742 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0744 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0746 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0748 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0320 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0323 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0324 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0325 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni032D <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni032E <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0330 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0331 <anchor 0 -22> @POS_5_0_MARK_0;
+	markClass uni0732.below <anchor 0 -22> @POS_5_0_MARK_0;
+	pos mark uni0320 <anchor 0 -232> mark @POS_5_0_MARK_0;
+	pos mark uni0323 <anchor 0 -232> mark @POS_5_0_MARK_0;
+	pos mark uni0324 <anchor 0 -232> mark @POS_5_0_MARK_0;
+	pos mark uni0325 <anchor 0 -232> mark @POS_5_0_MARK_0;
+	pos mark uni032D <anchor 0 -232> mark @POS_5_0_MARK_0;
+	pos mark uni032E <anchor 0 -232> mark @POS_5_0_MARK_0;
+	pos mark uni0330 <anchor 0 -232> mark @POS_5_0_MARK_0;
+	pos mark uni0331 <anchor 0 -232> mark @POS_5_0_MARK_0;
+} POS_5;
+lookup POS_6 {
+	lookupflag UseMarkFilteringSet [uni0711 uni0730 uni0733 uni0735 uni0736 uni073A uni073D uni073F uni0740 uni0741 uni0743 uni0745 uni0747 uni0749 uni074A uni0303 uni0304 uni0307 uni0308 uni030A uni0732 uni0732.above];
+	markClass uni0711 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0730 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0733 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0735 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0736 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni073A <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni073D <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni073F <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0740 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0741 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0743 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0745 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0747 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0749 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni074A <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0303 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0304 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0307 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0308 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni030A <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0732 <anchor 0 530> @POS_6_0_MARK_0;
+	markClass uni0732.above <anchor 0 530> @POS_6_0_MARK_0;
+	pos mark uni0303 <anchor 0 740> mark @POS_6_0_MARK_0;
+	pos mark uni0304 <anchor 0 740> mark @POS_6_0_MARK_0;
+	pos mark uni0307 <anchor 0 740> mark @POS_6_0_MARK_0;
+	pos mark uni0308 <anchor 0 740> mark @POS_6_0_MARK_0;
+	pos mark uni030A <anchor 0 740> mark @POS_6_0_MARK_0;
+} POS_6;
+lookup POS_7 {
+	markClass uni0731 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0734 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0737 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0738 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0739 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni073B <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni073C <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni073E <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0742 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0744 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0746 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0748 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0320 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0323 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0324 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0325 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni032D <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni032E <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0330 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0331 <anchor 0 -22> @POS_7_0_MARK_0;
+	markClass uni0732.below <anchor 0 -22> @POS_7_0_MARK_0;
+	pos mark uni0731 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0734 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0737 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0738 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0739 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni073B <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni073C <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni073E <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0742 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0744 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0746 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0748 <anchor 0 -232> mark @POS_7_0_MARK_0;
+	pos mark uni0732.below <anchor 0 -232> mark @POS_7_0_MARK_0;
+} POS_7;
+lookup POS_8 {
+	markClass uni0711 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0730 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0733 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0735 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0736 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni073A <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni073D <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni073F <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0740 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0741 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0743 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0745 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0747 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0749 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni074A <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0303 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0304 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0307 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0308 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni030A <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0732 <anchor 0 530> @POS_8_0_MARK_0;
+	markClass uni0732.above <anchor 0 530> @POS_8_0_MARK_0;
+	pos mark uni0711 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0730 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0733 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0735 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0736 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni073A <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni073D <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni073F <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0740 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0741 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0743 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0745 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0747 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0749 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni074A <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0732 <anchor 0 740> mark @POS_8_0_MARK_0;
+	pos mark uni0732.above <anchor 0 740> mark @POS_8_0_MARK_0;
+} POS_8;
+script syrc;
+language dflt;
+lookup POS_5;
+lookup POS_6;
+lookup POS_7;
+lookup POS_8;
+language SYRN;
+lookup POS_5;
+lookup POS_6;
+lookup POS_7;
+lookup POS_8;
+";
+tag = mkmk;
+}
+);
+fontMaster = (
+{
+customParameters = (
+{
+name = typoAscender;
+value = 974;
+},
+{
+name = typoDescender;
+value = -457;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = winAscent;
+value = 1074;
+},
+{
+name = winDescent;
+value = 557;
+},
+{
+name = hheaAscender;
+value = 974;
+},
+{
+name = hheaDescender;
+value = -457;
+},
+{
+name = strikeoutPosition;
+value = 250;
+},
+{
+name = strikeoutSize;
+value = 50;
+},
+{
+name = underlinePosition;
+value = -100;
+},
+{
+name = underlineThickness;
+value = 50;
+}
+);
+id = m01;
+metricValues = (
+{
+pos = 974;
+},
+{
+pos = 699;
+},
+{
+pos = 500;
+},
+{
+},
+{
+pos = -457;
+},
+{
+}
+);
+name = Regular;
+userData = {
+GSCornerRadius = 45;
+};
+}
+);
+glyphs = (
+{
+glyphname = .notdef;
+layers = (
+{
+layerId = m01;
+width = 500;
+}
+);
+note = .notdef;
+},
+{
+glyphname = NULL;
+layers = (
+{
+layerId = m01;
+width = 0;
+}
+);
+note = NULL;
+unicode = 0;
+},
+{
+glyphname = CR;
+layers = (
+{
+layerId = m01;
+width = 500;
+}
+);
+note = CR;
+unicode = 13;
+},
+{
+glyphname = space;
+layers = (
+{
+layerId = m01;
+width = 260;
+}
+);
+note = space;
+unicode = 32;
+},
+{
+glyphname = uni00A0;
+layers = (
+{
+layerId = m01;
+width = 260;
+}
+);
+note = uni00A0;
+unicode = 160;
+},
+{
+glyphname = uni200C;
+layers = (
+{
+layerId = m01;
+width = 0;
+}
+);
+note = uni200C;
+unicode = 8204;
+},
+{
+glyphname = uni200D;
+layers = (
+{
+layerId = m01;
+width = 0;
+}
+);
+note = uni200D;
+unicode = 8205;
+},
+{
+glyphname = uni200E;
+layers = (
+{
+layerId = m01;
+width = 0;
+}
+);
+note = uni200E;
+unicode = 8206;
+},
+{
+glyphname = uni200F;
+layers = (
+{
+layerId = m01;
+width = 0;
+}
+);
+note = uni200F;
+unicode = 8207;
+},
+{
+glyphname = uni0640;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (100,-22);
+},
+{
+name = top_;
+pos = (100,530);
+}
+);
+layerId = m01;
+width = 200;
+}
+);
+note = uni0640;
+unicode = 1600;
+},
+{
+glyphname = uni070F;
+layers = (
+{
+layerId = m01;
+width = 0;
+}
+);
+note = uni070F;
+unicode = 1807;
+},
+{
+glyphname = uni25CC;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni25CC;
+unicode = 9676;
+},
+{
+glyphname = uni2670;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni2670;
+unicode = 9840;
+},
+{
+glyphname = uni2671;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni2671;
+unicode = 9841;
+},
+{
+glyphname = period;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = period;
+unicode = 46;
+},
+{
+glyphname = uni060C;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni060C;
+unicode = 1548;
+},
+{
+glyphname = uni061B;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni061B;
+unicode = 1563;
+},
+{
+glyphname = colon;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = colon;
+unicode = 58;
+},
+{
+glyphname = uni061F;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni061F;
+unicode = 1567;
+},
+{
+glyphname = exclam;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = exclam;
+unicode = 33;
+},
+{
+glyphname = parenleft;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = parenleft;
+unicode = 40;
+},
+{
+glyphname = parenright;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = parenright;
+unicode = 41;
+},
+{
+glyphname = bracketleft;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = bracketleft;
+unicode = 91;
+},
+{
+glyphname = bracketright;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = bracketright;
+unicode = 93;
+},
+{
+glyphname = guillemotleft;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = guillemotleft;
+unicode = 171;
+},
+{
+glyphname = guillemotright;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = guillemotright;
+unicode = 187;
+},
+{
+glyphname = asterisk;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = asterisk;
+unicode = 42;
+},
+{
+glyphname = plus;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = plus;
+unicode = 43;
+},
+{
+glyphname = minus;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = minus;
+unicode = 8722;
+},
+{
+glyphname = equal;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = equal;
+unicode = 61;
+},
+{
+glyphname = slash;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = slash;
+unicode = 47;
+},
+{
+glyphname = backslash;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = backslash;
+unicode = 92;
+},
+{
+glyphname = hyphen;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = hyphen;
+unicode = 45;
+},
+{
+glyphname = degree;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = degree;
+unicode = 176;
+},
+{
+glyphname = ellipsis;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = ellipsis;
+unicode = 8230;
+},
+{
+glyphname = uni0710;
+lastChange = "2026-09-28 04:38:01 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (364,-15);
+},
+{
+name = top_;
+pos = (360,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(237,263,ls),
+(303,300,o),
+(293,291,o),
+(264,291,cs),
+(206,292,o),
+(115,300,o),
+(112,322,q),
+(106,500,l),
+(116,480,o),
+(441,479,o),
+(451,499,q),
+(448,308,q),
+(451,282,o),
+(325,216,cs),
+(306,209,o),
+(326,209,cs),
+(582,209,l),
+(582,45,ls),
+(582,16,o),
+(566,0,o),
+(537,0,cs),
+(82,0,l),
+(82,199,ls),
+(82,206,o),
+(86,209,o),
+(92,209,cs),
+(121,209,ls),
+(135,209,o),
+(145,211,o),
+(158,218,cs)
+);
+}
+);
+width = 582;
+}
+);
+note = uni0710;
+unicode = 1808;
+},
+{
+glyphname = uni0710.fina;
+lastChange = "2026-09-28 04:42:10 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (332,-22);
+},
+{
+name = top_;
+pos = (332,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(237,263,ls),
+(303,300,o),
+(293,291,o),
+(264,291,cs),
+(206,292,o),
+(115,300,o),
+(112,322,q),
+(106,500,l),
+(116,480,o),
+(441,479,o),
+(451,499,q),
+(448,308,l),
+(325,216,l),
+(326,209,l),
+(500,209,l),
+(500,0,l),
+(82,0,l),
+(82,199,ls),
+(82,206,o),
+(86,209,o),
+(92,209,cs),
+(121,209,ls),
+(135,209,o),
+(145,211,o),
+(158,218,cs)
+);
+}
+);
+width = 500;
+}
+);
+note = uni0710.fina;
+},
+{
+glyphname = uni0710.fin2;
+lastChange = "2026-09-28 04:38:11 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (332,-22);
+},
+{
+name = top_;
+pos = (332,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(237,263,ls),
+(303,300,o),
+(293,291,o),
+(264,291,cs),
+(206,292,o),
+(115,300,o),
+(112,322,q),
+(106,500,l),
+(116,480,o),
+(441,479,o),
+(451,499,q),
+(448,308,q),
+(451,282,o),
+(325,216,cs),
+(306,209,o),
+(326,209,cs),
+(582,209,l),
+(582,45,ls),
+(582,16,o),
+(566,0,o),
+(537,0,cs),
+(82,0,l),
+(82,199,ls),
+(82,206,o),
+(86,209,o),
+(92,209,cs),
+(121,209,ls),
+(135,209,o),
+(145,211,o),
+(158,218,cs)
+);
+}
+);
+width = 582;
+}
+);
+note = uni0710.fin2;
+},
+{
+glyphname = uni0710.fin3;
+lastChange = "2026-09-28 04:38:16 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (332,-22);
+},
+{
+name = top_;
+pos = (332,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(237,263,ls),
+(303,300,o),
+(293,291,o),
+(264,291,cs),
+(206,292,o),
+(115,300,o),
+(112,322,q),
+(106,500,l),
+(116,480,o),
+(441,479,o),
+(451,499,q),
+(448,308,q),
+(451,282,o),
+(325,216,cs),
+(306,209,o),
+(326,209,cs),
+(582,209,l),
+(582,45,ls),
+(582,16,o),
+(566,0,o),
+(537,0,cs),
+(82,0,l),
+(82,199,ls),
+(82,206,o),
+(86,209,o),
+(92,209,cs),
+(121,209,ls),
+(135,209,o),
+(145,211,o),
+(158,218,cs)
+);
+}
+);
+width = 582;
+}
+);
+note = uni0710.fin3;
+},
+{
+glyphname = uni0710.med2;
+lastChange = "2026-09-28 04:36:56 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (414,-22);
+},
+{
+name = top_;
+pos = (414,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(237,263,ls),
+(303,300,o),
+(293,291,o),
+(264,291,cs),
+(206,292,o),
+(115,300,o),
+(112,322,q),
+(106,500,l),
+(116,480,o),
+(441,479,o),
+(451,499,q),
+(448,308,l),
+(325,216,l),
+(326,209,l),
+(582,209,l),
+(582,0,l),
+(82,0,l),
+(82,199,ls),
+(82,206,o),
+(86,209,o),
+(92,209,cs),
+(121,209,ls),
+(135,209,o),
+(145,211,o),
+(158,218,cs)
+);
+}
+);
+width = 582;
+}
+);
+note = uni0710.med2;
+},
+{
+glyphname = uni0712;
+lastChange = "2026-09-28 04:10:59 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (244,-22);
+},
+{
+name = top_;
+pos = (244,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(470,291,l),
+(224,291,ls),
+(179,291,o),
+(154,325,o),
+(154,370,cs),
+(154,500,l),
+(164,480,o),
+(558,480,o),
+(568,500,q),
+(568,45,ls),
+(568,16,o),
+(552,0,o),
+(523,0,cs),
+(82,0,l),
+(82,174,ls),
+(82,197,o),
+(95,209,o),
+(117,209,cs),
+(470,209,l)
+);
+}
+);
+width = 568;
+}
+);
+note = uni0712;
+unicode = 1810;
+},
+{
+glyphname = uni0712.fina;
+lastChange = "2026-09-27 20:48:21 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(388,291,l),
+(142,291,ls),
+(97,291,o),
+(72,325,o),
+(72,370,cs),
+(72,500,l),
+(82,480,o),
+(476,480,o),
+(486,500,q),
+(486,0,l),
+(0,0,l),
+(0,174,ls),
+(0,197,o),
+(13,209,o),
+(35,209,cs),
+(388,209,l)
+);
+}
+);
+width = 486;
+}
+);
+note = uni0712.fina;
+},
+{
+glyphname = uni0712.medi;
+lastChange = "2026-09-28 04:25:56 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(388,291,l),
+(142,291,ls),
+(97,291,o),
+(72,325,o),
+(72,370,cs),
+(72,500,l),
+(82,480,o),
+(476,480,o),
+(486,500,q),
+(486,0,l),
+(-2,0,l),
+(-2,209,l),
+(388,209,l)
+);
+}
+);
+width = 486;
+}
+);
+note = uni0712.medi;
+},
+{
+glyphname = uni0712.init;
+lastChange = "2026-09-28 04:26:01 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(388,291,l),
+(142,291,ls),
+(97,291,o),
+(72,325,o),
+(72,370,cs),
+(72,500,l),
+(82,480,o),
+(476,480,o),
+(486,500,q),
+(486,45,ls),
+(486,16,o),
+(470,0,o),
+(441,0,cs),
+(-2,0,l),
+(-2,209,l),
+(388,209,l)
+);
+}
+);
+width = 486;
+}
+);
+note = uni0712.init;
+},
+{
+glyphname = uni0713;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (139,-22);
+},
+{
+name = top_;
+pos = (139,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(64,452,o),
+(119,499,o),
+(162,499,qs),
+(196,499,o),
+(267,468,o),
+(294,440,q),
+(347,374,ls),
+(412,294,o),
+(468,219,o),
+(468,209,qs),
+(468,-39,ls),
+(468,-77,o),
+(464,-115,o),
+(458,-127,qs),
+(450,-147,o),
+(381,-181,o),
+(333,-181,qs),
+(292,-181,o),
+(240,-154,o),
+(240,-131,qs),
+(240,-121,o),
+(248,-105,qs),
+(259,-85,o),
+(314,-50,o),
+(357,-28,qs),
+(374,-19,o),
+(400,-4,o),
+(401,0,q),
+(0,0,l),
+(0,169,ls),
+(0,188,o),
+(21,209,o),
+(40,209,qs),
+(314,211,l),
+(314,214,o),
+(285,231,o),
+(265,240,qs),
+(182,281,o),
+(70,361,o),
+(65,409,q)
+);
+}
+);
+width = 468;
+}
+);
+note = uni0713;
+unicode = 1811;
+},
+{
+glyphname = uni0713.fina;
+lastChange = "2026-09-27 20:43:36 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(64,452,o),
+(119,499,o),
+(162,499,qs),
+(196,499,o),
+(267,468,o),
+(294,440,q),
+(347,374,ls),
+(412,294,o),
+(468,219,o),
+(468,209,qs),
+(468,-39,ls),
+(468,-77,o),
+(464,-115,o),
+(458,-127,qs),
+(450,-147,o),
+(381,-181,o),
+(333,-181,qs),
+(292,-181,o),
+(240,-154,o),
+(240,-131,qs),
+(240,-121,o),
+(248,-105,qs),
+(259,-85,o),
+(314,-50,o),
+(357,-28,qs),
+(374,-19,o),
+(400,-4,o),
+(401,0,q),
+(0,0,l),
+(0,174,ls),
+(0,197,o),
+(13,209,o),
+(35,209,cs),
+(314,211,l),
+(314,214,o),
+(285,231,o),
+(265,240,qs),
+(182,281,o),
+(70,361,o),
+(65,409,q)
+);
+}
+);
+width = 468;
+}
+);
+note = uni0713.fina;
+},
+{
+glyphname = uni0713.medi;
+lastChange = "2026-09-28 04:26:11 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(468,-39,ls),
+(468,-77,o),
+(464,-115,o),
+(458,-127,qs),
+(450,-147,o),
+(381,-181,o),
+(333,-181,qs),
+(292,-181,o),
+(240,-154,o),
+(240,-131,qs),
+(240,-121,o),
+(248,-105,qs),
+(259,-85,o),
+(314,-50,o),
+(357,-28,qs),
+(374,-19,o),
+(400,-4,o),
+(401,0,q),
+(-2,0,l),
+(-2,209,l),
+(314,211,l),
+(314,214,o),
+(285,231,o),
+(265,240,qs),
+(182,281,o),
+(70,361,o),
+(65,409,q),
+(64,452,o),
+(119,499,o),
+(162,499,qs),
+(196,499,o),
+(267,468,o),
+(294,440,q),
+(347,374,ls),
+(412,294,o),
+(468,219,o),
+(468,209,q),
+(566,209,l),
+(566,0,l),
+(468,0,l)
+);
+}
+);
+width = 566;
+}
+);
+note = uni0713.medi;
+},
+{
+glyphname = uni0713.init;
+lastChange = "2026-09-28 04:27:11 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (139,-22);
+},
+{
+name = top_;
+pos = (139,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(64,452,o),
+(119,499,o),
+(162,499,qs),
+(196,499,o),
+(267,468,o),
+(294,440,q),
+(347,374,ls),
+(412,294,o),
+(468,219,o),
+(468,209,qs),
+(468,-39,ls),
+(468,-77,o),
+(464,-115,o),
+(458,-127,qs),
+(450,-147,o),
+(381,-181,o),
+(333,-181,qs),
+(292,-181,o),
+(240,-154,o),
+(240,-131,qs),
+(240,-121,o),
+(248,-105,qs),
+(259,-85,o),
+(314,-50,o),
+(357,-28,qs),
+(374,-19,o),
+(400,-4,o),
+(401,0,q),
+(-2,0,l),
+(-2,209,l),
+(314,211,l),
+(314,214,o),
+(285,231,o),
+(265,240,qs),
+(182,281,o),
+(70,361,o),
+(65,409,q)
+);
+}
+);
+width = 468;
+}
+);
+note = uni0713.init;
+},
+{
+glyphname = uni0715;
+lastChange = "2026-09-27 20:49:25 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (332,-22);
+},
+{
+name = top_;
+pos = (332,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(399,-182,o),
+(444,-137,o),
+(444,-105,qs),
+(444,-73,o),
+(399,-28,o),
+(367,-28,qs),
+(335,-28,o),
+(290,-73,o),
+(290,-105,qs),
+(290,-137,o),
+(335,-182,o),
+(367,-182,qs)
+);
+},
+{
+closed = 1;
+nodes = (
+(521,500,ls),
+(560,500,o),
+(601,459,o),
+(601,420,qs),
+(601,45,ls),
+(601,23,o),
+(578,0,o),
+(556,0,qs),
+(100,0,ls),
+(92,0,o),
+(82,8,o),
+(82,15,qs),
+(82,20,o),
+(83,22,q),
+(133,209,l),
+(503,209,l),
+(503,251,ls),
+(503,270,o),
+(482,291,o),
+(463,291,qs),
+(133,291,l),
+(133,420,ls),
+(133,459,o),
+(174,500,o),
+(213,500,qs)
+);
+}
+);
+width = 601;
+}
+);
+note = uni0715;
+unicode = 1813;
+},
+{
+glyphname = uni0715.fina;
+lastChange = "2026-09-27 20:49:47 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(317,-182,o),
+(362,-137,o),
+(362,-105,qs),
+(362,-73,o),
+(317,-28,o),
+(285,-28,qs),
+(253,-28,o),
+(208,-73,o),
+(208,-105,qs),
+(208,-137,o),
+(253,-182,o),
+(285,-182,qs)
+);
+},
+{
+closed = 1;
+nodes = (
+(439,500,ls),
+(478,500,o),
+(519,458,o),
+(519,420,qs),
+(519,0,l),
+(18,0,ls),
+(10,0,o),
+(0,8,o),
+(0,15,qs),
+(0,20,o),
+(1,22,q),
+(46,192,ls),
+(51,209,o),
+(69,209,qs),
+(421,209,l),
+(421,251,ls),
+(421,270,o),
+(400,291,o),
+(381,291,qs),
+(51,291,l),
+(51,420,ls),
+(51,459,o),
+(92,500,o),
+(131,500,qs)
+);
+}
+);
+width = 519;
+}
+);
+note = uni0715.fina;
+},
+{
+glyphname = uni0716;
+lastChange = "2026-09-27 20:50:01 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (383,-22);
+},
+{
+name = top_;
+pos = (383,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(521,500,ls),
+(560,500,o),
+(601,459,o),
+(601,420,qs),
+(601,45,ls),
+(601,23,o),
+(578,0,o),
+(556,0,qs),
+(100,0,ls),
+(92,0,o),
+(82,8,o),
+(82,15,qs),
+(82,20,o),
+(83,22,q),
+(133,209,l),
+(503,209,l),
+(503,251,ls),
+(503,270,o),
+(482,291,o),
+(463,291,qs),
+(133,291,l),
+(133,420,ls),
+(133,459,o),
+(174,500,o),
+(213,500,qs)
+);
+}
+);
+width = 601;
+}
+);
+note = uni0716;
+unicode = 1814;
+},
+{
+glyphname = uni0716.fina;
+lastChange = "2026-09-28 04:10:06 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(439,500,ls),
+(478,500,o),
+(519,458,o),
+(519,420,qs),
+(519,0,l),
+(18,0,ls),
+(10,0,o),
+(0,8,o),
+(0,15,qs),
+(0,20,o),
+(1,22,q),
+(46,192,ls),
+(51,209,o),
+(69,209,qs),
+(421,209,l),
+(421,251,ls),
+(421,270,o),
+(400,291,o),
+(381,291,qs),
+(51,291,l),
+(51,420,ls),
+(51,459,o),
+(92,500,o),
+(131,500,qs)
+);
+}
+);
+width = 519;
+}
+);
+note = uni0716.fina;
+},
+{
+glyphname = uni0717;
+lastChange = "2026-09-27 20:47:01 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (333,-22);
+},
+{
+name = top_;
+pos = (333,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(452,0,l),
+(550,0,l),
+(550,500,l),
+(162,500,ls),
+(110,500,o),
+(82,472,o),
+(82,420,cs),
+(82,80,ls),
+(82,42,o),
+(123,0,o),
+(162,0,qs),
+(290,0,l),
+(329,0,o),
+(370,41,o),
+(370,80,q),
+(370,209,l),
+(180,209,l),
+(180,291,l),
+(452,291,l)
+);
+}
+);
+width = 550;
+}
+);
+note = uni0717;
+unicode = 1815;
+},
+{
+glyphname = uni0717.fina;
+lastChange = "2026-09-28 04:09:29 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (302,-22);
+},
+{
+name = top_;
+pos = (302,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(422,0,l),
+(550,0,l),
+(550,209,l),
+(550,209,ls),
+(531,209,o),
+(520,225,o),
+(520,254,cs),
+(520,500,l),
+(132,500,ls),
+(80,500,o),
+(52,472,o),
+(52,420,cs),
+(52,80,ls),
+(52,42,o),
+(93,0,o),
+(132,0,qs),
+(260,0,l),
+(299,0,o),
+(340,41,o),
+(340,80,q),
+(340,209,l),
+(150,209,l),
+(150,291,l),
+(422,291,l)
+);
+}
+);
+width = 550;
+}
+);
+note = uni0717.fina;
+},
+{
+glyphname = uni0718;
+lastChange = "2026-09-27 20:47:12 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (335,-22);
+},
+{
+name = top_;
+pos = (335,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(82,420,ls),
+(82,459,o),
+(123,500,o),
+(162,500,qs),
+(501,500,ls),
+(540,500,o),
+(581,459,o),
+(581,420,qs),
+(581,45,ls),
+(581,23,o),
+(558,0,o),
+(536,0,qs),
+(127,0,ls),
+(98,0,o),
+(82,16,o),
+(82,45,cs)
+);
+},
+{
+closed = 1;
+nodes = (
+(483,209,l),
+(483,251,ls),
+(483,270,o),
+(462,291,o),
+(443,291,qs),
+(220,291,ls),
+(201,291,o),
+(180,270,o),
+(180,251,cs),
+(180,209,l)
+);
+}
+);
+width = 581;
+}
+);
+note = uni0718;
+unicode = 1816;
+},
+{
+glyphname = uni0718.fina;
+lastChange = "2026-09-28 04:08:53 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (302,-22);
+},
+{
+name = top_;
+pos = (302,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(52,420,ls),
+(52,459,o),
+(93,500,o),
+(132,500,qs),
+(471,500,ls),
+(510,500,o),
+(551,459,o),
+(551,420,q),
+(551,254,ls),
+(551,225,o),
+(562,209,o),
+(581,209,cs),
+(581,209,l),
+(581,0,l),
+(97,0,l),
+(68,0,o),
+(52,16,o),
+(52,45,cs)
+);
+},
+{
+closed = 1;
+nodes = (
+(453,209,l),
+(453,251,ls),
+(453,270,o),
+(432,291,o),
+(413,291,qs),
+(190,291,ls),
+(171,291,o),
+(150,270,o),
+(150,251,cs),
+(150,209,l)
+);
+}
+);
+width = 581;
+}
+);
+note = uni0718.fina;
+},
+{
+glyphname = uni0719;
+lastChange = "2026-09-28 00:06:46 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (226,-22);
+},
+{
+name = top_;
+pos = (226,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(248,0,l),
+(329,73,o),
+(396,355,o),
+(309,458,cs),
+(235,545,o),
+(113,479,o),
+(94,414,cs),
+(15,143,o),
+(355,249,o),
+(150,0,c)
+);
+}
+);
+width = 350;
+}
+);
+note = uni0719;
+unicode = 1817;
+},
+{
+glyphname = uni0719.fina;
+lastChange = "2026-09-28 00:06:33 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (144,-22);
+},
+{
+name = top_;
+pos = (144,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(166,0,l),
+(247,73,o),
+(314,355,o),
+(227,458,cs),
+(153,545,o),
+(31,479,o),
+(12,414,cs),
+(-67,143,o),
+(273,249,o),
+(68,0,c)
+);
+}
+);
+width = 268;
+}
+);
+note = uni0719.fina;
+},
+{
+glyphname = uni071A;
+lastChange = "2026-09-28 04:06:49 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (200,-22);
+},
+{
+name = top_;
+pos = (200,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(269,209,o),
+(320,209,o),
+(358,332,o),
+(380,368,o),
+(409,368,qs),
+(435,368,o),
+(463,315,o),
+(475,236,o),
+(491,209,o),
+(500,209,q),
+(500,45,ls),
+(500,16,o),
+(484,0,o),
+(455,0,cs),
+(0,0,l),
+(0,209,l),
+(69,209,o),
+(99,243,o),
+(126,332,o),
+(148,368,o),
+(177,368,qs),
+(203,368,o),
+(231,315,o)
+);
+}
+);
+width = 500;
+}
+);
+note = uni071A;
+unicode = 1818;
+},
+{
+glyphname = uni071A.fina;
+lastChange = "2026-09-27 20:56:50 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(269,209,o),
+(320,209,o),
+(358,332,o),
+(380,368,o),
+(409,368,qs),
+(435,368,o),
+(463,315,o),
+(475,236,o),
+(491,209,o),
+(500,209,q),
+(500,0,l),
+(0,0,l),
+(0,176,ls),
+(0,198,o),
+(12,207,o),
+(33,212,cs),
+(79,223,o),
+(104,259,o),
+(126,332,o),
+(148,368,o),
+(177,368,qs),
+(203,368,o),
+(231,315,o)
+);
+}
+);
+width = 500;
+}
+);
+note = uni071A.fina;
+},
+{
+glyphname = uni071A.medi;
+lastChange = "2026-09-28 04:26:41 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(269,209,o),
+(320,209,o),
+(358,332,o),
+(380,368,o),
+(409,368,qs),
+(435,368,o),
+(463,315,o),
+(475,236,o),
+(491,209,o),
+(500,209,q),
+(499,0,l),
+(-2,0,l),
+(-2,209,l),
+(0,209,l),
+(69,209,o),
+(99,243,o),
+(126,332,o),
+(148,368,o),
+(177,368,qs),
+(203,368,o),
+(231,315,o)
+);
+}
+);
+width = 500;
+}
+);
+note = uni071A.medi;
+},
+{
+glyphname = uni071A.init;
+lastChange = "2026-09-28 04:33:33 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (200,-22);
+},
+{
+name = top_;
+pos = (200,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(269,209,o),
+(320,209,o),
+(358,332,o),
+(380,368,o),
+(409,368,qs),
+(435,368,o),
+(463,315,o),
+(475,236,o),
+(489,136,o),
+(500,45,qs),
+(503,16,o),
+(484,0,o),
+(455,0,cs),
+(-2,0,l),
+(-2,209,l),
+(0,209,l),
+(69,209,o),
+(99,243,o),
+(126,332,o),
+(148,368,o),
+(177,368,qs),
+(203,368,o),
+(231,315,o)
+);
+}
+);
+width = 500;
+}
+);
+note = uni071A.init;
+},
+{
+glyphname = uni071B;
+lastChange = "2026-09-28 03:56:46 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (244,-22);
+},
+{
+name = top_;
+pos = (244,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(566,0,l),
+(566,-6,ls),
+(566,-464,o),
+(400,-345,o),
+(315,-107,cs),
+(277,0,l),
+(82,0,l),
+(82,174,ls),
+(82,197,o),
+(95,209,o),
+(117,209,cs),
+(215,209,l),
+(166,365,ls),
+(126,493,o),
+(290,537,o),
+(321,465,cs),
+(328,449,o),
+(331,442,o),
+(350,335,cs),
+(371,217,l),
+(566,216,l)
+);
+},
+{
+closed = 0;
+nodes = (
+(416,0,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(421,-17,ls),
+(472,-190,o),
+(498,-159,o),
+(490,0,c),
+(416,0,l)
+);
+}
+);
+width = 566;
+}
+);
+note = uni071B;
+unicode = 1819;
+},
+{
+glyphname = uni071B.fina;
+lastChange = "2026-09-28 03:56:27 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(484,0,l),
+(484,-6,ls),
+(484,-464,o),
+(318,-345,o),
+(233,-107,cs),
+(195,0,l),
+(0,0,l),
+(0,174,ls),
+(0,197,o),
+(13,209,o),
+(35,209,cs),
+(133,209,l),
+(84,365,ls),
+(44,493,o),
+(208,537,o),
+(239,465,cs),
+(246,449,o),
+(249,442,o),
+(268,335,cs),
+(289,217,l),
+(484,216,l)
+);
+},
+{
+closed = 0;
+nodes = (
+(334,0,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(339,-17,ls),
+(390,-190,o),
+(416,-159,o),
+(408,0,c),
+(334,0,l)
+);
+}
+);
+width = 484;
+}
+);
+note = uni071B.fina;
+},
+{
+glyphname = uni071B.medi;
+lastChange = "2026-09-28 04:27:22 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (265,-365);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(484,0,l),
+(484,-6,ls),
+(484,-464,o),
+(318,-345,o),
+(233,-107,cs),
+(195,0,l),
+(-2,0,l),
+(-2,209,l),
+(133,209,l),
+(84,365,ls),
+(44,493,o),
+(208,537,o),
+(239,465,cs),
+(246,449,o),
+(249,442,o),
+(268,335,cs),
+(289,217,l),
+(484,216,l)
+);
+},
+{
+closed = 0;
+nodes = (
+(334,0,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(339,-17,ls),
+(390,-190,o),
+(416,-159,o),
+(408,0,c),
+(334,0,l)
+);
+}
+);
+width = 484;
+}
+);
+note = uni071B.medi;
+},
+{
+glyphname = uni071B.init;
+lastChange = "2026-09-28 04:27:32 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(484,0,l),
+(484,-6,ls),
+(484,-464,o),
+(318,-345,o),
+(233,-107,cs),
+(195,0,l),
+(-2,0,l),
+(-2,209,l),
+(133,209,l),
+(84,365,ls),
+(44,493,o),
+(208,537,o),
+(239,465,cs),
+(246,449,o),
+(249,442,o),
+(268,335,cs),
+(289,217,l),
+(484,216,l)
+);
+},
+{
+closed = 0;
+nodes = (
+(334,0,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(339,-17,ls),
+(390,-190,o),
+(416,-159,o),
+(408,0,c),
+(334,0,l)
+);
+}
+);
+width = 484;
+}
+);
+note = uni071B.init;
+},
+{
+glyphname = uni071D;
+lastChange = "2026-09-28 04:06:30 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (149,-22);
+},
+{
+name = top_;
+pos = (149,438);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(318,45,ls),
+(318,16,o),
+(302,0,o),
+(273,0,cs),
+(0,0,l),
+(0,209,l),
+(87,206,o),
+(149,243,o),
+(176,332,o),
+(198,368,o),
+(227,368,qs),
+(253,368,o),
+(281,315,o),
+(293,236,o),
+(309,209,o),
+(318,209,q)
+);
+}
+);
+width = 318;
+}
+);
+note = uni071D;
+unicode = 1821;
+},
+{
+glyphname = uni071D.fina;
+lastChange = "2026-09-27 20:32:48 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(318,0,l),
+(0,0,l),
+(0,175,ls),
+(0,197,o),
+(12,208,o),
+(35,210,cs),
+(103,217,o),
+(153,255,o),
+(176,332,o),
+(198,368,o),
+(227,368,qs),
+(253,368,o),
+(281,315,o),
+(293,236,o),
+(309,209,o),
+(318,209,q)
+);
+}
+);
+width = 318;
+}
+);
+note = uni071D.fina;
+},
+{
+glyphname = uni071D.medi;
+lastChange = "2026-09-28 04:27:52 +0000";
+layers = (
+{
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(318,0,l),
+(-2,0,l),
+(-2,209,l),
+(-1,209,l),
+(86,206,o),
+(149,243,o),
+(176,332,o),
+(198,368,o),
+(227,368,qs),
+(253,368,o),
+(281,315,o),
+(293,236,o),
+(309,209,o),
+(318,209,q)
+);
+}
+);
+width = 318;
+}
+);
+note = uni071D.medi;
+},
+{
+glyphname = uni071D.init;
+lastChange = "2026-09-28 04:28:13 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (149,-22);
+},
+{
+name = top_;
+pos = (149,438);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(318,0,q),
+(-2,0,l),
+(-2,209,l),
+(-1,209,l),
+(86,206,o),
+(149,243,o),
+(176,332,o),
+(198,368,o),
+(227,368,qs),
+(253,368,o),
+(281,315,o),
+(307,148,o)
+);
+}
+);
+width = 318;
+}
+);
+note = uni071D.init;
+},
+{
+glyphname = uni071E;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni071E;
+unicode = 1822;
+},
+{
+glyphname = uni071F;
+lastChange = "2026-09-28 03:07:03 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (239,-22);
+},
+{
+name = top_;
+pos = (239,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(366,206,o),
+(142,147,o),
+(91,165,c),
+(4,21,l),
+(-15,-19,o),
+(28,-13,o),
+(219,-251,c),
+(262,-124,o),
+(397,-57,o),
+(360,-251,cs),
+(359,-259,o),
+(362,-263,o),
+(369,-263,cs),
+(447,-263,ls),
+(453,-263,o),
+(457,-260,o),
+(458,-254,cs),
+(498,-50,o),
+(416,80,o),
+(241,-62,c),
+(198,0,l),
+(325,29,l),
+(447,57,o),
+(397,247,o),
+(397,237,c)
+);
+}
+);
+width = 468;
+}
+);
+note = uni071F;
+unicode = 1823;
+},
+{
+glyphname = uni071F.fina;
+lastChange = "2026-09-28 03:26:49 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(384,473,o),
+(33,473,o),
+(20,500,c),
+(25,174,o),
+(-7,98,o),
+(1,98,c),
+(1,98,l),
+(223,-61,o),
+(265,-176,o),
+(285,-193,c),
+(380,-96,o),
+(458,-57,o),
+(384,0,c),
+(420,0,l),
+(420,209,l),
+(402,209,ls),
+(399,209,o),
+(397,211,o),
+(397,214,cs),
+(397,500,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(299,291,l),
+(299,95,l),
+(267,126,o),
+(137,235,o),
+(96,291,c)
+);
+}
+);
+width = 420;
+}
+);
+note = uni071F.fina;
+},
+{
+glyphname = uni071F.medi;
+lastChange = "2026-09-28 04:28:24 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (198,-22);
+},
+{
+name = top_;
+pos = (198,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(387,500,ls),
+(426,500,o),
+(467,463,o),
+(467,420,q),
+(467,0,l),
+(-2,0,l),
+(-2,209,l),
+(369,209,l),
+(369,251,ls),
+(369,270,o),
+(348,291,o),
+(329,291,qs),
+(53,291,l),
+(53,420,ls),
+(53,459,o),
+(94,500,o),
+(133,500,qs)
+);
+}
+);
+width = 467;
+}
+);
+note = uni071F.medi;
+},
+{
+glyphname = uni071F.init;
+lastChange = "2026-09-28 04:28:29 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (198,-22);
+},
+{
+name = top_;
+pos = (198,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(387,500,ls),
+(426,500,o),
+(467,463,o),
+(467,420,q),
+(467,45,ls),
+(467,16,o),
+(451,0,o),
+(422,0,cs),
+(-2,0,l),
+(-2,209,l),
+(369,209,l),
+(369,251,ls),
+(369,270,o),
+(348,291,o),
+(329,291,qs),
+(53,291,l),
+(53,420,ls),
+(53,459,o),
+(94,500,o),
+(133,500,qs)
+);
+}
+);
+width = 467;
+}
+);
+note = uni071F.init;
+},
+{
+glyphname = uni0720.fina;
+lastChange = "2026-09-27 20:52:13 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(0,0,l),
+(0,174,ls),
+(0,197,o),
+(13,209,o),
+(35,209,cs),
+(301,209,l),
+(286,227,o),
+(230,265,qs),
+(166,310,o),
+(91,378,o),
+(88,410,qs),
+(87,453,o),
+(148,500,o),
+(195,500,qs),
+(230,500,o),
+(301,472,o),
+(326,445,q),
+(394,361,o),
+(477,226,o),
+(477,209,q),
+(575,209,l),
+(575,0,l)
+);
+}
+);
+width = 575;
+}
+);
+note = uni0720.fina;
+},
+{
+glyphname = uni0720.medi;
+lastChange = "2026-09-28 04:28:34 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(-2,0,l),
+(-2,209,l),
+(301,209,l),
+(286,227,o),
+(230,265,qs),
+(166,310,o),
+(91,378,o),
+(88,410,qs),
+(87,453,o),
+(148,500,o),
+(195,500,qs),
+(230,500,o),
+(301,472,o),
+(326,445,q),
+(394,361,o),
+(477,226,o),
+(477,209,q),
+(575,209,l),
+(575,0,l)
+);
+}
+);
+width = 575;
+}
+);
+note = uni0720.medi;
+},
+{
+glyphname = uni0720.init;
+lastChange = "2026-09-28 04:28:39 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(87,453,o),
+(148,500,o),
+(195,500,qs),
+(230,500,o),
+(301,472,o),
+(326,445,q),
+(394,361,o),
+(477,226,o),
+(477,209,qs),
+(477,45,ls),
+(477,23,o),
+(454,0,o),
+(432,0,qs),
+(-2,0,l),
+(-2,209,l),
+(301,209,l),
+(286,227,o),
+(230,265,qs),
+(166,310,o),
+(91,378,o),
+(88,410,qs)
+);
+}
+);
+width = 477;
+}
+);
+note = uni0720.init;
+},
+{
+glyphname = uni0721;
+lastChange = "2026-09-28 01:39:57 +0000";
+layers = (
+{
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(144,286,ls),
+(122,286,o),
+(97,297,o),
+(95,319,cs),
+(82,500,l),
+(95,473,o),
+(787,473,o),
+(800,500,c),
+(800,35,ls),
+(800,12,o),
+(787,0,o),
+(765,0,cs),
+(421,0,ls),
+(403,0,o),
+(389,6,o),
+(378,20,cs),
+(283,143,ls),
+(276,152,o),
+(268,152,o),
+(262,141,cs),
+(186,7,ls),
+(183,2,o),
+(179,0,o),
+(174,0,cs),
+(97,0,ls),
+(90,0,o),
+(85,5,o),
+(89,12,cs),
+(234,286,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(688,209,ls),
+(691,209,o),
+(693,211,o),
+(693,214,cs),
+(693,286,ls),
+(693,289,o),
+(691,291,o),
+(688,291,cs),
+(421,291,ls),
+(417,291,o),
+(416,289,o),
+(419,285,cs),
+(484,212,ls),
+(485,210,o),
+(488,209,o),
+(490,209,cs)
+);
+}
+);
+width = 800;
+}
+);
+note = uni0721;
+unicode = 1825;
+},
+{
+glyphname = uni0721.fina;
+lastChange = "2026-09-28 01:40:29 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (168,-22);
+},
+{
+name = top_;
+pos = (168,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(62,286,ls),
+(40,286,o),
+(15,297,o),
+(13,319,cs),
+(0,500,l),
+(13,473,o),
+(705,473,o),
+(718,500,c),
+(718,0,l),
+(339,0,ls),
+(321,0,o),
+(307,6,o),
+(296,20,cs),
+(201,143,ls),
+(194,152,o),
+(186,152,o),
+(180,141,cs),
+(104,7,ls),
+(101,2,o),
+(97,0,o),
+(92,0,cs),
+(15,0,ls),
+(8,0,o),
+(3,5,o),
+(7,12,cs),
+(152,286,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(606,209,ls),
+(609,209,o),
+(611,211,o),
+(611,214,cs),
+(611,286,ls),
+(611,289,o),
+(609,291,o),
+(606,291,cs),
+(339,291,ls),
+(335,291,o),
+(334,289,o),
+(337,285,cs),
+(402,212,ls),
+(403,210,o),
+(406,209,o),
+(408,209,cs)
+);
+}
+);
+width = 718;
+}
+);
+note = uni0721.fina;
+},
+{
+glyphname = uni0721.medi;
+lastChange = "2026-09-28 04:29:00 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (168,-22);
+},
+{
+name = top_;
+pos = (168,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(289,459,o),
+(330,500,o),
+(369,500,qs),
+(656,500,ls),
+(695,500,o),
+(736,459,o),
+(736,420,qs),
+(736,0,l),
+(-2,0,l),
+(-2,209,l),
+(289,209,l),
+(147,276,o),
+(29,370,o),
+(94,464,qs),
+(156,554,o),
+(289,420,q)
+);
+},
+{
+closed = 1;
+nodes = (
+(639,251,ls),
+(639,270,o),
+(618,291,o),
+(599,291,qs),
+(427,291,ls),
+(408,291,o),
+(387,270,o),
+(387,251,qs),
+(387,209,l),
+(638,209,l)
+);
+}
+);
+width = 736;
+}
+);
+note = uni0721.medi;
+},
+{
+glyphname = uni0721.init;
+lastChange = "2026-09-28 04:28:54 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (168,-22);
+},
+{
+name = top_;
+pos = (168,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(289,459,o),
+(330,500,o),
+(369,500,qs),
+(656,500,ls),
+(695,500,o),
+(736,459,o),
+(736,420,qs),
+(736,45,ls),
+(736,16,o),
+(720,0,o),
+(691,0,cs),
+(-2,0,l),
+(-2,209,l),
+(289,209,l),
+(147,276,o),
+(29,370,o),
+(94,464,qs),
+(156,554,o),
+(289,420,q)
+);
+},
+{
+closed = 1;
+nodes = (
+(639,251,ls),
+(639,270,o),
+(618,291,o),
+(599,291,qs),
+(427,291,ls),
+(408,291,o),
+(387,270,o),
+(387,251,qs),
+(387,209,l),
+(638,209,l)
+);
+}
+);
+width = 736;
+}
+);
+note = uni0721.init;
+},
+{
+glyphname = uni0722;
+lastChange = "2026-09-28 04:17:02 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (704,-42);
+},
+{
+name = top_;
+pos = (704,510);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(119,-201,ls),
+(134,-216,o),
+(152,-215,o),
+(167,-201,cs),
+(188,-179,ls),
+(234,-133,o),
+(255,-105,o),
+(301,-151,cs),
+(612,-463,ls),
+(623,-474,o),
+(634,-478,o),
+(649,-478,cs),
+(674,-478,ls),
+(709,-478,o),
+(720,-454,o),
+(695,-429,cs),
+(186,80,ls),
+(170,96,o),
+(153,96,o),
+(138,80,cs),
+(12,-46,ls),
+(-4,-61,o),
+(-4,-78,o),
+(12,-94,cs)
+);
+}
+);
+width = 457;
+}
+);
+note = uni0722;
+unicode = 1826;
+},
+{
+glyphname = uni0722.fina;
+lastChange = "2026-09-28 04:14:39 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (229,-22);
+},
+{
+name = top_;
+pos = (229,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(346,209,l),
+(97,233,o),
+(0,341,q),
+(10,180,o),
+(112,-183,o),
+(247,-386,q),
+(249,-386,o),
+(251,-386,cs),
+(338,-386,ls),
+(342,-386,o),
+(343,-383,o),
+(341,-380,cs),
+(176,-97,o),
+(160,1,o),
+(165,1,c),
+(346,0,l)
+);
+}
+);
+width = 345;
+}
+);
+note = uni0722.fina;
+},
+{
+glyphname = uni0722.medi;
+lastChange = "2026-09-28 04:29:14 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(61,344,o),
+(111,500,q),
+(349,500,l),
+(349,0,l),
+(-2,0,l),
+(-2,209,l),
+(218,209,l),
+(223,213,o),
+(183,233,qs),
+(151,249,o),
+(83,293,o),
+(71,321,qs)
+);
+}
+);
+width = 349;
+}
+);
+note = uni0722.medi;
+},
+{
+glyphname = uni0722.init;
+lastChange = "2026-09-28 04:29:20 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (167,-22);
+},
+{
+name = top_;
+pos = (167,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(61,344,o),
+(111,500,q),
+(349,500,l),
+(349,45,ls),
+(349,16,o),
+(333,0,o),
+(304,0,cs),
+(-2,0,l),
+(-2,209,l),
+(218,209,l),
+(223,213,o),
+(183,233,qs),
+(151,249,o),
+(83,293,o),
+(71,321,qs)
+);
+}
+);
+width = 349;
+}
+);
+note = uni0722.init;
+},
+{
+glyphname = uni0723;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (503,1);
+},
+{
+name = top_;
+pos = (284,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(490,459,o),
+(531,500,o),
+(570,500,qs),
+(814,500,ls),
+(853,500,o),
+(894,459,o),
+(894,420,qs),
+(894,45,ls),
+(894,23,o),
+(871,0,o),
+(849,0,qs),
+(0,0,l),
+(0,174,ls),
+(0,193,o),
+(16,209,o),
+(35,209,qs),
+(98,209,l),
+(98,420,ls),
+(98,459,o),
+(139,500,o),
+(178,500,qs),
+(410,500,ls),
+(448,500,o),
+(486,460,o),
+(490,420,q)
+);
+},
+{
+closed = 1;
+nodes = (
+(447,251,ls),
+(447,270,o),
+(426,291,o),
+(407,291,qs),
+(236,291,ls),
+(217,291,o),
+(196,270,o),
+(196,251,qs),
+(196,209,l),
+(447,209,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(797,251,ls),
+(797,270,o),
+(776,291,o),
+(757,291,qs),
+(585,291,ls),
+(566,291,o),
+(545,270,o),
+(545,251,qs),
+(545,209,l),
+(796,209,l)
+);
+}
+);
+width = 894;
+}
+);
+note = uni0723;
+unicode = 1827;
+},
+{
+glyphname = uni0723.fina;
+lastChange = "2026-09-27 20:53:53 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(490,459,o),
+(531,500,o),
+(570,500,qs),
+(815,500,ls),
+(854,500,o),
+(895,459,o),
+(895,420,q),
+(895,0,l),
+(0,0,l),
+(0,174,ls),
+(0,193,o),
+(16,209,o),
+(35,209,qs),
+(98,209,l),
+(98,420,ls),
+(98,459,o),
+(139,500,o),
+(178,500,qs),
+(410,500,ls),
+(448,500,o),
+(486,460,o),
+(490,420,q)
+);
+},
+{
+closed = 1;
+nodes = (
+(447,251,ls),
+(447,270,o),
+(426,291,o),
+(407,291,qs),
+(236,291,ls),
+(217,291,o),
+(196,270,o),
+(196,251,qs),
+(196,209,l),
+(447,209,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(797,251,ls),
+(797,270,o),
+(776,291,o),
+(757,291,qs),
+(585,291,ls),
+(566,291,o),
+(545,270,o),
+(545,251,qs),
+(545,209,l),
+(797,209,l)
+);
+}
+);
+width = 895;
+}
+);
+note = uni0723.fina;
+},
+{
+glyphname = uni0723.medi;
+lastChange = "2026-09-28 04:29:30 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(490,459,o),
+(531,500,o),
+(570,500,qs),
+(815,500,ls),
+(854,500,o),
+(895,459,o),
+(895,420,q),
+(895,0,l),
+(-2,0,l),
+(-2,209,l),
+(98,209,l),
+(98,420,ls),
+(98,459,o),
+(139,500,o),
+(178,500,qs),
+(410,500,ls),
+(448,500,o),
+(486,460,o),
+(490,420,q)
+);
+},
+{
+closed = 1;
+nodes = (
+(447,251,ls),
+(447,270,o),
+(426,291,o),
+(407,291,qs),
+(236,291,ls),
+(217,291,o),
+(196,270,o),
+(196,251,qs),
+(196,209,l),
+(447,209,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(797,251,ls),
+(797,270,o),
+(776,291,o),
+(757,291,qs),
+(585,291,ls),
+(566,291,o),
+(545,270,o),
+(545,251,qs),
+(545,209,l),
+(797,209,l)
+);
+}
+);
+width = 895;
+}
+);
+note = uni0723.medi;
+},
+{
+glyphname = uni0723.init;
+lastChange = "2026-09-28 04:29:38 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (503,1);
+},
+{
+name = top_;
+pos = (490,500);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(490,459,o),
+(531,500,o),
+(570,500,qs),
+(814,500,ls),
+(853,500,o),
+(894,459,o),
+(894,420,qs),
+(894,45,ls),
+(894,16,o),
+(878,0,o),
+(849,0,cs),
+(-2,0,l),
+(-2,209,l),
+(98,209,l),
+(98,420,ls),
+(98,459,o),
+(139,500,o),
+(178,500,qs),
+(410,500,ls),
+(448,500,o),
+(486,460,o),
+(490,420,q)
+);
+},
+{
+closed = 1;
+nodes = (
+(447,251,ls),
+(447,270,o),
+(426,291,o),
+(407,291,qs),
+(236,291,ls),
+(217,291,o),
+(196,270,o),
+(196,251,qs),
+(196,209,l),
+(447,209,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(797,251,ls),
+(797,270,o),
+(776,291,o),
+(757,291,qs),
+(585,291,ls),
+(566,291,o),
+(545,270,o),
+(545,251,qs),
+(545,209,l),
+(796,209,l)
+);
+}
+);
+width = 894;
+}
+);
+note = uni0723.init;
+},
+{
+glyphname = uni0724;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0724;
+unicode = 1828;
+},
+{
+glyphname = uni0724.fina;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0724.fina;
+},
+{
+glyphname = uni0724.medi;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0724.medi;
+},
+{
+glyphname = uni0724.init;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0724.init;
+},
+{
+glyphname = uni0725;
+lastChange = "2026-09-28 04:04:33 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (333,-22);
+},
+{
+name = top_;
+pos = (333,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(82,0,l),
+(82,174,ls),
+(82,197,o),
+(95,209,o),
+(117,209,cs),
+(397,211,l),
+(397,214,o),
+(368,231,o),
+(348,240,qs),
+(265,281,o),
+(153,361,o),
+(148,409,q),
+(147,452,o),
+(202,499,o),
+(245,499,qs),
+(279,499,o),
+(350,468,o),
+(377,440,q),
+(430,374,ls),
+(495,294,o),
+(536,246,o),
+(567,211,q),
+(591,186,o),
+(626,200,cs),
+(649,209,l),
+(649,45,ls),
+(649,16,o),
+(633,0,o),
+(604,0,cs)
+);
+}
+);
+width = 649;
+}
+);
+note = uni0725;
+unicode = 1829;
+},
+{
+glyphname = uni0725.fina;
+lastChange = "2026-09-27 20:59:38 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (251,-22);
+},
+{
+name = top_;
+pos = (251,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(0,0,l),
+(0,174,ls),
+(0,197,o),
+(13,209,o),
+(35,209,cs),
+(315,211,l),
+(318,211,o),
+(286,230,o),
+(266,240,qs),
+(183,280,o),
+(69,361,o),
+(66,409,q),
+(63,452,o),
+(120,499,o),
+(163,499,qs),
+(197,499,o),
+(271,470,o),
+(295,440,q),
+(348,374,ls),
+(413,294,o),
+(453,245,o),
+(485,211,q),
+(508,186,o),
+(544,200,cs),
+(567,209,l),
+(567,0,l)
+);
+}
+);
+width = 567;
+}
+);
+note = uni0725.fina;
+},
+{
+glyphname = uni0725.medi;
+lastChange = "2026-09-28 04:29:51 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(-2,0,l),
+(-2,209,l),
+(315,211,l),
+(318,211,o),
+(286,230,o),
+(266,240,qs),
+(183,280,o),
+(69,361,o),
+(66,409,q),
+(63,452,o),
+(120,499,o),
+(163,499,qs),
+(197,499,o),
+(271,470,o),
+(295,440,q),
+(348,374,ls),
+(413,294,o),
+(453,245,o),
+(485,211,q),
+(508,186,o),
+(544,200,cs),
+(567,209,l),
+(567,0,l)
+);
+}
+);
+width = 567;
+}
+);
+note = uni0725.medi;
+},
+{
+glyphname = uni0725.init;
+lastChange = "2026-09-28 04:24:58 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (251,-22);
+},
+{
+name = top_;
+pos = (251,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(-2,0,l),
+(-2,209,l),
+(315,211,l),
+(315,214,o),
+(286,231,o),
+(266,240,qs),
+(183,281,o),
+(71,361,o),
+(66,409,q),
+(65,452,o),
+(120,499,o),
+(163,499,qs),
+(197,499,o),
+(268,468,o),
+(295,440,q),
+(348,374,ls),
+(413,294,o),
+(454,246,o),
+(485,211,q),
+(509,186,o),
+(544,200,cs),
+(567,209,l),
+(567,45,ls),
+(567,16,o),
+(551,0,o),
+(522,0,cs)
+);
+}
+);
+width = 567;
+}
+);
+note = uni0725.init;
+},
+{
+glyphname = uni0726;
+lastChange = "2026-09-28 02:11:37 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (332,-22);
+},
+{
+name = top_;
+pos = (332,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(82,164,ls),
+(82,193,o),
+(98,209,o),
+(127,209,cs),
+(272,209,l),
+(190,285,ls),
+(113,356,o),
+(180,500,o),
+(274,500,cs),
+(502,500,ls),
+(541,500,o),
+(582,459,o),
+(582,420,qs),
+(582,45,ls),
+(582,23,o),
+(559,0,o),
+(537,0,qs),
+(82,0,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(479,209,ls),
+(482,209,o),
+(484,211,o),
+(484,214,cs),
+(484,286,ls),
+(484,289,o),
+(482,291,o),
+(479,291,cs),
+(314,291,ls),
+(310,291,o),
+(308,289,o),
+(312,285,cs),
+(384,212,ls),
+(386,210,o),
+(388,209,o),
+(390,209,cs)
+);
+}
+);
+width = 582;
+}
+);
+note = uni0726;
+unicode = 1830;
+},
+{
+glyphname = uni0726.fina;
+lastChange = "2026-09-28 02:12:59 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (168,-22);
+},
+{
+name = top_;
+pos = (168,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(0,164,ls),
+(0,193,o),
+(16,209,o),
+(45,209,cs),
+(190,209,l),
+(108,285,ls),
+(31,356,o),
+(98,500,o),
+(192,500,cs),
+(420,500,ls),
+(459,500,o),
+(500,459,o),
+(500,420,q),
+(500,0,l),
+(0,0,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(397,209,ls),
+(400,209,o),
+(402,211,o),
+(402,214,cs),
+(402,286,ls),
+(402,289,o),
+(400,291,o),
+(397,291,cs),
+(232,291,ls),
+(228,291,o),
+(226,289,o),
+(230,285,cs),
+(302,212,ls),
+(304,210,o),
+(306,209,o),
+(308,209,cs)
+);
+}
+);
+width = 500;
+}
+);
+note = uni0726.fina;
+},
+{
+glyphname = uni0726.medi;
+lastChange = "2026-09-28 04:30:01 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(-2,209,l),
+(190,209,l),
+(108,285,ls),
+(31,356,o),
+(98,500,o),
+(192,500,cs),
+(420,500,ls),
+(459,500,o),
+(500,459,o),
+(500,420,qs),
+(500,0,l),
+(-2,0,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(397,209,ls),
+(400,209,o),
+(402,211,o),
+(402,214,cs),
+(402,286,ls),
+(402,289,o),
+(400,291,o),
+(397,291,cs),
+(232,291,ls),
+(228,291,o),
+(226,289,o),
+(230,285,cs),
+(302,212,ls),
+(304,210,o),
+(306,209,o),
+(308,209,cs)
+);
+}
+);
+width = 500;
+}
+);
+note = uni0726.medi;
+},
+{
+glyphname = uni0726.init;
+lastChange = "2026-09-28 04:30:06 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (193,-22);
+},
+{
+name = top_;
+pos = (193,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(-2,209,l),
+(190,209,l),
+(108,285,ls),
+(31,356,o),
+(98,500,o),
+(192,500,cs),
+(420,500,ls),
+(459,500,o),
+(500,459,o),
+(500,420,qs),
+(500,45,ls),
+(500,23,o),
+(477,0,o),
+(455,0,qs),
+(-2,0,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(397,209,ls),
+(400,209,o),
+(402,211,o),
+(402,214,cs),
+(402,286,ls),
+(402,289,o),
+(400,291,o),
+(397,291,cs),
+(232,291,ls),
+(228,291,o),
+(226,289,o),
+(230,285,cs),
+(302,212,ls),
+(304,210,o),
+(306,209,o),
+(308,209,cs)
+);
+}
+);
+width = 500;
+}
+);
+note = uni0726.init;
+},
+{
+glyphname = uni0727;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0727;
+unicode = 1831;
+},
+{
+glyphname = uni0727.fina;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0727.fina;
+},
+{
+glyphname = uni0727.medi;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0727.medi;
+},
+{
+glyphname = uni0727.init;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0727.init;
+},
+{
+glyphname = uni0728;
+lastChange = "2026-09-28 00:51:21 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (337,-264);
+},
+{
+name = top_;
+pos = (335,247);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(569,-27,o),
+(97,-27,o),
+(95,0,qs),
+(82,209,l),
+(95,182,o),
+(571,182,o),
+(584,209,q),
+(571,0,ls)
+);
+},
+{
+closed = 1;
+nodes = (
+(381,-154,o),
+(309,-20,o),
+(473,-23,cs),
+(525,-24,o),
+(661,-125,o),
+(526,-228,c),
+(82,-228,l),
+(82,-130,l)
+);
+}
+);
+width = 584;
+}
+);
+note = uni0728;
+unicode = 1832;
+},
+{
+glyphname = uni0728.fina;
+lastChange = "2026-09-28 00:50:47 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (255,-264);
+},
+{
+name = top_;
+pos = (253,247);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(502,-27,o),
+(15,-28,o),
+(13,0,qs),
+(0,209,l),
+(13,182,o),
+(489,182,o),
+(502,209,q),
+(502,0,ls)
+);
+},
+{
+closed = 1;
+nodes = (
+(299,-154,o),
+(227,-20,o),
+(391,-23,cs),
+(443,-24,o),
+(579,-125,o),
+(444,-228,c),
+(0,-228,l),
+(0,-130,l)
+);
+}
+);
+width = 502;
+}
+);
+note = uni0728.fina;
+},
+{
+glyphname = uni0729;
+lastChange = "2026-09-28 04:03:54 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (273,-22);
+},
+{
+name = top_;
+pos = (273,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(98,500,l),
+(108,480,o),
+(587,480,o),
+(597,500,q),
+(597,45,ls),
+(597,16,o),
+(581,0,o),
+(552,0,cs),
+(0,0,l),
+(0,174,ls),
+(0,197,o),
+(13,209,o),
+(35,209,cs),
+(98,209,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(499,209,l),
+(499,251,ls),
+(499,270,o),
+(478,291,o),
+(459,291,qs),
+(236,291,ls),
+(217,291,o),
+(196,270,o),
+(196,251,cs),
+(196,209,l)
+);
+}
+);
+width = 597;
+}
+);
+note = uni0729;
+unicode = 1833;
+},
+{
+glyphname = uni0729.fina;
+lastChange = "2026-09-27 21:19:46 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(98,500,l),
+(108,480,o),
+(587,480,o),
+(597,500,q),
+(597,0,l),
+(0,0,l),
+(0,174,ls),
+(0,197,o),
+(13,209,o),
+(35,209,cs),
+(98,209,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(499,209,l),
+(499,251,ls),
+(499,270,o),
+(478,291,o),
+(459,291,qs),
+(236,291,ls),
+(217,291,o),
+(196,270,o),
+(196,251,cs),
+(196,209,l)
+);
+}
+);
+width = 597;
+}
+);
+note = uni0729.fina;
+},
+{
+glyphname = uni0729.medi;
+lastChange = "2026-09-28 04:30:16 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(98,500,l),
+(108,480,o),
+(587,480,o),
+(597,500,q),
+(597,0,l),
+(-2,0,l),
+(-2,209,l),
+(98,209,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(499,209,l),
+(499,251,ls),
+(499,270,o),
+(478,291,o),
+(459,291,qs),
+(236,291,ls),
+(217,291,o),
+(196,270,o),
+(196,251,cs),
+(196,209,l)
+);
+}
+);
+width = 597;
+}
+);
+note = uni0729.medi;
+},
+{
+glyphname = uni0729.init;
+lastChange = "2026-09-28 04:30:21 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(98,500,l),
+(108,480,o),
+(587,480,o),
+(597,500,q),
+(597,45,ls),
+(597,16,o),
+(581,0,o),
+(552,0,cs),
+(-2,0,l),
+(-2,209,l),
+(98,209,l)
+);
+},
+{
+closed = 1;
+nodes = (
+(499,209,l),
+(499,251,ls),
+(499,270,o),
+(478,291,o),
+(459,291,qs),
+(236,291,ls),
+(217,291,o),
+(196,270,o),
+(196,251,cs),
+(196,209,l)
+);
+}
+);
+width = 597;
+}
+);
+note = uni0729.init;
+},
+{
+glyphname = uni072B;
+lastChange = "2026-09-28 04:03:19 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (264,-22);
+},
+{
+name = top_;
+pos = (264,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(318,291,l),
+(318,292,o),
+(157,300,o),
+(156,322,q),
+(150,500,l),
+(158,480,o),
+(560,480,o),
+(567,500,q),
+(567,322,q),
+(562,298,o),
+(539,297,cs),
+(400,291,l),
+(400,209,l),
+(567,209,l),
+(567,45,ls),
+(567,16,o),
+(551,0,o),
+(522,0,cs),
+(82,0,l),
+(82,174,ls),
+(82,197,o),
+(95,209,o),
+(117,209,cs),
+(318,209,l)
+);
+}
+);
+width = 567;
+}
+);
+note = uni072B;
+unicode = 1835;
+},
+{
+glyphname = uni072B.fina;
+lastChange = "2026-09-28 03:53:57 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(236,291,l),
+(236,292,o),
+(75,300,o),
+(74,322,q),
+(68,500,l),
+(76,480,o),
+(478,480,o),
+(485,500,q),
+(485,322,q),
+(480,298,o),
+(457,297,cs),
+(318,291,l),
+(318,209,l),
+(485,209,l),
+(485,0,l),
+(0,0,l),
+(0,174,ls),
+(0,197,o),
+(13,209,o),
+(35,209,cs),
+(236,209,l)
+);
+}
+);
+width = 485;
+}
+);
+note = uni072B.fina;
+},
+{
+glyphname = uni072B.medi;
+lastChange = "2026-09-28 04:30:28 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(236,291,l),
+(236,292,o),
+(75,300,o),
+(74,322,q),
+(68,500,l),
+(76,480,o),
+(478,480,o),
+(485,500,q),
+(485,322,q),
+(480,298,o),
+(457,297,cs),
+(318,291,l),
+(318,209,l),
+(485,209,l),
+(485,0,l),
+(-2,0,l),
+(-2,209,l),
+(236,209,l)
+);
+}
+);
+width = 485;
+}
+);
+note = uni072B.medi;
+},
+{
+glyphname = uni072B.init;
+lastChange = "2026-09-28 04:30:34 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(236,291,l),
+(236,292,o),
+(75,300,o),
+(74,322,q),
+(68,500,l),
+(76,480,o),
+(478,480,o),
+(485,500,q),
+(485,322,q),
+(480,298,o),
+(457,297,cs),
+(318,291,l),
+(318,209,l),
+(485,209,l),
+(485,45,ls),
+(485,16,o),
+(469,0,o),
+(440,0,cs),
+(-2,0,l),
+(-2,209,l),
+(236,209,l)
+);
+}
+);
+width = 485;
+}
+);
+note = uni072B.init;
+},
+{
+glyphname = uni072C;
+lastChange = "2026-09-28 04:12:04 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (243,-110);
+},
+{
+name = top_;
+pos = (243,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(651,45,ls),
+(651,16,o),
+(635,0,o),
+(606,0,cs),
+(599,0,ls),
+(576,0,o),
+(560,6,o),
+(544,22,cs),
+(229,327,l),
+(180,240,l),
+(316,220,o),
+(441,38,o),
+(441,1,c),
+(377,102,o),
+(74,-111,o),
+(82,91,cs),
+(89,265,o),
+(303,492,o),
+(307,541,c),
+(613,231,ls),
+(629,215,o),
+(641,209,o),
+(651,209,cs),
+(651,209,ls),
+(651,209,o),
+(651,196,o),
+(651,169,cs)
+);
+}
+);
+width = 651;
+}
+);
+note = uni072C;
+unicode = 1836;
+},
+{
+glyphname = uni072C.fina;
+lastChange = "2026-09-28 02:37:35 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (168,-22);
+},
+{
+name = top_;
+pos = (168,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(569,0,l),
+(517,0,ls),
+(494,0,o),
+(478,6,o),
+(462,22,cs),
+(147,327,l),
+(98,240,l),
+(234,220,o),
+(359,38,o),
+(359,1,c),
+(295,102,o),
+(-8,-111,o),
+(0,91,cs),
+(7,265,o),
+(221,492,o),
+(225,541,c),
+(531,231,ls),
+(547,215,o),
+(559,209,o),
+(569,209,cs),
+(569,209,l)
+);
+}
+);
+width = 569;
+}
+);
+note = uni072C.fina;
+},
+{
+glyphname = uni0700;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0700;
+unicode = 1792;
+},
+{
+glyphname = uni0701;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0701;
+unicode = 1793;
+},
+{
+glyphname = uni0702;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0702;
+unicode = 1794;
+},
+{
+glyphname = uni0703;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0703;
+unicode = 1795;
+},
+{
+glyphname = uni0704;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0704;
+unicode = 1796;
+},
+{
+glyphname = uni0705;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0705;
+unicode = 1797;
+},
+{
+glyphname = uni0706;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0706;
+unicode = 1798;
+},
+{
+glyphname = uni0707;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0707;
+unicode = 1799;
+},
+{
+glyphname = uni0708;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0708;
+unicode = 1800;
+},
+{
+glyphname = uni0709;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0709;
+unicode = 1801;
+},
+{
+glyphname = uni070A;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni070A;
+unicode = 1802;
+},
+{
+glyphname = uni070B;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni070B;
+unicode = 1803;
+},
+{
+glyphname = uni070C;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni070C;
+unicode = 1804;
+},
+{
+glyphname = uni070D;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni070D;
+unicode = 1805;
+},
+{
+glyphname = SAMin;
+layers = (
+{
+layerId = m01;
+width = 200;
+}
+);
+note = SAMin;
+},
+{
+glyphname = SAMline;
+layers = (
+{
+layerId = m01;
+width = 100;
+}
+);
+note = SAMline;
+},
+{
+glyphname = SAMdot;
+layers = (
+{
+layerId = m01;
+width = 200;
+}
+);
+note = SAMdot;
+},
+{
+glyphname = SAMout;
+layers = (
+{
+layerId = m01;
+width = 200;
+}
+);
+note = SAMout;
+},
+{
+glyphname = uni0711;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0711;
+unicode = 1809;
+},
+{
+glyphname = uni0730;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0730;
+unicode = 1840;
+},
+{
+glyphname = uni0733;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0733;
+unicode = 1843;
+},
+{
+glyphname = uni0735;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0735;
+unicode = 1845;
+},
+{
+glyphname = uni0736;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0736;
+unicode = 1846;
+},
+{
+glyphname = uni073A;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni073A;
+unicode = 1850;
+},
+{
+glyphname = uni073D;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni073D;
+unicode = 1853;
+},
+{
+glyphname = uni073F;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni073F;
+unicode = 1855;
+},
+{
+glyphname = uni0740;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0740;
+unicode = 1856;
+},
+{
+glyphname = uni0741;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0741;
+unicode = 1857;
+},
+{
+glyphname = uni0743;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0743;
+unicode = 1859;
+},
+{
+glyphname = uni0745;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0745;
+unicode = 1861;
+},
+{
+glyphname = uni0747;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0747;
+unicode = 1863;
+},
+{
+glyphname = uni0749;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0749;
+unicode = 1865;
+},
+{
+glyphname = uni074A;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni074A;
+unicode = 1866;
+},
+{
+glyphname = uni0303;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0303;
+unicode = 771;
+},
+{
+glyphname = uni0304;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0304;
+unicode = 772;
+},
+{
+glyphname = uni0307;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0307;
+unicode = 775;
+},
+{
+glyphname = uni0308;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0308;
+unicode = 776;
+},
+{
+glyphname = uni030A;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni030A;
+unicode = 778;
+},
+{
+glyphname = uni0731;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0731;
+unicode = 1841;
+},
+{
+glyphname = uni0734;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0734;
+unicode = 1844;
+},
+{
+glyphname = uni0737;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0737;
+unicode = 1847;
+},
+{
+glyphname = uni0738;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0738;
+unicode = 1848;
+},
+{
+glyphname = uni0739;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0739;
+unicode = 1849;
+},
+{
+glyphname = uni073B;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni073B;
+unicode = 1851;
+},
+{
+glyphname = uni073C;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni073C;
+unicode = 1852;
+},
+{
+glyphname = uni073E;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni073E;
+unicode = 1854;
+},
+{
+glyphname = uni0742;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0742;
+unicode = 1858;
+},
+{
+glyphname = uni0744;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0744;
+unicode = 1860;
+},
+{
+glyphname = uni0746;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0746;
+unicode = 1862;
+},
+{
+glyphname = uni0748;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0748;
+unicode = 1864;
+},
+{
+glyphname = uni0320;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0320;
+unicode = 800;
+},
+{
+glyphname = uni0323;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0323;
+unicode = 803;
+},
+{
+glyphname = uni0324;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0324;
+unicode = 804;
+},
+{
+glyphname = uni0325;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0325;
+unicode = 805;
+},
+{
+glyphname = uni032D;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni032D;
+unicode = 813;
+},
+{
+glyphname = uni032E;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni032E;
+unicode = 814;
+},
+{
+glyphname = uni0330;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0330;
+unicode = 816;
+},
+{
+glyphname = uni0331;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0331;
+unicode = 817;
+},
+{
+glyphname = uni0732;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0732;
+unicode = 1842;
+},
+{
+glyphname = uni0732.above;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,530);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0732.above;
+},
+{
+glyphname = uni0732.below;
+layers = (
+{
+anchors = (
+{
+name = _top;
+pos = (0,-22);
+}
+);
+layerId = m01;
+width = 0;
+}
+);
+note = uni0732.below;
+},
+{
+glyphname = zero;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = zero;
+unicode = 48;
+},
+{
+glyphname = one;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = one;
+unicode = 49;
+},
+{
+glyphname = two;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = two;
+unicode = 50;
+},
+{
+glyphname = three;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = three;
+unicode = 51;
+},
+{
+glyphname = four;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = four;
+unicode = 52;
+},
+{
+glyphname = five;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = five;
+unicode = 53;
+},
+{
+glyphname = six;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = six;
+unicode = 54;
+},
+{
+glyphname = seven;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = seven;
+unicode = 55;
+},
+{
+glyphname = eight;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = eight;
+unicode = 56;
+},
+{
+glyphname = nine;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = nine;
+unicode = 57;
+},
+{
+glyphname = uni0660;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0660;
+unicode = 1632;
+},
+{
+glyphname = uni0661;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0661;
+unicode = 1633;
+},
+{
+glyphname = uni0662;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0662;
+unicode = 1634;
+},
+{
+glyphname = uni0663;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0663;
+unicode = 1635;
+},
+{
+glyphname = uni0664;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0664;
+unicode = 1636;
+},
+{
+glyphname = uni0665;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0665;
+unicode = 1637;
+},
+{
+glyphname = uni0666;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0666;
+unicode = 1638;
+},
+{
+glyphname = uni0667;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0667;
+unicode = 1639;
+},
+{
+glyphname = uni0668;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0668;
+unicode = 1640;
+},
+{
+glyphname = uni0669;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni0669;
+unicode = 1641;
+},
+{
+glyphname = uni066A;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni066A;
+unicode = 1642;
+},
+{
+glyphname = uni066B;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni066B;
+unicode = 1643;
+},
+{
+glyphname = uni066C;
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (250,-22);
+},
+{
+name = top_;
+pos = (250,530);
+}
+);
+layerId = m01;
+width = 500;
+}
+);
+note = uni066C;
+unicode = 1644;
+},
+{
+glyphname = uni072A.fina;
+lastChange = "2026-09-28 03:42:28 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (405,0);
+},
+{
+name = top_;
+pos = (405,699);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(399,528,o),
+(444,573,o),
+(444,605,qs),
+(444,637,o),
+(399,682,o),
+(367,682,qs),
+(335,682,o),
+(290,637,o),
+(290,605,qs),
+(290,573,o),
+(335,528,o),
+(367,528,qs)
+);
+},
+{
+closed = 1;
+nodes = (
+(521,500,ls),
+(560,500,o),
+(601,458,o),
+(601,420,qs),
+(601,0,l),
+(100,0,ls),
+(92,0,o),
+(82,8,o),
+(82,15,qs),
+(82,20,o),
+(83,22,q),
+(128,192,ls),
+(133,209,o),
+(151,209,qs),
+(503,209,l),
+(503,251,ls),
+(503,270,o),
+(482,291,o),
+(463,291,qs),
+(133,291,l),
+(133,420,ls),
+(133,459,o),
+(174,500,o),
+(213,500,qs)
+);
+}
+);
+width = 601;
+}
+);
+note = uni072A.fina;
+},
+{
+glyphname = uni0720;
+lastChange = "2026-09-27 21:01:15 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (332,-22);
+},
+{
+name = top_;
+pos = (332,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(169,453,o),
+(230,500,o),
+(277,500,qs),
+(312,500,o),
+(383,472,o),
+(408,445,q),
+(476,361,o),
+(559,226,o),
+(559,209,qs),
+(559,45,ls),
+(559,23,o),
+(536,0,o),
+(514,0,qs),
+(82,0,l),
+(82,169,ls),
+(82,188,o),
+(103,209,o),
+(122,209,qs),
+(383,209,l),
+(368,227,o),
+(312,265,qs),
+(248,310,o),
+(173,378,o),
+(170,410,qs)
+);
+}
+);
+width = 559;
+}
+);
+note = uni0720;
+unicode = 1824;
+},
+{
+glyphname = uni072A;
+lastChange = "2026-09-28 03:42:18 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (383,-22);
+},
+{
+name = top_;
+pos = (383,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(399,528,o),
+(444,573,o),
+(444,605,qs),
+(444,637,o),
+(399,682,o),
+(367,682,qs),
+(335,682,o),
+(290,637,o),
+(290,605,qs),
+(290,573,o),
+(335,528,o),
+(367,528,qs)
+);
+},
+{
+closed = 1;
+nodes = (
+(521,500,ls),
+(560,500,o),
+(601,459,o),
+(601,420,qs),
+(601,45,ls),
+(601,23,o),
+(578,0,o),
+(556,0,qs),
+(100,0,ls),
+(92,0,o),
+(82,8,o),
+(82,15,qs),
+(82,20,o),
+(83,22,q),
+(133,209,l),
+(503,209,l),
+(503,251,ls),
+(503,270,o),
+(482,291,o),
+(463,291,qs),
+(133,291,l),
+(133,420,ls),
+(133,459,o),
+(174,500,o),
+(213,500,qs)
+);
+}
+);
+width = 601;
+}
+);
+note = uni072A;
+unicode = 1834;
+},
+{
+glyphname = uni0710.001;
+lastChange = "2026-09-28 04:35:22 +0000";
+layers = (
+{
+anchors = (
+{
+name = top;
+pos = (282,-15);
+},
+{
+name = top_;
+pos = (278,530);
+}
+);
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(155,263,ls),
+(221,300,o),
+(211,291,o),
+(182,291,cs),
+(124,292,o),
+(33,300,o),
+(30,322,q),
+(24,500,l),
+(34,480,o),
+(359,479,o),
+(369,499,q),
+(366,308,q),
+(369,282,o),
+(243,216,cs),
+(224,209,o),
+(244,209,cs),
+(500,209,l),
+(500,45,ls),
+(500,16,o),
+(484,0,o),
+(455,0,cs),
+(0,0,l),
+(0,199,ls),
+(0,206,o),
+(4,209,o),
+(10,209,cs),
+(39,209,ls),
+(53,209,o),
+(63,211,o),
+(76,218,cs)
+);
+}
+);
+width = 500;
+}
+);
+note = uni0710;
+}
+);
+instances = (
+{
+instanceInterpolations = {
+m01 = 1;
+};
+name = Regular;
+properties = (
+{
+key = postscriptFontName;
+value = "Diba-Regular";
+},
+{
+key = postscriptFullNames;
+values = (
+{
+language = ENG;
+value = "Diba Regular";
+}
+);
+}
+);
+}
+);
+metrics = (
+{
+type = ascender;
+},
+{
+type = "cap height";
+},
+{
+type = "x-height";
+},
+{
+type = baseline;
+},
+{
+type = descender;
+},
+{
+type = "italic angle";
+}
+);
+properties = (
+{
+key = copyrights;
+values = (
+{
+language = ENG;
+value = "Copyright 2026 Sargis S Yonan (yonan.org)";
+}
+);
+},
+{
+key = designers;
+values = (
+{
+language = ENG;
+value = "Sargis S Yonan";
+}
+);
+},
+{
+key = designerURL;
+value = yonan.org;
+},
+{
+key = licenses;
+values = (
+{
+language = ENG;
+value = "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL";
+}
+);
+}
+);
+settings = {
+disablesAutomaticAlignment = 1;
+disablesNiceNames = 1;
+};
+unitsPerEm = 1000;
+versionMajor = 0;
+versionMinor = 1;
+}
