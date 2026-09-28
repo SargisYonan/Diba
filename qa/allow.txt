@@ -1,0 +1,5 @@
+# Problems you have looked at and decided are intentional.
+# One per line: <glyph name> <check name>   # why
+# Use * as the glyph to silence a check everywhere.
+#
+# uni0722 overhang   # Nun's tail is meant to sweep under the letter before
