@@ -753,7 +753,6 @@ lookup POS_4 {
 	pos base uni071D.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
 	pos base uni071D.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
 	pos base uni071D.init <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
-	pos base uni071E <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
 	pos base uni071F <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
 	pos base uni071F.fina <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
 	pos base uni071F.medi <anchor 250 -22> mark @POS_4_0_MARK_0 <anchor 250 530> mark @POS_4_0_MARK_1;
