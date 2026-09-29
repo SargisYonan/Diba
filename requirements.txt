@@ -4,3 +4,4 @@ fonttools>=4.66
 skia-pathops>=0.8
 uharfbuzz>=0.56
 pytest>=8
+pillow>=10.1
