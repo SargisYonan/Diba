@@ -1,6 +1,6 @@
 # DibaSyriac
 
-A mid-century Eastern Assyrian typeface inspired by the calligraphy style of Issa Benyamin and the typeface designs in his book, ![ܫܦܝܪܘܬ-ܟܬܝܒܬܐ : ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ](https://16209.rmwebopac.com/item/YF2zBolt1ESHSlLWcwZrmQ_tFCUl6V_bUCk20oxa64kGw) (1999). The font in this project is adapted from Benyamin's calligraphic style with some twists and adaptions for a digital font.
+A mid-century Eastern Assyrian typeface inspired by the calligraphy style of Issa Benyamin and the typeface designs in his book, [ܫܦܝܪܘܬ-ܟܬܝܒܬܐ : ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ](https://16209.rmwebopac.com/item/YF2zBolt1ESHSlLWcwZrmQ_tFCUl6V_bUCk20oxa64kGw) (1999). The font in this project is adapted from Benyamin's calligraphic style with some twists and adaptions for a digital font.
 
 ![Diba text proof: the alphabet, sample words and the Lord's Prayer at several sizes](documentation/proof-text.png)
 
