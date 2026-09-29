@@ -241,7 +241,7 @@ TEMPLATE = """<!doctype html>
 <style>
 @font-face {{ font-family: "Diba Proof"; src: url("{font_url}"); }}
 :root {{
-  --bg: #fbfaf7; --fg: #1d1b18; --muted: #6b665e; --line: #e4e0d8; --card: #fff;
+  --bg: #ffffff; --fg: #1d1b18; --muted: #6b665e; --line: #e4e0d8; --card: #fff;
   --ink: #1d1b18; --base: #3b82c4; --level: #b9c7d6; --edge: #d9c8a8;
   --error: #c8322b; --warning: #c98a12; --info: #2f7f8f;
 }}
