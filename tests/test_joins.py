@@ -87,3 +87,18 @@ def test_right_joiner_never_joins_forward(cp):
     run = shape(FONT.path, "\u0712" + chr(cp) + "\u0712")
     mine = [g for g, _, _ in run if g.startswith(f"uni{cp:04X}")]
     assert mine and not joins(mine[0])[1], f"{LETTERS[cp][0]} shaped as {mine}"
+
+
+@pytest.mark.parametrize("text,want,gone", [
+    ("ܪ̈", "uni072A.syame", "uni0308"),                   # Rish + syame
+    ("ܒܪ̈", "uni072A.fina.syame", "uni0308"),        # joined Rish + syame
+    ("ܪܵ̈", "uni072A.syame", "uni0308"),             # vowel typed in between
+    ("ܒܪ̈ܵ", "uni072A.fina.syame", "uni0308"),  # vowel typed after
+    ("ܪ", "uni072A", "uni072A.syame"),                         # plain Rish stays plain
+    ("ܒܪ", "uni072A.fina", "uni072A.fina.syame"),
+], ids=["isolated", "final", "vowel-between", "vowel-after", "no-syame", "final-no-syame"])
+def test_rish_syame(text, want, gone):
+    """Rish followed by syame (U+0308) uses the Rish-with-syame glyph, whose
+    dots replace both Rish's own dot and the syame."""
+    names = [g for g, _, _ in shape(FONT.path, text)]
+    assert want in names and gone not in names, f"got {names}"

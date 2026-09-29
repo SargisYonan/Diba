@@ -51,11 +51,16 @@ STEPS = 32  # segments per curve when flattening
 
 
 def split_name(glyph):
-    """'uni0712.init' -> (0x0712, 'init'); None for anything not a letter."""
-    m = re.fullmatch(r"uni(07[12][0-9A-F])(?:\.(\w+))?", glyph)
+    """'uni0712.init' -> (0x0712, 'init'); None for anything not a letter.
+
+    Extra suffixes name variants of a form: 'uni072A.fina.syame' is a final
+    Rish, 'uni072A.syame' an isolated one."""
+    m = re.fullmatch(r"uni(07[12][0-9A-F])((?:\.\w+)*)", glyph)
     if not m or int(m.group(1), 16) not in LETTERS:
         return None
-    return int(m.group(1), 16), m.group(2) or ""
+    suffixes = m.group(2).split(".")[1:]
+    form = suffixes[0] if suffixes and suffixes[0] in FORMS else ""
+    return int(m.group(1), 16), form
 
 
 def label(glyph):
@@ -63,7 +68,8 @@ def label(glyph):
     if not parts:
         return glyph
     cp, form = parts
-    return f"{LETTERS[cp][0]} {FORM_NAMES.get(form, form)}"
+    variants = [v for v in glyph.split(".")[1:] if v != form]
+    return f"{LETTERS[cp][0]} {FORM_NAMES[form]}" + "".join(f" ({v})" for v in variants)
 
 
 def joins(glyph):
