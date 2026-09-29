@@ -21,10 +21,10 @@ import sys
 import glyphsLib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import (LETTERS, OUT, PROBE, SOURCE, STEM, Font, joins,  # noqa: E402
-                    label, load_allow, mode, run_at, split_name)
+from common import (LETTERS, OUT, PROBE, SAG, SOURCE, Font, edge_reach,  # noqa: E402
+                    joint_problems, joins, label, load_allow, mode, run_at,
+                    split_name)
 
-DEEP = 20          # ...and again this far in, to see if the bar bends near the joint
 OVERHANG = 10      # ink this far past the advance width is flagged
 NEAR_LEVEL = 15    # a flat edge this close to a common height is flagged
 SLANT = 4          # a line this close to flat/upright is flagged
@@ -77,82 +77,39 @@ def check_joins(font, letters, report):
 
     for g in letters:
         glyph = font.glyph(g)
-        w = glyph.width
         for side, on in zip(("right", "left"), joins(g)):
-            edge = w if side == "right" else 0
-            inward = -1 if side == "right" else 1
-            runs = glyph.ink_at_x(edge + inward * PROBE)
-            run = run_at(runs, mid)
+            edge = glyph.width if side == "right" else 0
             where = "right edge (joins the letter before)" if side == "right" \
                 else "left edge (joins the letter after)"
 
             if not on:
                 # A flat, full-height cut on a side that never joins reads as
                 # a broken join.
+                x = edge - PROBE if side == "right" else PROBE
+                run = run_at(glyph.ink_at_x(x), mid)
                 if run and abs(run[0] - bottom) < 1 and abs(run[1] - top) < 1:
                     report.add("warning", "stub", g,
-                               f"{where.split(' (')[0]} never joins, but ends in a flat "
-                               f"cut the full height of the connecting stroke "
-                               f"({r1(run[0])}–{r1(run[1])}), so it looks like "
-                               f"a join with nothing attached", edge, mid)
+                               f"{side} edge never joins, but ends in a flat cut the "
+                               f"full height of the connecting stroke, so it looks "
+                               f"like a join with nothing attached", edge, mid)
                 continue
 
-            if run is None:
-                for d in range(PROBE, w):
-                    if run_at(glyph.ink_at_x(edge + inward * d), mid):
-                        report.add("error", "join-gap", g,
-                                   f"{where}: the connecting stroke stops {d} units "
-                                   f"short of the edge, leaving a gap",
-                                   edge + inward * d, mid)
-                        break
-                else:
-                    near = ", ".join(f"{r1(b)}–{r1(t)}" for b, t in runs) or "nothing"
-                    report.add("error", "join-gap", g,
-                               f"{where}: nothing at the height of the connecting "
-                               f"stroke ({bottom}–{top}); ink at the edge: {near}",
-                               edge, mid)
-                continue
-
-            b, t = run
-            if b > bottom - STEM and abs(b - bottom) >= 0.5:
-                d = b - bottom
-                report.add("error" if abs(d) > 2 else "warning", "join-bottom", g,
-                           f"{where}: bottom of the join is at y={r1(b)}, "
-                           f"{r1(abs(d))} units {'above' if d > 0 else 'below'} "
-                           f"the baseline of the connecting stroke (y={bottom})",
-                           edge, b)
-            if t < top + STEM and abs(t - top) >= 0.5:
-                d = t - top
-                report.add("error" if abs(d) > 2 else "warning", "join-top", g,
-                           f"{where}: top of the join is at y={r1(t)}, "
-                           f"{r1(abs(d))} units {'higher' if d > 0 else 'lower'} "
-                           f"than the connecting stroke (y={top}), making a step",
-                           edge, t)
-
-            deep = run_at(glyph.ink_at_x(edge + inward * DEEP), mid)
-            # A top that rises just inside the edge is the fillet into the
-            # letter's body; a bottom that moves, or a top that drops, is a
-            # stroke that is sloped or pinched at the joint.
-            if deep and b > bottom - STEM and t < top + STEM and (
-                    abs(deep[0] - b) >= 1 or deep[1] - t <= -1):
-                report.add("warning", "join-bend", g,
-                           f"{where}: the stroke changes height right before the join "
-                           f"({r1(deep[0])}–{r1(deep[1])} at {DEEP} units in, "
-                           f"{r1(b)}–{r1(t)} at the edge)", edge + inward * DEEP, deep[1])
-
-            spans = [s for s in glyph.ink_at_y(mid)]
-            reach = min(s[0] for s in spans) if side == "left" else max(s[1] for s in spans)
-            overlap[side].append((g, reach - edge))
+            problems = joint_problems(glyph, side, (bottom, top))
+            for check, (y, size, msg) in problems.items():
+                limit = 0 if check == "join-gap" else SAG if check == "join-sag" else 2
+                report.add("error" if size > limit else "warning", check, g,
+                           f"{where}: {msg}", edge, y)
+            if "join-gap" not in problems:
+                overlap[side].append((g, edge_reach(glyph, side, mid) - edge))
 
     for side, rows in overlap.items():
         usual = mode([round(o) for _, o in rows])
         for g, o in rows:
             if round(o) != usual:
                 report.add("info", "join-overlap", g,
-                           f"{side} joint pokes {r1(abs(o))} units "
-                           f"{'past' if (o < 0) == (side == 'left') else 'short of'} the edge; "
-                           f"most {side} joints use {usual}",
-                           (0 if side == "left" else font.glyph(g).width) + o, (bottom + top) / 2)
+                           f"{side} joint reaches {r1(o)} past the edge; most {side} "
+                           f"joints reach {usual}", (0 if side == "left" else
+                                                     font.glyph(g).width) + o, mid)
     return bottom, top
 
 

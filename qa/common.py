@@ -201,32 +201,99 @@ def load_allow():
 # --- joints -------------------------------------------------------------------
 
 STEM = 40   # a joint this much taller/deeper than the bar is a stem, not a step
-PROBE = 1   # measure joints this far inside the edge
+PROBE = 0.5   # where an edge is slanted, measure this far inside it
+DEEP = 20     # ...and look this far in, to catch a stroke that sags into the joint
+SAG = 3       # how far the stroke may drift within DEEP of the joint
+
+
+def edge_reach(glyph, side, mid):
+    """How far the ink reaches toward one edge at the joining height."""
+    spans = glyph.ink_at_y(mid)
+    if not spans:
+        return None
+    return max(s[1] for s in spans) if side == "right" else min(s[0] for s in spans)
 
 
 def edge_run(glyph, side, mid):
-    """The run of ink at the joining height just inside one edge, or None."""
-    x = glyph.width - PROBE if side == "right" else PROBE
+    """(bottom, top) of the ink standing on the joining edge, or None if the
+    ink does not reach the edge at the joining height.
+
+    Uses the outline's own upright segment at the edge when there is one, so a
+    curve meeting the edge head-on is measured where it lands, not a fraction
+    of a unit inside."""
+    edge = glyph.width if side == "right" else 0
+    xe = edge_reach(glyph, side, mid)
+    if xe is None or (xe < edge - 0.5 if side == "right" else xe > edge + 0.5):
+        return None
+    ys = []
+    for poly in glyph.polys:
+        for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]):
+            if abs(x0 - xe) < 0.01 and abs(x1 - xe) < 0.01:
+                ys.append(sorted((y0, y1)))
+    runs = sorted(ys)
+    merged = []
+    for b, t in runs:
+        if merged and b <= merged[-1][1] + 0.01:
+            merged[-1][1] = max(merged[-1][1], t)
+        else:
+            merged.append([b, t])
+    hit = run_at([tuple(r) for r in merged], mid)
+    if hit:
+        return hit
+    inward = -1 if side == "right" else 1
+    return run_at(glyph.ink_at_x(xe + inward * PROBE), mid)
+
+
+def deep_run(glyph, side, mid):
+    x = glyph.width - DEEP if side == "right" else DEEP
     return run_at(glyph.ink_at_x(x), mid)
 
 
-def compare_seam(left, right, bar):
-    """Problems where `left`'s right edge meets `right`'s left edge.
+def joint_problems(glyph, side, bar):
+    """What is wrong with one joining edge, as {check: (y, size, message)}.
 
-    Returns [(y, message)]. Heights that run on past the stroke (a stem going
-    up, a tail going down) are allowed to differ; everything else must line up.
-    """
+    The joint must stand exactly on the connecting stroke. Past the stroke a
+    letter may rise (a stem, or the shoulder of a diagonal) or drop (a tail),
+    but a flat stroke at a different height is a step, and a stroke that dips
+    or bulges just before the edge leaves a notch at the seam."""
     bottom, top = bar
     mid = (bottom + top) / 2
-    a, b = edge_run(left, "right", mid), edge_run(right, "left", mid)
-    if a is None or b is None:
-        who = left.name if a is None else right.name
-        return [(mid, f"{who} does not reach the joint")]
+    run = edge_run(glyph, side, mid)
+    if run is None:
+        xe = edge_reach(glyph, side, mid)
+        edge = glyph.width if side == "right" else 0
+        short = abs(edge - xe) if xe is not None else glyph.width
+        return {"join-gap": (mid, short, f"the connecting stroke stops {short:.1f} "
+                                         f"units short of the edge, leaving a gap")}
+    b, t = run
+    deep = deep_run(glyph, side, mid)
+    tail = deep is not None and deep[0] < min(b, bottom) - STEM / 2
+    rises = deep is not None and deep[1] > max(t, top) + STEM / 2
+    out = {}
+    if abs(b - bottom) >= 0.5 and not (b < bottom and (tail or b < bottom - STEM)):
+        out["join-bottom"] = (b, abs(b - bottom), f"bottom of the joint is at y={b:.1f}, "
+                                                  f"not on the baseline y={bottom}")
+    if abs(t - top) >= 0.5 and not (t > top and (rises or t > top + STEM)):
+        out["join-top"] = (t, abs(t - top), f"top of the joint is at y={t:.1f}, not level "
+                                            f"with the connecting stroke y={top}: a step")
+    if deep and not out:
+        moved = 0 if tail else deep[0] - b
+        dropped = min(0, deep[1] - t) if t < top + STEM else 0
+        if abs(moved) >= 1 or dropped <= -1:
+            out["join-sag"] = (top if dropped <= -1 else bottom, max(abs(moved), -dropped),
+                               f"the stroke is not flat going into the joint: within "
+                               f"{DEEP} units its bottom moves {moved:.1f} and its top "
+                               f"drops {-dropped:.1f}, leaving a notch or bump")
+    return out
+
+
+def compare_seam(left, right, bar):
+    """Problems where `left`'s right edge meets `right`'s left edge, as
+    [(y, message)]: whatever is wrong with either side of the joint."""
     out = []
-    if a[0] > bottom - STEM and b[0] > bottom - STEM and abs(a[0] - b[0]) >= 0.5:
-        out.append((min(a[0], b[0]), f"bottoms differ: {a[0]:.0f} vs {b[0]:.0f}"))
-    if a[1] < top + STEM and b[1] < top + STEM and abs(a[1] - b[1]) >= 0.5:
-        out.append((max(a[1], b[1]), f"tops differ: {a[1]:.0f} vs {b[1]:.0f}"))
+    for glyph, side in ((left, "right"), (right, "left")):
+        for y, _, msg in joint_problems(glyph, side, bar).values():
+            out.append((y, f"{glyph.name}: {msg}"))
     return out
 
 

@@ -3,3 +3,28 @@
 # Use * as the glyph to silence a check everywhere.
 #
 # uni0722 overhang   # Nun's tail is meant to sweep under the letter before
+uni0718 corner        # Waw: bottom-left corner is rounded on purpose
+uni0718.fina corner   # Waw: bottom-left corner is rounded on purpose
+uni071F.fina corner   # Kaph final: corners are as intended
+uni0712 corner        # Beth: radius-5 inside corner on purpose
+uni0712.fina corner
+uni0712.medi corner
+uni0712.init corner
+uni0717 corner        # He: corners as intended
+uni0717.fina corner
+uni0722.init corner   # Nun: corners as intended
+uni0722.medi corner
+uni0721 corner        # Mim: corners as intended
+uni0721.fina corner
+uni0726 corner        # Pe: radius-5 corners on purpose
+uni0726.fina corner
+uni0726.medi corner
+uni0726.init corner
+uni072B corner        # Shin: sharp inside corner on purpose
+uni072B.fina corner
+uni072B.medi corner
+uni072B.init corner
+uni0722 overhang      # Nun: tail sweeps under the letter before on purpose
+uni0714 missing       # Gamal Garshuni: not needed
+uni071C missing       # Teth Garshuni: not needed
+uni0727 missing       # Reversed Pe: not needed

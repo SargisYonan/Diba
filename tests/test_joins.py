@@ -12,7 +12,7 @@ import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "qa"))
 from check import bar_metrics  # noqa: E402
-from common import (LETTERS, STEM, Font, edge_run, joins, label,  # noqa: E402
+from common import (LETTERS, Font, joins, joint_problems, label,  # noqa: E402
                     load_allow, seams, shape)
 
 FONT = Font()
@@ -42,20 +42,12 @@ def test_letter_has_every_form(cp):
 
 @pytest.mark.parametrize("glyph,side", SIDES, ids=[f"{g}-{s}" for g, s in SIDES])
 def test_joint_matches_connecting_stroke(glyph, side):
-    """Each joining edge must meet the connecting stroke exactly: same baseline,
-    same top (unless the edge is a tall stem or a descender)."""
-    run = edge_run(FONT.glyph(glyph), side, MID)
-    if run is None:
-        if not allowed(glyph, "join-gap"):
-            pytest.fail(f"{label(glyph)}: nothing reaches the {side} edge at the "
-                        f"height of the connecting stroke {BAR}")
-        return
-    b, t = run
-    problems = []
-    if b > BAR[0] - STEM and abs(b - BAR[0]) >= 0.5 and not allowed(glyph, "join-bottom"):
-        problems.append(f"bottom at y={b:.1f}, should be {BAR[0]}")
-    if t < BAR[1] + STEM and abs(t - BAR[1]) >= 0.5 and not allowed(glyph, "join-top"):
-        problems.append(f"top at y={t:.1f}, should be {BAR[1]}")
+    """Each joining edge must stand exactly on the connecting stroke, and the
+    stroke must run flat into it. Stems, shoulders and tails that carry on
+    past the stroke are fine."""
+    problems = [msg for check, (_, size, msg) in
+                joint_problems(FONT.glyph(glyph), side, BAR).items()
+                if not allowed(glyph, check) and size >= (1 if check == "join-sag" else 0.5)]
     assert not problems, f"{label(glyph)}, {side} edge: " + "; ".join(problems)
 
 
