@@ -21,9 +21,10 @@ import sys
 import glyphsLib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import (LETTERS, OUT, PROBE, SAG, SOURCE, Font, edge_reach,  # noqa: E402
-                    joint_problems, joins, label, load_allow, mode, run_at,
-                    split_name)
+from common import (LETTERS, MARK_GAP, MARK_TOUCH, OUT, PROBE, SAG,  # noqa: E402
+                    SOURCE, Font, clearance, drawn_marks, edge_reach,
+                    joint_problems, joins, label, load_allow, load_anchors,
+                    mark_collisions, mode, neighbour_texts, place_mark, run_at, shape, split_name)
 
 OVERHANG = 10      # ink this far past the advance width is flagged
 NEAR_LEVEL = 15    # a flat edge this close to a common height is flagged
@@ -337,6 +338,74 @@ def check_coverage(font, report):
                 report.add("error", "missing", g, f"{name} has no {form} form")
 
 
+# --- marks --------------------------------------------------------------------
+
+def check_marks(font, letters, report):
+    """Vowels and other marks: anchors present, and every drawn mark clear of
+    every letter it can sit on, of the letters beside it, and of a mark
+    stacked on it."""
+    anchors = load_anchors()
+    drawn = drawn_marks(font, anchors)
+
+    def grade(d):
+        return "error" if d < MARK_TOUCH else "warning"
+
+    for g in letters:
+        missing = {"top", "bottom"} - set(anchors.get(g, {}))
+        if missing:
+            report.add("error", "anchor", g, f"no {' or '.join(sorted(missing))} anchor, "
+                       f"so marks cannot attach there")
+
+    gdef = font.tt["GDEF"].table.GlyphClassDef.classDefs
+    for g, cls in gdef.items():
+        if cls == 3 and font.glyph(g).polys and not {"_top", "_bottom"} & set(anchors.get(g, {})):
+            report.add("error", "anchor", g, "mark has no _top or _bottom anchor, so it is "
+                       "drawn beside the letter instead of on it")
+
+    for mark, pair in drawn.items():
+        _, y0, _, y1 = font.glyph(mark).bounds
+        a = anchors[mark]
+        own = "top" if "_top" in a else "bottom"
+        if own not in a:
+            report.add("warning", "anchor", mark, f"no {own} anchor, so a second mark "
+                       f"cannot stack on it")
+        elif (own == "top" and a["top"][1] <= y1) or (own == "bottom" and a["bottom"][1] >= y0):
+            report.add("warning", "anchor", mark, f"{own} anchor is inside the mark's ink, "
+                       f"so a stacked mark would overlap it", *a[own])
+
+        for g in letters:
+            if pair[0] not in anchors.get(g, {}):
+                continue
+            x, y = place_mark(anchors, g, mark, pair)
+            d = clearance(font.glyph(mark), x, y, font.glyph(g), 0, 0)
+            if d is not None and d < MARK_GAP:
+                report.add(grade(d), "mark-clearance", g,
+                           f"{mark} {'overlaps it by ' + str(-round(d)) if d < 0 else 'comes within ' + str(round(d))} "
+                           f"units; move the {pair[0]} anchor", *anchors[g][pair[0]])
+
+    # Marks running into the letters beside their own, in shaped text.
+    worst = {}
+    for mark in [m for m in drawn if "." not in m]:
+        for text in neighbour_texts(font, chr(int(mark[3:7], 16))):
+            for m, _, _, other, d in mark_collisions(font, shape(font.path, text)):
+                if d < MARK_GAP and ((mark, other) not in worst or d < worst[mark, other][0]):
+                    worst[mark, other] = (d, text)
+    for (mark, other), (d, text) in sorted(worst.items()):
+        report.add(grade(d), "mark-neighbour", other,
+                   f"{mark} on the letter beside it {'overlaps it by ' + str(-round(d)) if d < 0 else 'comes within ' + str(round(d))} "
+                   f"units, e.g. in \u200e{text}")
+
+    for side in ("top", "bottom"):
+        group = [m for m, (base, _) in drawn.items() if base == side]
+        for first in group:
+            for second in group:
+                x, y = place_mark(anchors, first, second, drawn[second])
+                d = clearance(font.glyph(second), x, y, font.glyph(first), 0, 0)
+                if d is not None and d < MARK_GAP:
+                    report.add(grade(d), "mark-stack", first,
+                               f"{second} stacked on it comes within {round(d)} units", *anchors[first][side])
+
+
 # --- output -------------------------------------------------------------------
 
 COLOURS = {"error": "\033[31m", "warning": "\033[33m", "info": "\033[36m"}
@@ -388,6 +457,7 @@ def main():
     bar = check_joins(font, letters, report)
     check_overhang(font, letters, report)
     levels = check_outlines(source, font, report)
+    check_marks(font, letters, report)
 
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(OUT, "qa.json"), "w", encoding="utf-8") as fh:

@@ -14,8 +14,9 @@ import sys
 from fontTools.pens.svgPathPen import SVGPathPen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import (FONT, FORM_NAMES, LETTERS, OUT, Font, joins, label,  # noqa: E402
-                    seams, shape, split_name)
+from common import (FONT, FORM_NAMES, LETTERS, MARK_GAP, MARK_TOUCH, OUT,  # noqa: E402
+                    Font, clearance, drawn_marks, joins, label, load_anchors,
+                    mark_collisions, place_mark, seams, shape, split_name)
 
 ALPHABET = "ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ"
 
@@ -27,7 +28,30 @@ PRAYER = ("ܐܒܘܢ ܕܒܫܡܝܐ ܢܬܩܕܫ ܫܡܟ ܬܐܬܐ ܡܠܟܘܬܟ ܢܗܘ�
           "ܐܦ ܒܐܪܥܐ ܗܒ ܠܢ ܠܚܡܐ ܕܣܘܢܩܢܢ ܝܘܡܢܐ ܘܫܒܘܩ ܠܢ ܚܘܒܝܢ ܘܚܛܗܝܢ "
           "ܐܝܟܢܐ ܕܐܦ ܚܢܢ ܫܒܩܢ ܠܚܝܒܝܢ ܘܠܐ ܬܥܠܢ ܠܢܣܝܘܢܐ ܐܠܐ ܦܨܢ ܡܢ ܒܝܫܐ")
 
-ZWJ = "‍"
+ZWJ = "\u200d"
+
+# Vowelled text is written with ASCII stand-ins for the marks, which are hard
+# to type and to read in source: a ptaha, A zqapa, e zlama psiqa, E zlama
+# qashya, i/u hbasa-esasa (under Yudh/Waw), o rwaha, q qushshaya, r rukkakha,
+# s syame.
+MARK_KEYS = {"a": "\u0732", "A": "\u0735", "e": "\u0738", "E": "\u0739", "i": "\u073C",
+             "u": "\u073C", "o": "\u073F", "q": "\u0741", "r": "\u0742", "s": "\u0308"}
+
+
+def vowel(text):
+    return "".join(MARK_KEYS.get(ch, ch) for ch in text)
+
+
+VOWELLED_WORDS = [vowel(w) for w in """ܫܠAܡAܐ ܐAܬrܘoܪAܝAܐ ܣܘuܪAܝAܐ ܟܬrAܒrAܐ ܟܬrAܒrEsܐ
+ܡaܠܟAܐ ܡaܠܟEsܐ ܥAܠܡAܐ ܐaܠAܗAܐ ܕEܐܒrAܐ ܢܘuܗܪAܐ ܝAܘܡAܐ ܠeܠܝAܐ ܡaܕܢܚAܐ
+ܥEܕܬrAܐ ܠeܫAܢAܐ ܣeܦܪEsܐ ܨܠܘoܬrAܐ ܛܘoܒrAܐ ܚܘuܒAܐ ܡaܝAܐ ܩaܕܝiܫAܐ ܚaܝEsܐ
+ܟqaܠܒqAܐ ܒܝiܬ ܢaܗܪܝiܢ""".split()]
+
+VOWELLED_PRAYER = vowel(
+    "ܐaܒܘuܢ ܕܒaܫܡaܝAܐ ܢeܬܩaܕaܫ ܫܡAܟr ܬEܐܬEܐ ܡaܠܟܘuܬrAܟr ܢeܗܘEܐ ܨeܒܝAܢAܟr "
+    "ܐaܝܟaܢAܐ ܕܒaܫܡaܝAܐ ܐAܦ ܒܐaܪܥAܐ ܗaܒ ܠaܢ ܠaܚܡAܐ ܕܣܘuܢܩAܢaܢ ܝAܘܡAܢAܐ "
+    "ܘaܫܒܘoܩ ܠaܢ ܚAܘܒaܝܢ ܘܚAܛAܗaܝܢ ܐaܝܟaܢAܐ ܕܐAܦ ܚܢaܢ ܫܒaܩܢ ܠܚaܝAܒaܝܢ "
+    "ܘܠAܐ ܬaܥܠaܢ ܠܢeܣܝܘoܢAܐ ܐeܠAܐ ܦaܨAܢ ܡeܢ ܒܝiܫAܐ")
 
 
 class Drawing:
@@ -86,6 +110,10 @@ def esc(s):
     return html.escape(str(s))
 
 
+def chunks(items, n):
+    return [items[i:i + n] for i in range(0, len(items), n)]
+
+
 def main():
     font = Font()
     qa_path = os.path.join(OUT, "qa.json")
@@ -94,9 +122,18 @@ def main():
     qa = json.load(open(qa_path, encoding="utf-8"))
     bar = tuple(qa["bar"])
     letters = font.letters()
-    lo = min(font.glyph(g).bounds[1] for g in letters) - 60
-    hi = max(font.glyph(g).bounds[3] for g in letters) + 60
-    used = set(letters)
+    anchors = load_anchors()
+    marks = drawn_marks(font, anchors)
+    # Tall enough for the highest letter with a mark on it, and the lowest.
+    tops = [anchors[g]["top"][1] for g in letters if "top" in anchors[g]]
+    bottoms = [anchors[g]["bottom"][1] for g in letters if "bottom" in anchors[g]]
+    above = [font.glyph(m).bounds[3] - anchors[m]["_top"][1] for m, p in marks.items() if p[0] == "top"]
+    below = [font.glyph(m).bounds[1] - anchors[m]["_bottom"][1] for m, p in marks.items() if p[0] == "bottom"]
+    lo = min([font.glyph(g).bounds[1] for g in letters] +
+             ([min(bottoms) + min(below)] if below else [])) - 60
+    hi = max([font.glyph(g).bounds[3] for g in letters] +
+             ([max(tops) + max(above)] if above else [])) + 60
+    used = set(letters) | set(marks)
 
     def drawing():
         return Drawing(font, qa, lo, hi)
@@ -192,7 +229,29 @@ def main():
                          f'{d.svg(64, pad=40)}</td>')
         matrix.append(f"<tr><th class=syr>{chr(a)}</th>{''.join(cells)}</tr>")
 
-    # ---- words, with any bad joints circled --------------------------------
+    # ---- every mark on every letter ----------------------------------------
+    order_marks = sorted(marks, key=lambda m: (marks[m][0] != "top", m))
+    mark_head = "".join(f"<th>{esc(m)}</th>" for m in order_marks)
+    mark_rows, mark_bad = [], 0
+    for g in letters:
+        cells = []
+        for m in order_marks:
+            if marks[m][0] not in anchors.get(g, {}):
+                cells.append('<td class="bad" title="no anchor">–</td>')
+                mark_bad += 1
+                continue
+            x, y = place_mark(anchors, g, m, marks[m])
+            d = clearance(font.glyph(m), x, y, font.glyph(g), 0, 0)
+            cls = "bad" if d is not None and d < MARK_TOUCH else \
+                "warn" if d is not None and d < MARK_GAP else ""
+            mark_bad += cls == "bad"
+            title = f"{label(g)} + {m}: " + ("clear" if d is None else f"{d:.0f} units apart")
+            cells.append(f'<td class="{cls}" title="{esc(title)}">'
+                         f'{drawing().run([(g, 0, 0), (m, x, y)]).svg(70, pad=30)}</td>')
+        mark_rows.append(f"<tr><th>{esc(label(g))}<br><small>{esc(g)}</small></th>"
+                         f"{''.join(cells)}</tr>")
+
+    # ---- words, with any bad joints or colliding marks circled --------------
     def words_svg(text, height):
         run = shape(font.path, text)
         used.update(g for g, _, _ in run)
@@ -200,12 +259,25 @@ def main():
         for s in seams(font, run, bar):
             for y, _ in s["problems"]:
                 d.mark(s["x"], y)
+        for m, mx, my, _, dist in mark_collisions(font, run):
+            if dist < MARK_GAP:
+                b = font.glyph(m).bounds
+                d.mark(mx + (b[0] + b[2]) / 2, my + (b[1] + b[3]) / 2,
+                       "bad" if dist < MARK_TOUCH else "warn")
         return d.svg(height, pad=80)
 
     word_svgs = "".join(f"<figure>{words_svg(w, 90)}</figure>" for w in WORDS)
     stress = "".join(f"<figure>{words_svg(chr(0x0712) + chr(cp) + chr(0x0712), 90)}</figure>"
                      for cp in firsts) + \
         "".join(f"<figure>{words_svg(chr(cp) * 3, 90)}</figure>" for cp in firsts)
+
+    vowelled = "".join(f"<figure>{words_svg(w, 110)}</figure>" for w in VOWELLED_WORDS)
+    vowelled_big = "".join(f"<div>{words_svg(' '.join(line), 150)}</div>"
+                           for line in chunks(VOWELLED_PRAYER.split(), 5))
+    # Marks beside every letter: the neighbour collisions the QA found.
+    neighbour = "".join(
+        f"<figure>{words_svg(i['message'].rsplit('in ', 1)[1].lstrip(chr(0x200e)), 110)}</figure>"
+        for i in qa["items"] if i["check"] == "mark-neighbour")
 
     waterfall = "".join(f'<p class="syr live" style="font-size:{s}px">'
                         f'<span class="size">{s}px</span>{esc(PRAYER[:90])}</p>'
@@ -225,7 +297,10 @@ def main():
         forms="".join(form_rows), head=head, matrix="".join(matrix),
         words=word_svgs, stress=stress, prayer=esc(PRAYER), alphabet=esc(ALPHABET),
         spaced=esc(" ".join(ALPHABET)), waterfall=waterfall,
-        big=words_svg(PRAYER[:60], 160), alpha_svg=words_svg(ALPHABET, 120))
+        big=words_svg(PRAYER[:60], 160), alpha_svg=words_svg(ALPHABET, 120),
+        MARK_TOUCH=MARK_TOUCH, MARK_GAP=MARK_GAP, mark_head=mark_head, mark_rows="".join(mark_rows), mark_bad=mark_bad,
+        mark_total=len(letters) * len(marks), vowelled=vowelled, vowelled_big=vowelled_big,
+        neighbour=neighbour or "<p>None.</p>", vprayer=esc(VOWELLED_PRAYER))
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, "proof.html")
     with open(path, "w", encoding="utf-8") as fh:
@@ -289,11 +364,15 @@ circle.bad {{ stroke: var(--error); }} circle.warn {{ stroke: var(--warning); }}
 .card li.info b, .notes li b {{ color: var(--info); }}
 .notes {{ padding-left: 18px; }}
 .scroll {{ overflow-x: auto; }}
+.scroll.tall {{ max-height: 80vh; overflow-y: auto; }}
+.marks th {{ font-size: 12px; position: sticky; top: 0; background: var(--bg); }}
+.marks tr th:first-child {{ position: sticky; left: 0; text-align: left; }}
 table {{ border-collapse: collapse; }}
 td, th {{ border: 1px solid var(--line); padding: 4px; vertical-align: bottom; text-align: center; }}
 th {{ font-weight: 600; }}
 td small {{ display: block; font-size: 11px; }}
-.matrix td.bad {{ background: color-mix(in srgb, var(--error) 14%, transparent); }}
+.marks td.warn {{ background: color-mix(in srgb, var(--warning) 16%, transparent); }}
+.marks td.bad, .matrix td.bad {{ background: color-mix(in srgb, var(--error) 14%, transparent); }}
 .matrix th.syr {{ font-size: 28px; }}
 .syr {{ font-family: "Diba Proof"; direction: rtl; }}
 figure {{ display: inline-block; margin: 0 10px 10px 0; background: var(--card);
@@ -307,7 +386,7 @@ figure {{ display: inline-block; margin: 0 10px 10px 0; background: var(--card);
 </style></head>
 <body>
 <nav><a href="#problems">Problems</a><a href="#forms">Forms</a><a href="#pairs">Pairs</a>
-<a href="#words">Words</a><a href="#text">Live text</a></nav>
+<a href="#words">Words</a><a href="#marks">Marks</a><a href="#text">Live text</a></nav>
 <main>
 <h1>Diba proof</h1>
 <p class="muted">Letters and joins only. Connecting stroke y={bar}; common heights {levels}.
@@ -345,11 +424,24 @@ that does not line up; hover for details.</p>
 <div>{stress}</div>
 <div>{big}</div>
 
+<h2 id="marks">Marks</h2>
+<p class="muted">Every drawn vowel and mark on every form of every letter, placed by the anchors.
+Red cells touch the letter (under {MARK_TOUCH} units), amber ones come close (under {MARK_GAP}).
+{mark_bad} of {mark_total} combinations touch.</p>
+<div class="scroll tall"><table class="marks"><tr><th></th>{mark_head}</tr>{mark_rows}</table></div>
+<h3>Marks running into the letter beside them</h3>
+<div>{neighbour}</div>
+<h3>Vowelled words</h3>
+<div>{vowelled}</div>
+<h3>Vowelled text</h3>
+<div>{vowelled_big}</div>
+
 <h2 id="text">Live text</h2>
 <p class="muted">Set by your browser's own shaper, as an app would set it.</p>
 <p class="syr live" style="font-size:40px">{alphabet}</p>
 <p class="syr live" style="font-size:40px">{spaced}</p>
 <p class="syr live" style="font-size:32px">{prayer}</p>
+<p class="syr live" style="font-size:40px; line-height:2.2">{vprayer}</p>
 {waterfall}
 <div class="try">
 <label>Size <input type="range" min="12" max="200" value="64" id="size"> <span id="sizeval">64px</span></label>

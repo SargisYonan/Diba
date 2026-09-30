@@ -28,3 +28,4 @@ uni0722 overhang      # Nun: tail sweeps under the letter before on purpose
 uni0714 missing       # Gamal Garshuni: not needed
 uni071C missing       # Teth Garshuni: not needed
 uni0727 missing       # Reversed Pe: not needed
+uni0722 mark-neighbour # Nun: tail sweeps under below-vowels on the letter before; accepted

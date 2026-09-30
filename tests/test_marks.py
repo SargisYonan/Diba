@@ -13,7 +13,9 @@ import glyphsLib
 import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "qa"))
-from common import SOURCE, Font, label, shape, split_name  # noqa: E402
+from common import (MARK_TOUCH, SOURCE, Font, clearance, drawn_marks,  # noqa: E402
+                    label, load_allow, load_anchors, mark_collisions, neighbour_texts, place_mark,
+                    shape, split_name)
 
 FONT = Font()
 SRC = glyphsLib.GSFont(SOURCE)
@@ -22,6 +24,8 @@ ANCHORS = {g.name: {a.name: (a.position.x, a.position.y) for a in g.layers[0].an
 LETTERS = FONT.letters()
 MARKS = {name: a for name, a in ANCHORS.items() if "_top" in a or "_bottom" in a}
 REACH = 80   # a mark spans about this far either side of its anchor
+DRAWN = drawn_marks(FONT, load_anchors())
+ALLOW = load_allow()
 
 
 @pytest.mark.parametrize("glyph", LETTERS)
@@ -73,3 +77,64 @@ def test_marks_attach_at_anchors(glyph):
         want = (bx + ANCHORS[glyph][base_anchor][0] - ANCHORS[mark_glyph][mark_anchor][0],
                 by + ANCHORS[glyph][base_anchor][1] - ANCHORS[mark_glyph][mark_anchor][1])
         assert (mx, my) == want, f"{mark_glyph} on {label(glyph)} at {(mx, my)}, anchors say {want}"
+
+
+def test_every_drawn_mark_attaches():
+    """A mark with outlines but no attaching anchor is drawn wherever the pen
+    happens to be, beside the letter instead of on it."""
+    gdef = FONT.tt["GDEF"].table.GlyphClassDef.classDefs
+    loose = [g for g, cls in gdef.items() if cls == 3 and FONT.glyph(g).polys
+             and not {"_top", "_bottom"} & set(ANCHORS.get(g, {}))]
+    assert not loose, "marks with no _top or _bottom anchor: " + ", ".join(sorted(loose))
+
+
+@pytest.mark.parametrize("mark", sorted(DRAWN))
+def test_mark_sits_on_its_anchors(mark):
+    """An above mark rises from its `_top` and its `top` clears it; a below
+    mark hangs from its `_bottom` and its `bottom` is under it."""
+    _, y0, _, y1 = FONT.glyph(mark).bounds
+    a = ANCHORS[mark]
+    if "_top" in a:
+        assert y0 >= a["_top"][1] - 5, f"ink dips to y={y0:.0f}, below _top at {a['_top'][1]}"
+        assert a["top"][1] > y1, f"top anchor y={a['top'][1]} is inside the ink (to {y1:.0f})"
+    else:
+        assert y1 <= a["_bottom"][1] + 5, f"ink rises to y={y1:.0f}, above _bottom at {a['_bottom'][1]}"
+        assert a["bottom"][1] < y0, f"bottom anchor y={a['bottom'][1]} is inside the ink (to {y0:.0f})"
+
+
+@pytest.mark.parametrize("mark", sorted(DRAWN))
+def test_mark_clears_every_letter(mark):
+    """Placed by the anchors, the mark must not touch any form of any letter."""
+    bad = []
+    for glyph in LETTERS:
+        x, y = place_mark(ANCHORS, glyph, mark, DRAWN[mark])
+        d = clearance(FONT.glyph(mark), x, y, FONT.glyph(glyph), 0, 0)
+        if d is not None and d < MARK_TOUCH:
+            bad.append(f"{label(glyph)} ({d:.0f})")
+    assert not bad, f"{mark} touches: " + ", ".join(bad)
+
+
+@pytest.mark.parametrize("mark", sorted(m for m in DRAWN if "." not in m))
+def test_mark_clears_neighbours(mark):
+    """In shaped text, a mark must not run into the letters beside its own,
+    on any form of any letter next to any other letter."""
+    bad = set()
+    for text in neighbour_texts(FONT, chr(int(mark[3:7], 16))):
+        for _, _, _, other, d in mark_collisions(FONT, shape(FONT.path, text)):
+            if d < MARK_TOUCH and not (other, "mark-neighbour") in ALLOW:
+                bad.add(f"{text} hits {label(other)} ({d:.0f})")
+    assert not bad, f"{mark}: " + "; ".join(sorted(bad))
+
+
+@pytest.mark.parametrize("kind", ["top", "bottom"])
+def test_marks_stack(kind):
+    """Two marks on the same side stack without touching."""
+    side = [m for m, (base, _) in DRAWN.items() if base == kind]
+    bad = []
+    for first in side:
+        for second in side:
+            x, y = place_mark(ANCHORS, first, second, DRAWN[second])
+            d = clearance(FONT.glyph(second), x, y, FONT.glyph(first), 0, 0)
+            if d is not None and d < MARK_TOUCH:
+                bad.append(f"{second} on {first} ({d:.0f})")
+    assert not bad, "; ".join(bad)

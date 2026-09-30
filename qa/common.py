@@ -337,3 +337,102 @@ def seams(font, run, bar):
             seam["problems"] = compare_seam(font.glyph(lg), font.glyph(rg), bar)
         out.append(seam)
     return out
+
+
+# --- marks --------------------------------------------------------------------
+
+MARK_GAP = 30   # QA warns when a mark comes closer than this to any letter
+MARK_TOUCH = 10 # ...and the tests fail when it comes closer than this
+
+
+def load_anchors(path=SOURCE):
+    """{glyph: {anchor name: (x, y)}} from the Glyphs source."""
+    import glyphsLib
+    font = glyphsLib.GSFont(path)
+    return {g.name: {a.name: (a.position.x, a.position.y) for a in g.layers[0].anchors}
+            for g in font.glyphs}
+
+
+def drawn_marks(font, anchors):
+    """Marks that have outlines, as {mark: (base anchor, mark anchor)}.
+
+    A mark with parts on both sides (U+0732) is split into its .above and
+    .below parts by ccmp before positioning, so the parts are checked instead."""
+    out = {}
+    for name, a in anchors.items():
+        if name not in font.glyphset or not font.glyph(name).polys:
+            continue
+        if "_top" in a and "_bottom" in a:
+            continue
+        if "_top" in a:
+            out[name] = ("top", "_top")
+        elif "_bottom" in a:
+            out[name] = ("bottom", "_bottom")
+    return out
+
+
+def clearance(a, ax, ay, b, bx, by, step=3, enough=None):
+    """Smallest vertical distance between the ink of glyph `a` drawn at
+    (ax, ay) and glyph `b` at (bx, by), over the columns they share.
+    Negative means they overlap; None means they never share a column.
+    If the bounding boxes alone are at least `enough` apart, that distance
+    is returned without measuring the outlines."""
+    lo = max(a.bounds[0] + ax, b.bounds[0] + bx)
+    hi = min(a.bounds[2] + ax, b.bounds[2] + bx)
+    if lo >= hi:
+        return None
+    box = max(b.bounds[1] + by - (a.bounds[3] + ay), a.bounds[1] + ay - (b.bounds[3] + by))
+    if enough is not None and box >= enough:
+        return box
+    best = None
+    x = lo + 0.5
+    while x < hi:
+        for ab, at in a.ink_at_x(x - ax):
+            for bb, bt in b.ink_at_x(x - bx):
+                d = max(bb + by - (at + ay), ab + ay - (bt + by))
+                best = d if best is None else min(best, d)
+        x += step
+    return best
+
+
+def place_mark(anchors, base, mark, pair):
+    """Where `mark` lands on `base` (drawn at the origin), from the anchors."""
+    base_anchor, mark_anchor = pair
+    (bx, by), (mx, my) = anchors[base][base_anchor], anchors[mark][mark_anchor]
+    return bx - mx, by - my
+
+
+def mark_collisions(font, run):
+    """For each mark in a shaped run, its closest approach to a letter other
+    than the one it sits on: [(mark, x, y, nearest letter, clearance)].
+
+    HarfBuzz lists a mark just before its base, in visual order."""
+    out = []
+    for i, (m, mx, my) in enumerate(run):
+        if m not in font.glyphset or font.glyph(m).width != 0 or not font.glyph(m).polys:
+            continue
+        base = next((j for j in range(i + 1, len(run)) if font.glyph(run[j][0]).width), None)
+        worst = None
+        for j, (g, gx, gy) in enumerate(run):
+            if j == base or font.glyph(g).width == 0 or not font.glyph(g).polys:
+                continue
+            d = clearance(font.glyph(m), mx, my, font.glyph(g), gx, gy, enough=MARK_GAP)
+            if d is not None and (worst is None or d < worst[1]):
+                worst = (g, d)
+        if worst:
+            out.append((m, mx, my) + worst)
+    return out
+
+
+def neighbour_texts(font, mark_char):
+    """Short texts that put `mark_char` on every form of every letter with
+    every letter beside it: on the first or second of a pair, and on a
+    medial letter between Beth and each other letter."""
+    beth = "\u0712"
+    cps = font.drawn_codepoints()
+    for a in cps:
+        for b in cps:
+            yield chr(a) + mark_char + chr(b)          # on a, b after it
+            yield chr(a) + chr(b) + mark_char          # on b, a before it
+            yield beth + chr(a) + mark_char + chr(b)   # on medial a, b after it
+            yield chr(a) + chr(b) + mark_char + beth   # on medial b, a before it

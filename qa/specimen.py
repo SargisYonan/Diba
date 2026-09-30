@@ -13,7 +13,7 @@ from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ROOT, Font, shape  # noqa: E402
-from proof import ALPHABET, PRAYER, WORDS  # noqa: E402
+from proof import ALPHABET, PRAYER, VOWELLED_PRAYER, VOWELLED_WORDS, WORDS  # noqa: E402
 
 DOCS = os.path.join(ROOT, "documentation")
 WIDTH = 1600          # final image width in pixels
@@ -151,6 +151,20 @@ def main():
     page.label("Right-joining letters after Beth", size=20)
     page.words(" ".join("ܒ" + c for c in "ܐܕܗܘܙܨܪܬ"), 84, leading=1.9)
     page.render(os.path.join(DOCS, "proof-joins.png"))
+
+    # Vowels and other marks, above and below the letters.
+    page = Page(font)
+    page.label("Diba  ·  vowel proof", size=30, color=INK, gap=10)
+    page.label("East Syriac vowels, qushshaya, rukkakha and syame", size=20)
+    page.rule()
+    page.words(" ".join(VOWELLED_WORDS), 72, leading=2.3)
+    page.rule()
+    page.label("The Lord's Prayer", size=20)
+    page.words(VOWELLED_PRAYER, 52, leading=2.3)
+    page.rule()
+    page.label("28 px", size=16, gap=0)
+    page.words(VOWELLED_PRAYER, 28, leading=2.2)
+    page.render(os.path.join(DOCS, "proof-vowels.png"))
 
 
 if __name__ == "__main__":

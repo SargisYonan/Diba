@@ -9,7 +9,7 @@ help:
 	@echo "Diba"
 	@echo "  make build   compile $(FONT) from $(SOURCE)"
 	@echo "  make qa      report problems with the letters and joins"
-	@echo "  make test    pass/fail tests for joining (fails on broken joins)"
+	@echo "  make test    pass/fail tests for joins and marks"
 	@echo "  make proof   write out/proof.html and open it"
 	@echo "  make images  render the text proofs in documentation/ (linked from the README)"
 	@echo "  make all     build, qa, proof, images, then test"
@@ -45,12 +45,12 @@ proof: $(if $(filter command line,$(origin FONT)),,$(FONT)) $(VENV)/.done
 	FONT=$(FONT) $(PY) qa/proof.py
 	@open out/proof.html 2>/dev/null || true
 
-IMAGES := documentation/proof-text.png documentation/proof-joins.png
+IMAGES := documentation/proof-text.png documentation/proof-joins.png documentation/proof-vowels.png
 
-# One run writes both images.
+# One run writes all the images.
 documentation/proof-text.png: $(FONT) qa/specimen.py qa/proof.py $(VENV)/.done
 	FONT=$(FONT) $(PY) qa/specimen.py
-documentation/proof-joins.png: documentation/proof-text.png
+documentation/proof-joins.png documentation/proof-vowels.png: documentation/proof-text.png
 
 images: $(IMAGES)
 
