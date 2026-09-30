@@ -15,6 +15,7 @@ from fontTools.pens.svgPathPen import SVGPathPen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import (FONT, FORM_NAMES, LETTERS, MARK_GAP, MARK_TOUCH, OUT,  # noqa: E402
+                    bases_for,
                     Font, clearance, drawn_marks, joins, label, load_anchors,
                     mark_collisions, place_mark, seams, shape, split_name)
 
@@ -29,6 +30,22 @@ PRAYER = ("ܐܒܘܢ ܕܒܫܡܝܐ ܢܬܩܕܫ ܫܡܟ ܬܐܬܐ ܡܠܟܘܬܟ ܢܗܘ�
           "ܐܝܟܢܐ ܕܐܦ ܚܢܢ ܫܒܩܢ ܠܚܝܒܝܢ ܘܠܐ ܬܥܠܢ ܠܢܣܝܘܢܐ ܐܠܐ ܦܨܢ ܡܢ ܒܝܫܐ")
 
 ZWJ = "\u200d"
+DOTTED_CIRCLE = "\u25cc"
+
+# Punctuation in use: a sentence ending, a pause, a paragraph end.
+PUNCTUATED = ("ܐܒܘܢ ܕܒܫܡܝܐ. ܢܬܩܕܫ ܫܡܟ: ܬܐܬܐ ܡܠܟܘܬܟ܁ ܢܗܘܐ ܨܒܝܢܟ܂ "
+              "ܐܝܟܢܐ ܕܒܫܡܝܐ܅ ܐܦ ܒܐܪܥܐ܀")
+
+
+def signs(font):
+    """Every drawn character that is neither a letter nor a mark, and every
+    drawn mark, as text: marks are shown on a dotted circle."""
+    out, marks = [], []
+    for cp, g in sorted(font.cmap.items()):
+        if not font.glyph(g).polys or split_name(g):
+            continue
+        (marks if font.glyph(g).width == 0 else out).append(chr(cp))
+    return out, [DOTTED_CIRCLE + m for m in marks]
 
 # Vowelled text is written with ASCII stand-ins for the marks, which are hard
 # to type and to read in source: a ptaha, A zqapa, e zlama psiqa, E zlama
@@ -236,6 +253,9 @@ def main():
     for g in letters:
         cells = []
         for m in order_marks:
+            if g not in bases_for(m, letters):
+                cells.append("<td></td>")
+                continue
             if marks[m][0] not in anchors.get(g, {}):
                 cells.append('<td class="bad" title="no anchor">–</td>')
                 mark_bad += 1
@@ -272,6 +292,11 @@ def main():
         "".join(f"<figure>{words_svg(chr(cp) * 3, 90)}</figure>" for cp in firsts)
 
     vowelled = "".join(f"<figure>{words_svg(w, 110)}</figure>" for w in VOWELLED_WORDS)
+    plain_signs, mark_signs = signs(font)
+    sign_svgs = "".join(f"<figure>{words_svg(t, 110)}<small>U+{ord(t[-1]):04X}</small></figure>"
+                        for t in plain_signs + mark_signs)
+    punctuated = "".join(f"<div>{words_svg(' '.join(line), 130)}</div>"
+                         for line in chunks(PUNCTUATED.split(), 5))
     vowelled_big = "".join(f"<div>{words_svg(' '.join(line), 150)}</div>"
                            for line in chunks(VOWELLED_PRAYER.split(), 5))
     # Marks beside every letter: the neighbour collisions the QA found.
@@ -300,7 +325,8 @@ def main():
         big=words_svg(PRAYER[:60], 160), alpha_svg=words_svg(ALPHABET, 120),
         MARK_TOUCH=MARK_TOUCH, MARK_GAP=MARK_GAP, mark_head=mark_head, mark_rows="".join(mark_rows), mark_bad=mark_bad,
         mark_total=len(letters) * len(marks), vowelled=vowelled, vowelled_big=vowelled_big,
-        neighbour=neighbour or "<p>None.</p>", vprayer=esc(VOWELLED_PRAYER))
+        neighbour=neighbour or "<p>None.</p>", vprayer=esc(VOWELLED_PRAYER),
+        signs=sign_svgs, punctuated=punctuated, punctuated_live=esc(PUNCTUATED))
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, "proof.html")
     with open(path, "w", encoding="utf-8") as fh:
@@ -386,7 +412,7 @@ figure {{ display: inline-block; margin: 0 10px 10px 0; background: var(--card);
 </style></head>
 <body>
 <nav><a href="#problems">Problems</a><a href="#forms">Forms</a><a href="#pairs">Pairs</a>
-<a href="#words">Words</a><a href="#marks">Marks</a><a href="#text">Live text</a></nav>
+<a href="#words">Words</a><a href="#marks">Marks</a><a href="#signs">Punctuation</a><a href="#text">Live text</a></nav>
 <main>
 <h1>Diba proof</h1>
 <p class="muted">Letters and joins only. Connecting stroke y={bar}; common heights {levels}.
@@ -436,11 +462,18 @@ Red cells touch the letter (under {MARK_TOUCH} units), amber ones come close (un
 <h3>Vowelled text</h3>
 <div>{vowelled_big}</div>
 
+<h2 id="signs">Punctuation and signs</h2>
+<p class="muted">Every drawn character that is not a letter, and every drawn mark on a dotted circle.</p>
+<div>{signs}</div>
+<h3>In use</h3>
+<div>{punctuated}</div>
+
 <h2 id="text">Live text</h2>
 <p class="muted">Set by your browser's own shaper, as an app would set it.</p>
 <p class="syr live" style="font-size:40px">{alphabet}</p>
 <p class="syr live" style="font-size:40px">{spaced}</p>
 <p class="syr live" style="font-size:32px">{prayer}</p>
+<p class="syr live" style="font-size:32px">{punctuated_live}</p>
 <p class="syr live" style="font-size:40px; line-height:2.2">{vprayer}</p>
 {waterfall}
 <div class="try">

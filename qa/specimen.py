@@ -13,7 +13,8 @@ from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ROOT, Font, shape  # noqa: E402
-from proof import ALPHABET, PRAYER, VOWELLED_PRAYER, VOWELLED_WORDS, WORDS  # noqa: E402
+from proof import (ALPHABET, PRAYER, PUNCTUATED, VOWELLED_PRAYER,  # noqa: E402
+                   VOWELLED_WORDS, WORDS, signs)
 
 DOCS = os.path.join(ROOT, "documentation")
 WIDTH = 1600          # final image width in pixels
@@ -127,6 +128,10 @@ def main():
     page.words(ALPHABET, 120, leading=1.6)
     page.words(" ".join(ALPHABET), 64, leading=1.7)
     page.rule()
+    page.label("Punctuation", size=20)
+    page.words(" ".join(signs(font)[0]), 80, leading=1.8)
+    page.words(PUNCTUATED, 48, leading=1.8)
+    page.rule()
     page.label("Words", size=20)
     page.words(" ".join(WORDS), 60, leading=1.75)
     page.rule()
@@ -158,6 +163,9 @@ def main():
     page.label("East Syriac vowels, qushshaya, rukkakha and syame", size=20)
     page.rule()
     page.words(" ".join(VOWELLED_WORDS), 72, leading=2.3)
+    page.rule()
+    page.label("Every mark, on a dotted circle", size=20)
+    page.words(" ".join(signs(font)[1]), 80, leading=2.4)
     page.rule()
     page.label("The Lord's Prayer", size=20)
     page.words(VOWELLED_PRAYER, 52, leading=2.3)

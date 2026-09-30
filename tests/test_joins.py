@@ -102,3 +102,18 @@ def test_rish_syame(text, want, gone):
     dots replace both Rish's own dot and the syame."""
     names = [g for g, _, _ in shape(FONT.path, text)]
     assert want in names and gone not in names, f"got {names}"
+
+
+@pytest.mark.parametrize("text,want,gone", [
+    ("ܟ݇", "uni0747.kaph", "uni0747"),               # on isolated Kaph
+    ("ܕܟ݇", "uni0747.kaph", "uni0747"),         # after a right-joining letter
+    ("ܟܵ݇", "uni0747.kaph", "uni0747"),         # another vowel in between
+    ("ܒܟ݇", "uni0747", "uni0747.kaph"),         # final Kaph: unchanged
+    ("ܒ݇", "uni0747", "uni0747.kaph"),               # other letters: unchanged
+], ids=["isolated", "after-dalath", "vowel-between", "final-kaph", "beth"])
+def test_oblique_line_over_kaph(text, want, gone):
+    """The oblique line above (U+0747) is wider than isolated Kaph is tall
+    enough to hold, so over isolated Kaph a raised copy is used, clearing
+    the tall letter before it."""
+    names = [g for g, _, _ in shape(FONT.path, text)]
+    assert want in names and gone not in names, f"got {names}"

@@ -31,6 +31,7 @@ $(FONT): $(SOURCE) $(VENV)/.done
 	$(VENV)/bin/fontmake -g $(SOURCE) -o ttf --overlaps-backend pathops \
 		--output-path $(FONT) 2>&1 | grep -v "^INFO" || true
 	@test -f $(FONT)
+	$(PY) scripts/fix_hinting.py $(FONT)
 
 build: $(FONT)
 

@@ -18,7 +18,7 @@ or one step at a time:
 
 | Command      | What it does |
 |--------------|--------------|
-| `make build` | Compiles `sources/Diba.glyphs` to `fonts/Diba-Regular.ttf`. |
+| `make build` | Compiles `sources/Diba.glyphs` to `fonts/Diba-Regular.ttf` and adds dropout control (`scripts/fix_hinting.py`), since ttfautohint can't hint Syriac. |
 | `make qa`    | Lists problems letter by letter: joins that don't line up, gaps, flat cuts on sides that never join, corners rounded differently from the rest, edges a few units off a common height, lines almost but not quite flat. |
 | `make proof` | Writes and opens `out/proof.html`: every problem circled on the glyph, every letter in every form, every joining pair, vowels and marks on every letter, sample words and live text. |
 | `make images`| Renders the text proofs above to `documentation/proof-text.png`, `proof-joins.png` and `proof-vowels.png`. |

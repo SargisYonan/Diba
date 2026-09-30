@@ -22,6 +22,7 @@ import glyphsLib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import (LETTERS, MARK_GAP, MARK_TOUCH, OUT, PROBE, SAG,  # noqa: E402
+                    bases_for,
                     SOURCE, Font, clearance, drawn_marks, edge_reach,
                     joint_problems, joins, label, load_allow, load_anchors,
                     mark_collisions, mode, neighbour_texts, place_mark, run_at, shape, split_name)
@@ -237,9 +238,17 @@ def corners(g, layer, ink):
                 p0, p2 = a.position, nxt[1][0].position
                 c = (pts[0].position.x, pts[0].position.y)
                 rad, radii, chord = 0, (0, 0), None
-            elif len(pts) > 1 and len(prev[1]) == 1 and len(nxt[1]) == 1:
-                p0, s, e, p2 = prev[0].position, a.position, pts[-1].position, \
-                    nxt[1][0].position
+            elif len(pts) > 1 and len(prev[1]) == 1:
+                # A rounded corner: the curve (or a short run of curves, as a
+                # converted TrueType corner becomes) between two straight lines.
+                j = k
+                while len(segs[(j + 1) % n][1]) > 1 and j - k < 3:
+                    j += 1
+                after = segs[(j + 1) % n]
+                if len(after[1]) != 1:
+                    continue
+                p0, s, e, p2 = prev[0].position, a.position, segs[j % n][1][-1].position, \
+                    after[1][0].position
                 d1 = (s.x - p0.x, s.y - p0.y)
                 d2 = (p2.x - e.x, p2.y - e.y)
                 den = d1[0] * d2[1] - d1[1] * d2[0]
@@ -358,8 +367,8 @@ def check_marks(font, letters, report):
 
     gdef = font.tt["GDEF"].table.GlyphClassDef.classDefs
     for g, cls in gdef.items():
-        if cls == 3 and font.glyph(g).polys and not {"_top", "_bottom"} & set(anchors.get(g, {})):
-            report.add("error", "anchor", g, "mark has no _top or _bottom anchor, so it is "
+        if cls == 3 and font.glyph(g).polys and not any(a.startswith("_") for a in anchors.get(g, {})):
+            report.add("error", "anchor", g, "mark has no attaching anchor, so it is "
                        "drawn beside the letter instead of on it")
 
     for mark, pair in drawn.items():
@@ -374,7 +383,7 @@ def check_marks(font, letters, report):
                        f"so a stacked mark would overlap it", *a[own])
 
         for g in letters:
-            if pair[0] not in anchors.get(g, {}):
+            if pair[0] not in anchors.get(g, {}) or g not in bases_for(mark, letters):
                 continue
             x, y = place_mark(anchors, g, mark, pair)
             d = clearance(font.glyph(mark), x, y, font.glyph(g), 0, 0)

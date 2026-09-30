@@ -29,3 +29,15 @@ uni0714 missing       # Gamal Garshuni: not needed
 uni071C missing       # Teth Garshuni: not needed
 uni0727 missing       # Reversed Pe: not needed
 uni0722 mark-neighbour # Nun: tail sweeps under below-vowels on the letter before; accepted
+uni071E missing       # Yudh He: not needed
+uni0710 corner        # Alaph: the long curve from the diagonal into the bottom stroke
+uni0710.fin2 corner
+uni0710.fin3 corner
+uni0715 corner        # Dalath/Rish: rounded tip of the slanted end, as designed
+uni0715.fina corner
+uni0716 corner
+uni0716.fina corner
+uni072A corner
+uni072A.fina corner
+uni072A.syame corner
+uni072A.fina.syame corner

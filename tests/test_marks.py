@@ -13,7 +13,8 @@ import glyphsLib
 import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "qa"))
-from common import (MARK_TOUCH, SOURCE, Font, clearance, drawn_marks,  # noqa: E402
+from common import (LETTER_ONLY_ANCHORS, MARK_TOUCH, SOURCE, Font, bases_for,  # noqa: E402
+                    clearance, drawn_marks,
                     label, load_allow, load_anchors, mark_collisions, neighbour_texts, place_mark,
                     shape, split_name)
 
@@ -30,8 +31,9 @@ ALLOW = load_allow()
 
 @pytest.mark.parametrize("glyph", LETTERS)
 def test_letter_has_top_and_bottom(glyph):
-    assert set(ANCHORS[glyph]) == {"top", "bottom"}, \
-        f"{label(glyph)} has anchors {sorted(ANCHORS[glyph])}, expected top and bottom"
+    names = set(ANCHORS[glyph])
+    assert {"top", "bottom"} <= names and names - {"top", "bottom"} <= LETTER_ONLY_ANCHORS, \
+        f"{label(glyph)} has anchors {sorted(names)}, expected top and bottom"
 
 
 @pytest.mark.parametrize("glyph", LETTERS)
@@ -59,7 +61,8 @@ def test_mark_anchors(mark):
 
 
 def test_no_stray_anchor_names():
-    allowed = {"top", "bottom", "_top", "_bottom"}
+    allowed = {"top", "bottom", "_top", "_bottom"} | LETTER_ONLY_ANCHORS | \
+        {"_" + a for a in LETTER_ONLY_ANCHORS}
     odd = {f"{g}: {n}" for g, a in ANCHORS.items() for n in a if n not in allowed}
     assert not odd, "unexpected anchors: " + ", ".join(sorted(odd))
 
@@ -84,8 +87,8 @@ def test_every_drawn_mark_attaches():
     happens to be, beside the letter instead of on it."""
     gdef = FONT.tt["GDEF"].table.GlyphClassDef.classDefs
     loose = [g for g, cls in gdef.items() if cls == 3 and FONT.glyph(g).polys
-             and not {"_top", "_bottom"} & set(ANCHORS.get(g, {}))]
-    assert not loose, "marks with no _top or _bottom anchor: " + ", ".join(sorted(loose))
+             and not any(a.startswith("_") for a in ANCHORS.get(g, {}))]
+    assert not loose, "marks with no attaching anchor: " + ", ".join(sorted(loose))
 
 
 @pytest.mark.parametrize("mark", sorted(DRAWN))
@@ -106,7 +109,7 @@ def test_mark_sits_on_its_anchors(mark):
 def test_mark_clears_every_letter(mark):
     """Placed by the anchors, the mark must not touch any form of any letter."""
     bad = []
-    for glyph in LETTERS:
+    for glyph in bases_for(mark, LETTERS):
         x, y = place_mark(ANCHORS, glyph, mark, DRAWN[mark])
         d = clearance(FONT.glyph(mark), x, y, FONT.glyph(glyph), 0, 0)
         if d is not None and d < MARK_TOUCH:
@@ -138,3 +141,38 @@ def test_marks_stack(kind):
             if d is not None and d < MARK_TOUCH:
                 bad.append(f"{second} on {first} ({d:.0f})")
     assert not bad, "; ".join(bad)
+
+
+@pytest.mark.parametrize("text,mark,base", [
+    ("\u0726\u032E", "uni032E.pe", "uni0726"),
+    ("\u0712\u0726\u032E\u0712", "uni032E.pe", "uni0726.medi"),
+])
+def test_semicircle_touches_pe(text, mark, base):
+    """The semicircle under Pe is swapped for a copy whose tips meet Pe's
+    bottom edge, just overlapping it so no hairline gap shows."""
+    run = shape(FONT.path, text)
+    names = [g for g, _, _ in run]
+    assert mark in names, f"got {names}"
+    (_, mx, my), = [r for r in run if r[0] == mark]
+    (_, bx, by), = [r for r in run if r[0] == base]
+    d = clearance(FONT.glyph(mark), mx, my, FONT.glyph(base), bx, by)
+    assert d is not None and -5 <= d <= 0, f"semicircle is {d} from Pe, should touch"
+
+
+@pytest.mark.parametrize("text,base", [("\u0713\u0330", "uni0713"),
+                                       ("\u0712\u0713\u0330\u0712", "uni0713.medi")])
+def test_majlyana_under_gamal_stroke(text, base):
+    """The majlyana under Gamal sits under the flat stroke at its bottom left,
+    not under the tail."""
+    run = shape(FONT.path, text)
+    names = [g for g, _, _ in run]
+    assert "uni0330.gamal" in names, f"got {names}"
+    (_, mx, _), = [r for r in run if r[0] == "uni0330.gamal"]
+    (_, bx, _), = [r for r in run if r[0] == base]
+    g = FONT.glyph(base)
+    flat = [s for s in g.ink_at_y(-5)]            # the tail is the only ink below the baseline
+    tail_left = min(s[0] for s in flat)
+    centre = mx - bx + sum(FONT.glyph("uni0330.gamal").bounds[0::2]) / 2
+    assert centre < tail_left, f"majlyana centre x={centre:.0f} is over the tail (starts {tail_left:.0f})"
+    d = clearance(FONT.glyph("uni0330.gamal"), mx, [r for r in run if r[0] == "uni0330.gamal"][0][2], g, bx, 0)
+    assert d is not None and d >= 30, f"majlyana comes within {d:.0f} units of Gamal's tail"

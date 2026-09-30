@@ -344,6 +344,21 @@ def seams(font, run, bar):
 MARK_GAP = 30   # QA warns when a mark comes closer than this to any letter
 MARK_TOUCH = 10 # ...and the tests fail when it comes closer than this
 
+# Copies of marks that a rule in `rlig` swaps in on one letter only, and the
+# letters they sit on. Checks place them on those letters and nowhere else.
+CONTEXT_MARKS = {
+    "uni0747.kaph": {"uni071F"},
+    "uni0304.kaph": {"uni071F"},
+}
+# Anchors a letter carries for one particular mark, beside `top` and `bottom`:
+# the majlyana under Gamal and the semicircle touching Pe's bottom.
+LETTER_ONLY_ANCHORS = {"majlyana", "semicircle"}
+
+
+def bases_for(mark, letters):
+    """The letters a mark can actually sit on."""
+    return [g for g in letters if g in CONTEXT_MARKS.get(mark, letters)]
+
 
 def load_anchors(path=SOURCE):
     """{glyph: {anchor name: (x, y)}} from the Glyphs source."""
