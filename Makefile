@@ -58,7 +58,7 @@ proof: $(FONT_DEP) $(VENV)/.done
 	@[ -n "$$CI" ] || open out/proof.html 2>/dev/null || true
 
 IMAGES := $(addprefix documentation/,word-1.svg word-2.svg word-3.svg word-4.svg word-5.svg \
-	proof-charset.svg proof-joins.svg proof-vowels.svg)
+	alphabet.svg proof-charset.svg proof-forms.svg proof-joins.svg proof-vowels.svg)
 
 # One run writes all the images.
 documentation/word-1.svg: $(FONT) qa/specimen.py qa/proof.py $(VENV)/.done

@@ -21,6 +21,12 @@ A mid-century modern Assyrian typeface design inspired by the calligraphic style
 
 ![Every character in Diba: the letters, the punctuation, and every vowel and mark on a dotted circle](documentation/proof-charset.svg)
 
+![The alphabet written as one connected word: ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ](documentation/alphabet.svg)
+
+## Connecting forms
+
+![Every letter in each of its forms: isolated, initial, medial and final](documentation/proof-forms.svg)
+
 ## Joining
 
 ![Each dual-joining letter between two Beths, the same letters three in a row, and each right-joining letter after Beth](documentation/proof-joins.svg)
@@ -51,7 +57,7 @@ or one step at a time:
 
 To check a font exported from Glyphs instead: `make qa proof test FONT=path/to/Diba-Regular.ttf`.
 
-Something flagged on purpose? Add `<glyph> <check>` to `qa/allow.txt` with a note saying why.
+Something flagged on purpose? Add `<glyph> <check>` to `qa/allow.txt` with a note saying why. For a mark running into a neighbouring letter, `<glyph> mark-neighbour <mark>` excuses just that one mark.
 
 ## License
 

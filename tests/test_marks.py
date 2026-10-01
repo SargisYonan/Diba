@@ -15,7 +15,7 @@ import pytest
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "qa"))
 from common import (LETTER_ONLY_ANCHORS, MARK_TOUCH, SOURCE, Font, bases_for,  # noqa: E402
                     clearance, drawn_marks,
-                    label, load_allow, load_anchors, mark_collisions, neighbour_texts, place_mark,
+                    is_allowed, label, load_allow, load_anchors, mark_collisions, neighbour_texts, place_mark,
                     shape, split_name)
 
 FONT = Font()
@@ -124,7 +124,7 @@ def test_mark_clears_neighbours(mark):
     bad = set()
     for text in neighbour_texts(FONT, chr(int(mark[3:7], 16))):
         for _, _, _, other, d in mark_collisions(FONT, shape(FONT.path, text)):
-            if d < MARK_TOUCH and not (other, "mark-neighbour") in ALLOW:
+            if d < MARK_TOUCH and not is_allowed(ALLOW, other, "mark-neighbour", mark):
                 bad.add(f"{text} hits {label(other)} ({d:.0f})")
     assert not bad, f"{mark}: " + "; ".join(sorted(bad))
 

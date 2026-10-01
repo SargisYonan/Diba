@@ -1,6 +1,7 @@
 # Problems you have looked at and decided are intentional.
 # One per line: <glyph name> <check name>   # why
-# Use * as the glyph to silence a check everywhere.
+# Use * as the glyph to silence a check everywhere. For mark-neighbour, a
+# third field names the one mark excused: <glyph> mark-neighbour <mark>.
 #
 # uni0722 overhang   # Nun's tail is meant to sweep under the letter before
 uni0718 corner        # Waw: bottom-left corner is rounded on purpose
@@ -41,3 +42,5 @@ uni072A corner
 uni072A.fina corner
 uni072A.syame corner
 uni072A.fina.syame corner
+uni071F mark-neighbour uni032E   # Kaph isolated: semicircle under the letter before comes within 21; accepted
+uni0722.fina mark-neighbour uni032E   # Nun final: semicircle under the letter before comes within 30; accepted

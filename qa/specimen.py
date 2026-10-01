@@ -14,7 +14,7 @@ from fontTools.pens.svgPathPen import SVGPathPen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import LETTERS, ROOT, Font, shape  # noqa: E402
-from proof import signs  # noqa: E402
+from proof import ALPHABET, signs  # noqa: E402
 
 DOCS = os.path.join(ROOT, "documentation")
 WIDTH = 1600          # width of the proof images, in pixels
@@ -104,19 +104,23 @@ class Page:
     def __init__(self, font):
         self.font, self.lines, self.y = font, [], MARGIN
 
-    def words(self, text, size, leading=1.9, gap=0):
+    def words(self, text, size, leading=1.9, gap=0, sep=" "):
+        """Set `text` (a string, or a list of groups to keep whole) at `size`
+        pixels per em, wrapping between words or groups, which are joined
+        by `sep`."""
         scale = size / 1000
         room = (WIDTH - 2 * MARGIN) / scale
+        items = text.split() if isinstance(text, str) else text
         lines, line = [], []
-        for word in text.split():
-            trial = " ".join(line + [word])
+        for item in items:
+            trial = sep.join(line + [item])
             if line and width(self.font, shaped(self.font, trial)) > room:
-                lines.append(" ".join(line))
-                line = [word]
+                lines.append(sep.join(line))
+                line = [item]
             else:
-                line.append(word)
+                line.append(item)
         if line:
-            lines.append(" ".join(line))
+            lines.append(sep.join(line))
         for text_line in lines:
             run = shaped(self.font, text_line)
             self.y += size * 1.05
@@ -144,12 +148,28 @@ def main():
     for i, (text, size) in enumerate(WORDS, 1):
         word_image(font, text, size, os.path.join(DOCS, f"word-{i}.svg"))
 
+    # The alphabet as one word, so every letter takes its connected form.
+    word_image(font, ALPHABET, 120, os.path.join(DOCS, "alphabet.svg"))
+
     # Every character the font draws: letters, punctuation, marks.
     page = Page(font)
     page.words(" ".join(chr(cp) for cp in drawn), 110, gap=30)
     page.words(" ".join(plain_signs), 110, gap=30)
     page.words(" ".join(marks), 110, leading=2.2)
     page.render(os.path.join(DOCS, "proof-charset.svg"))
+
+    # Every letter in each of its joined forms: isolated, initial, medial,
+    # final (right-joining letters have only isolated and final). A
+    # zero-width joiner on a side makes the letter join on that side.
+    zwj = "\u200d"
+    forms = []
+    for cp in drawn:
+        ch = chr(cp)
+        joined = [ch + zwj, zwj + ch + zwj] if LETTERS[cp][1] == "D" else []
+        forms.append(" ".join([ch] + joined + [zwj + ch]))
+    page = Page(font)
+    page.words(forms, 100, leading=2.0, sep="     ")
+    page.render(os.path.join(DOCS, "proof-forms.svg"))
 
     # Joining: each dual-joining letter between two Beths, then three in a
     # row; each right-joining letter after Beth.

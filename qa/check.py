@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import (LETTERS, MARK_GAP, MARK_TOUCH, OUT, PROBE, SAG,  # noqa: E402
                     bases_for,
                     SOURCE, Font, clearance, drawn_marks, edge_reach,
-                    joint_problems, joins, label, load_allow, load_anchors,
+                    is_allowed, joint_problems, joins, label, load_allow, load_anchors,
                     mark_collisions, mode, neighbour_texts, place_mark, run_at, shape, split_name)
 
 OVERHANG = 10      # ink this far past the advance width is flagged
@@ -39,8 +39,8 @@ class Report:
     def __init__(self, allowed):
         self.items, self.allowed, self.silenced = [], allowed, 0
 
-    def add(self, severity, check, glyph, message, x=None, y=None):
-        if (glyph, check) in self.allowed or ("*", check) in self.allowed:
+    def add(self, severity, check, glyph, message, x=None, y=None, mark=None):
+        if is_allowed(self.allowed, glyph, check, mark):
             self.silenced += 1
             return
         self.items.append(dict(severity=severity, check=check, glyph=glyph,
@@ -402,7 +402,7 @@ def check_marks(font, letters, report):
     for (mark, other), (d, text) in sorted(worst.items()):
         report.add(grade(d), "mark-neighbour", other,
                    f"{mark} on the letter beside it {'overlaps it by ' + str(-round(d)) if d < 0 else 'comes within ' + str(round(d))} "
-                   f"units, e.g. in \u200e{text}")
+                   f"units, e.g. in \u200e{text}", mark=mark)
 
     for side in ("top", "bottom"):
         group = [m for m, (base, _) in drawn.items() if base == side]

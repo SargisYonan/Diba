@@ -194,14 +194,19 @@ def mode(values):
 
 
 def load_allow():
-    """Lines of qa/allow.txt as a set of (glyph, check) pairs."""
+    """Lines of qa/allow.txt as a set of (glyph, check) pairs, or
+    (glyph, check, mark) when a line names the one mark it excuses."""
     allowed = set()
     if os.path.exists(ALLOW):
         for line in open(ALLOW, encoding="utf-8"):
             line = line.split("#", 1)[0].split()
             if len(line) >= 2:
-                allowed.add((line[0], line[1]))
+                allowed.add(tuple(line[:3]))
     return allowed
+
+
+def is_allowed(allowed, glyph, check, mark=None):
+    return bool({(glyph, check), ("*", check), (glyph, check, mark)} & allowed)
 
 
 # --- joints -------------------------------------------------------------------
