@@ -2,7 +2,7 @@
 
 [![Font QA](https://github.com/SargisYonan/DibaSyriac/actions/workflows/font-qa.yml/badge.svg)](https://github.com/SargisYonan/DibaSyriac/actions/workflows/font-qa.yml)
 
-A mid-century Assyrian typeface design inspired by the calligraphic style of Issa Benyamin and the font designs in his book, [ܫܦܝܪܘܬ-ܟܬܝܒܬܐ : ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ](https://16209.rmwebopac.com/item/YF2zBolt1ESHSlLWcwZrmQ_tFCUl6V_bUCk20oxa64kGw). The font in this project is adapted from Benyamin's general style with some twists, adaptions and changes.
+A mid-century modern Assyrian typeface design inspired by the calligraphic style of Issa Benyamin and the font designs in his book, [ܫܦܝܪܘܬ-ܟܬܝܒܬܐ: ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ](https://16209.rmwebopac.com/item/YF2zBolt1ESHSlLWcwZrmQ_tFCUl6V_bUCk20oxa64kGw). The font in this project is adapted from Benyamin's general style with some twists, adaptions and changes.
 
 
 ## Samples
@@ -52,14 +52,6 @@ or one step at a time:
 To check a font exported from Glyphs instead: `make qa proof test FONT=path/to/Diba-Regular.ttf`.
 
 Something flagged on purpose? Add `<glyph> <check>` to `qa/allow.txt` with a note saying why.
-
-### On every push
-
-`.github/workflows/font-qa.yml` runs `make ci` on GitHub for every push and
-pull request. The run fails if the font has a QA error, a failing test or a
-fontbakery failure. The QA report and fontbakery results appear on the run's
-summary page. The built font, `proof.html`, the reports and the images are
-attached to the run as `diba-qa`.
 
 ## License
 
