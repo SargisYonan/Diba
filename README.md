@@ -5,18 +5,6 @@
 A mid-century modern Assyrian typeface design inspired by the calligraphic style of Issa Benyamin and the font designs in his book, [ܫܦܝܪܘܬ-ܟܬܝܒܬܐ: ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ](https://16209.rmwebopac.com/item/YF2zBolt1ESHSlLWcwZrmQ_tFCUl6V_bUCk20oxa64kGw). The font in this project is adapted from Benyamin's general style with some twists, adaptions and changes.
 
 
-## Samples
-
-![ܕܒܐ](documentation/word-1.svg)
-
-![ܚܕ ܒܢܝܣܢ](documentation/word-2.svg)
-
-![ܚܲܕ݇ ܒܢܝܼܣܵܢ](documentation/word-3.svg)
-
-![ܒܝܬ ܢܗܪ̈ܝܢ](documentation/word-4.svg)
-
-![ܫܠܡܐ ܘܫܝܢܐ](documentation/word-5.svg)
-
 ## Character set
 
 ![Every character in Diba: the letters, the punctuation, and every vowel and mark on a dotted circle](documentation/proof-charset.svg)
@@ -34,6 +22,18 @@ A mid-century modern Assyrian typeface design inspired by the calligraphic style
 ## Vowels and marks
 
 ![Every vowel and mark in Diba on a dotted circle](documentation/proof-vowels.svg)
+
+## Samples
+
+![ܕܒܐ](documentation/word-1.svg)
+
+![ܚܕ ܒܢܝܣܢ](documentation/word-2.svg)
+
+![ܚܲܕ݇ ܒܢܝܼܣܵܢ](documentation/word-3.svg)
+
+![ܒܝܬ ܢܗܪ̈ܝܢ](documentation/word-4.svg)
+
+![ܫܠܡܐ ܘܫܝܢܐ](documentation/word-5.svg)
 
 All the images above are rendered from the built font by `make images`, so they
 always show the current font.
