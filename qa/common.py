@@ -6,9 +6,12 @@ LEFT edge (x = 0) meets the letter after it.
 """
 
 import collections
+import functools
 import os
 import re
 
+import glyphsLib
+import uharfbuzz as hb
 from fontTools.pens.basePen import BasePen
 from fontTools.ttLib import TTFont
 
@@ -211,7 +214,7 @@ def is_allowed(allowed, glyph, check, mark=None):
 
 # --- joints -------------------------------------------------------------------
 
-STEM = 40   # a joint this much taller/deeper than the bar is a stem, not a step
+STEM = 40     # a joint this much taller/deeper than the bar is a stem, not a step
 PROBE = 0.5   # where an edge is slanted, measure this far inside it
 DEEP = 20     # ...and look this far in, to catch a stroke that sags into the joint
 SAG = 3       # how far the stroke may drift within DEEP of the joint
@@ -308,11 +311,14 @@ def compare_seam(left, right, bar):
     return out
 
 
+@functools.lru_cache(maxsize=None)
+def _hb_font(path):
+    return hb.Font(hb.Face(hb.Blob.from_file_path(path)))
+
+
 def shape(path, text):
     """HarfBuzz output as [(glyph, x, y)] in visual (left-to-right) order."""
-    import uharfbuzz as hb
-    blob = hb.Blob.from_file_path(path)
-    hbfont = hb.Font(hb.Face(blob))
+    hbfont = _hb_font(path)
     buf = hb.Buffer()
     buf.add_str(text)
     buf.guess_segment_properties()
@@ -330,7 +336,7 @@ def seams(font, run, bar):
     `mismatch` when only one side of it is shaped to join."""
     letters = [(g, x) for g, x, _ in run if split_name(g)]
     out = []
-    for (lg, lx), (rg, rx) in zip(letters, letters[1:]):
+    for (lg, _), (rg, rx) in zip(letters, letters[1:]):
         l_joins, r_joins = joins(lg)[0], joins(rg)[1]
         if not (l_joins or r_joins):
             continue
@@ -346,8 +352,8 @@ def seams(font, run, bar):
 
 # --- marks --------------------------------------------------------------------
 
-MARK_GAP = 30   # QA warns when a mark comes closer than this to any letter
-MARK_TOUCH = 10 # ...and the tests fail when it comes closer than this
+MARK_GAP = 30     # QA warns when a mark comes closer than this to any letter
+MARK_TOUCH = 10   # ...and the tests fail when it comes closer than this
 
 # Copies of marks that a rule in `rlig` swaps in on one letter only, and the
 # letters they sit on. Checks place them on those letters and nowhere else.
@@ -355,6 +361,8 @@ CONTEXT_MARKS = {
     "uni0747.kaph": {"uni071F"},
     "uni0304.kaph": {"uni071F"},
 }
+DOTTED_CIRCLE = "\u25cc"
+
 # Anchors a letter carries for one particular mark, beside `top` and `bottom`:
 # the majlyana under Gamal and the semicircle touching Pe's bottom.
 LETTER_ONLY_ANCHORS = {"majlyana", "semicircle"}
@@ -367,7 +375,6 @@ def bases_for(mark, letters):
 
 def load_anchors(path=SOURCE):
     """{glyph: {anchor name: (x, y)}} from the Glyphs source."""
-    import glyphsLib
     font = glyphsLib.GSFont(path)
     return {g.name: {a.name: (a.position.x, a.position.y) for a in g.layers[0].anchors}
             for g in font.glyphs}
@@ -456,3 +463,14 @@ def neighbour_texts(font, mark_char):
             yield chr(a) + chr(b) + mark_char          # on b, a before it
             yield beth + chr(a) + mark_char + chr(b)   # on medial a, b after it
             yield chr(a) + chr(b) + mark_char + beth   # on medial b, a before it
+
+
+def signs(font):
+    """Every drawn character that is neither a letter nor a mark, and every
+    drawn mark, as text: marks are shown on a dotted circle."""
+    out, marks = [], []
+    for cp, g in sorted(font.cmap.items()):
+        if not font.glyph(g).polys or split_name(g):
+            continue
+        (marks if font.glyph(g).width == 0 else out).append(chr(cp))
+    return out, [DOTTED_CIRCLE + m for m in marks]

@@ -13,8 +13,8 @@ import sys
 from fontTools.pens.svgPathPen import SVGPathPen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import LETTERS, ROOT, Font, shape  # noqa: E402
-from proof import ALPHABET, signs  # noqa: E402
+from common import LETTERS, ROOT, Font, shape, signs  # noqa: E402
+from texts import ALPHABET  # noqa: E402
 
 DOCS = os.path.join(ROOT, "documentation")
 WIDTH = 1600          # width of the proof images, in pixels

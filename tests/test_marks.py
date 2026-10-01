@@ -1,32 +1,36 @@
-"""Pass/fail tests for mark anchors. Run with `make test`.
+"""Pass/fail tests for vowels and other marks. Run with `make test`.
 
 Letters carry `top` and `bottom`; marks above the line carry `_top` (where
 they attach) and `top` (where the next mark stacks); marks below carry
-`_bottom` and `bottom`; a mark with parts on both sides carries all four. The mark and mkmk features are generated from these
-anchors, so the last test checks the built font actually follows them.
+`_bottom` and `bottom`; a mark with parts on both sides carries all four.
+The mark and mkmk features are generated from these anchors, and the tests
+check that the built font follows them and that no mark touches a letter.
 """
 
 import os
 import sys
 
-import glyphsLib
 import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "qa"))
-from common import (LETTER_ONLY_ANCHORS, MARK_TOUCH, SOURCE, Font, bases_for,  # noqa: E402
-                    clearance, drawn_marks,
-                    is_allowed, label, load_allow, load_anchors, mark_collisions, neighbour_texts, place_mark,
+from common import (LETTER_ONLY_ANCHORS, MARK_TOUCH, Font, bases_for,  # noqa: E402
+                    clearance, drawn_marks, is_allowed, label, load_allow,
+                    load_anchors, mark_collisions, neighbour_texts, place_mark,
                     shape, split_name)
 
 FONT = Font()
-SRC = glyphsLib.GSFont(SOURCE)
-ANCHORS = {g.name: {a.name: (a.position.x, a.position.y) for a in g.layers[0].anchors}
-           for g in SRC.glyphs}
+ANCHORS = load_anchors()
 LETTERS = FONT.letters()
 MARKS = {name: a for name, a in ANCHORS.items() if "_top" in a or "_bottom" in a}
-REACH = 80   # a mark spans about this far either side of its anchor
-DRAWN = drawn_marks(FONT, load_anchors())
+DRAWN = drawn_marks(FONT, ANCHORS)
 ALLOW = load_allow()
+REACH = 80   # a mark spans about this far either side of its anchor
+
+
+def placed(run, glyph):
+    """(x, y) of the one `glyph` in a shaped run."""
+    (_, x, y), = [r for r in run if r[0] == glyph]
+    return x, y
 
 
 @pytest.mark.parametrize("glyph", LETTERS)
@@ -46,8 +50,10 @@ def test_letter_anchors_clear_the_ink(glyph):
     assert 0 <= bx <= g.width, f"bottom anchor x={bx} is outside the letter"
     over = [t for dx in range(-REACH, REACH + 1, 4) for _, t in g.ink_at_x(tx + dx + 0.5)]
     under = [b for dx in range(-REACH, REACH + 1, 4) for b, _ in g.ink_at_x(bx + dx + 0.5)]
-    assert not over or ty > max(over), f"top anchor y={ty} is inside the ink (reaches {max(over):.0f})"
-    assert not under or by < min(under), f"bottom anchor y={by} is inside the ink (reaches {min(under):.0f})"
+    assert not over or ty > max(over), \
+        f"top anchor y={ty} is inside the ink (reaches {max(over):.0f})"
+    assert not under or by < min(under), \
+        f"bottom anchor y={by} is inside the ink (reaches {min(under):.0f})"
 
 
 @pytest.mark.parametrize("mark", sorted(MARKS))
@@ -75,8 +81,7 @@ def test_marks_attach_at_anchors(glyph):
     for mark, base_anchor, mark_anchor in (("ܵ", "top", "_top"), ("ܼ", "bottom", "_bottom")):
         run = shape(FONT.path, chr(cp) + mark)
         mark_glyph = f"uni{ord(mark):04X}"
-        (_, mx, my), = [r for r in run if r[0] == mark_glyph]
-        (_, bx, by), = [r for r in run if r[0] == glyph]
+        (mx, my), (bx, by) = placed(run, mark_glyph), placed(run, glyph)
         want = (bx + ANCHORS[glyph][base_anchor][0] - ANCHORS[mark_glyph][mark_anchor][0],
                 by + ANCHORS[glyph][base_anchor][1] - ANCHORS[mark_glyph][mark_anchor][1])
         assert (mx, my) == want, f"{mark_glyph} on {label(glyph)} at {(mx, my)}, anchors say {want}"
@@ -101,8 +106,10 @@ def test_mark_sits_on_its_anchors(mark):
         assert y0 >= a["_top"][1] - 5, f"ink dips to y={y0:.0f}, below _top at {a['_top'][1]}"
         assert a["top"][1] > y1, f"top anchor y={a['top'][1]} is inside the ink (to {y1:.0f})"
     else:
-        assert y1 <= a["_bottom"][1] + 5, f"ink rises to y={y1:.0f}, above _bottom at {a['_bottom'][1]}"
-        assert a["bottom"][1] < y0, f"bottom anchor y={a['bottom'][1]} is inside the ink (to {y0:.0f})"
+        assert y1 <= a["_bottom"][1] + 5, \
+            f"ink rises to y={y1:.0f}, above _bottom at {a['_bottom'][1]}"
+        assert a["bottom"][1] < y0, \
+            f"bottom anchor y={a['bottom'][1]} is inside the ink (to {y0:.0f})"
 
 
 @pytest.mark.parametrize("mark", sorted(DRAWN))
@@ -153,8 +160,7 @@ def test_semicircle_touches_pe(text, mark, base):
     run = shape(FONT.path, text)
     names = [g for g, _, _ in run]
     assert mark in names, f"got {names}"
-    (_, mx, my), = [r for r in run if r[0] == mark]
-    (_, bx, by), = [r for r in run if r[0] == base]
+    (mx, my), (bx, by) = placed(run, mark), placed(run, base)
     d = clearance(FONT.glyph(mark), mx, my, FONT.glyph(base), bx, by)
     assert d is not None and -5 <= d <= 0, f"semicircle is {d} from Pe, should touch"
 
@@ -167,12 +173,11 @@ def test_majlyana_under_gamal_stroke(text, base):
     run = shape(FONT.path, text)
     names = [g for g, _, _ in run]
     assert "uni0330.gamal" in names, f"got {names}"
-    (_, mx, _), = [r for r in run if r[0] == "uni0330.gamal"]
-    (_, bx, _), = [r for r in run if r[0] == base]
-    g = FONT.glyph(base)
-    flat = [s for s in g.ink_at_y(-5)]            # the tail is the only ink below the baseline
-    tail_left = min(s[0] for s in flat)
-    centre = mx - bx + sum(FONT.glyph("uni0330.gamal").bounds[0::2]) / 2
-    assert centre < tail_left, f"majlyana centre x={centre:.0f} is over the tail (starts {tail_left:.0f})"
-    d = clearance(FONT.glyph("uni0330.gamal"), mx, [r for r in run if r[0] == "uni0330.gamal"][0][2], g, bx, 0)
+    (mx, my), (bx, by) = placed(run, "uni0330.gamal"), placed(run, base)
+    mark, gamal = FONT.glyph("uni0330.gamal"), FONT.glyph(base)
+    tail_left = min(s[0] for s in gamal.ink_at_y(-5))   # only the tail is below the baseline
+    centre = mx - bx + (mark.bounds[0] + mark.bounds[2]) / 2
+    assert centre < tail_left, \
+        f"majlyana centre x={centre:.0f} is over the tail (starts {tail_left:.0f})"
+    d = clearance(mark, mx, my, gamal, bx, by)
     assert d is not None and d >= 30, f"majlyana comes within {d:.0f} units of Gamal's tail"

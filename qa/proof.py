@@ -15,61 +15,11 @@ from fontTools.pens.svgPathPen import SVGPathPen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import (FONT, FORM_NAMES, LETTERS, MARK_GAP, MARK_TOUCH, OUT,  # noqa: E402
-                    bases_for,
-                    Font, clearance, drawn_marks, joins, label, load_anchors,
-                    mark_collisions, place_mark, seams, shape, split_name)
-
-ALPHABET = "ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ"
-
-WORDS = """ܫܠܡܐ ܐܬܘܪܝܐ ܣܘܪܝܝܐ ܟܬܒܐ ܥܠܡܐ ܡܠܟܐ ܐܠܗܐ ܕܝܒܐ ܢܘܗܪܐ ܒܪܢܫܐ
-ܡܕܢܚܐ ܥܕܬܐ ܠܫܢܐ ܣܦܪܐ ܦܬܓܡܐ ܨܠܘܬܐ ܛܘܒܐ ܙܒܢܐ ܓܢܬܐ ܩܠܐ ܚܘܒܐ
-ܡܝܐ ܝܘܡܐ ܠܠܝܐ ܐܪܥܐ ܫܡܝܐ ܩܕܝܫܐ ܚܝܐ ܒܝܬ ܢܗܪܝܢ""".split()
-
-PRAYER = ("ܐܒܘܢ ܕܒܫܡܝܐ ܢܬܩܕܫ ܫܡܟ ܬܐܬܐ ܡܠܟܘܬܟ ܢܗܘܐ ܨܒܝܢܟ ܐܝܟܢܐ ܕܒܫܡܝܐ "
-          "ܐܦ ܒܐܪܥܐ ܗܒ ܠܢ ܠܚܡܐ ܕܣܘܢܩܢܢ ܝܘܡܢܐ ܘܫܒܘܩ ܠܢ ܚܘܒܝܢ ܘܚܛܗܝܢ "
-          "ܐܝܟܢܐ ܕܐܦ ܚܢܢ ܫܒܩܢ ܠܚܝܒܝܢ ܘܠܐ ܬܥܠܢ ܠܢܣܝܘܢܐ ܐܠܐ ܦܨܢ ܡܢ ܒܝܫܐ")
-
-ZWJ = "\u200d"
-DOTTED_CIRCLE = "\u25cc"
-
-# Punctuation in use: a sentence ending, a pause, a paragraph end.
-PUNCTUATED = ("ܐܒܘܢ ܕܒܫܡܝܐ. ܢܬܩܕܫ ܫܡܟ: ܬܐܬܐ ܡܠܟܘܬܟ܁ ܢܗܘܐ ܨܒܝܢܟ܂ "
-              "ܐܝܟܢܐ ܕܒܫܡܝܐ܅ ܐܦ ܒܐܪܥܐ܀")
-
-
-def signs(font):
-    """Every drawn character that is neither a letter nor a mark, and every
-    drawn mark, as text: marks are shown on a dotted circle."""
-    out, marks = [], []
-    for cp, g in sorted(font.cmap.items()):
-        if not font.glyph(g).polys or split_name(g):
-            continue
-        (marks if font.glyph(g).width == 0 else out).append(chr(cp))
-    return out, [DOTTED_CIRCLE + m for m in marks]
-
-# Vowelled text is written with ASCII stand-ins for the marks, which are hard
-# to type and to read in source: a ptaha, A zqapa, e zlama psiqa, E zlama
-# qashya, i/u hbasa-esasa (under Yudh/Waw), o rwaha, q qushshaya, r rukkakha,
-# s syame.
-MARK_KEYS = {"a": "\u0732", "A": "\u0735", "e": "\u0738", "E": "\u0739", "i": "\u073C",
-             "u": "\u073C", "o": "\u073F", "q": "\u0741", "r": "\u0742", "s": "\u0308"}
-
-
-def vowel(text):
-    return "".join(MARK_KEYS.get(ch, ch) for ch in text)
-
-
-VOWELLED_WORDS = [vowel(w) for w in """ܫܠAܡAܐ ܐAܬrܘoܪAܝAܐ ܣܘuܪAܝAܐ ܟܬrAܒrAܐ ܟܬrAܒrEsܐ
-ܡaܠܟAܐ ܡaܠܟEsܐ ܥAܠܡAܐ ܐaܠAܗAܐ ܕEܐܒrAܐ ܢܘuܗܪAܐ ܝAܘܡAܐ ܠeܠܝAܐ ܡaܕܢܚAܐ
-ܥEܕܬrAܐ ܠeܫAܢAܐ ܣeܦܪEsܐ ܨܠܘoܬrAܐ ܛܘoܒrAܐ ܚܘuܒAܐ ܡaܝAܐ ܩaܕܝiܫAܐ ܚaܝEsܐ
-ܟqaܠܒqAܐ ܒܝiܬ ܢaܗܪܝiܢ""".split()]
-
-VOWELLED_PRAYER = vowel(
-    "ܐaܒܘuܢ ܕܒaܫܡaܝAܐ ܢeܬܩaܕaܫ ܫܡAܟr ܬEܐܬEܐ ܡaܠܟܘuܬrAܟr ܢeܗܘEܐ ܨeܒܝAܢAܟr "
-    "ܐaܝܟaܢAܐ ܕܒaܫܡaܝAܐ ܐAܦ ܒܐaܪܥAܐ ܗaܒ ܠaܢ ܠaܚܡAܐ ܕܣܘuܢܩAܢaܢ ܝAܘܡAܢAܐ "
-    "ܘaܫܒܘoܩ ܠaܢ ܚAܘܒaܝܢ ܘܚAܛAܗaܝܢ ܐaܝܟaܢAܐ ܕܐAܦ ܚܢaܢ ܫܒaܩܢ ܠܚaܝAܒaܝܢ "
-    "ܘܠAܐ ܬaܥܠaܢ ܠܢeܣܝܘoܢAܐ ܐeܠAܐ ܦaܨAܢ ܡeܢ ܒܝiܫAܐ")
-
+                    Font, bases_for, clearance, drawn_marks, joins, label,
+                    load_anchors, mark_collisions, place_mark, seams, shape,
+                    signs, split_name)
+from texts import (ALPHABET, PRAYER, PUNCTUATED, VOWELLED_PRAYER,  # noqa: E402
+                   VOWELLED_WORDS, WORDS)
 
 class Drawing:
     """Accumulates glyph uses and guides for one SVG, in font units."""
@@ -95,8 +45,8 @@ class Drawing:
         self.marks.append(f'<circle class="{cls}" cx="{x}" cy="{-y}" r="34"/>')
         return self
 
-    def svg(self, height, pad=60, crop=None):
-        x0, x1 = crop if crop else (self.x0 - pad, self.x1 + pad)
+    def svg(self, height, pad=60):
+        x0, x1 = self.x0 - pad, self.x1 + pad
         bottom, top = self.qa["bar"]
         guides = []
         for y in sorted(set(self.qa["levels"]) | {bottom, top}):
@@ -144,8 +94,10 @@ def main():
     # Tall enough for the highest letter with a mark on it, and the lowest.
     tops = [anchors[g]["top"][1] for g in letters if "top" in anchors[g]]
     bottoms = [anchors[g]["bottom"][1] for g in letters if "bottom" in anchors[g]]
-    above = [font.glyph(m).bounds[3] - anchors[m]["_top"][1] for m, p in marks.items() if p[0] == "top"]
-    below = [font.glyph(m).bounds[1] - anchors[m]["_bottom"][1] for m, p in marks.items() if p[0] == "bottom"]
+    above = [font.glyph(m).bounds[3] - anchors[m]["_top"][1]
+             for m, (side, _) in marks.items() if side == "top"]
+    below = [font.glyph(m).bounds[1] - anchors[m]["_bottom"][1]
+             for m, (side, _) in marks.items() if side == "bottom"]
     lo = min([font.glyph(g).bounds[1] for g in letters] +
              ([min(bottoms) + min(below)] if below else [])) - 60
     hi = max([font.glyph(g).bounds[3] for g in letters] +
@@ -163,7 +115,7 @@ def main():
             notes.append(item)
         else:
             by_glyph[item["glyph"]].append(item)
-    order = {"error": 0, "warning": 1, "info": 2}
+    order = {"error": 0, "warning": 1, "info": 2}   # most serious first
     partner_right = "uni0712.init"   # Beth, joins on its left
     partner_left = "uni0712.fina"    # Beth, joins on its right
     cards = []
@@ -234,10 +186,11 @@ def main():
             run = shape(font.path, chr(a) + chr(b))
             used.update(g for g, _, _ in run)
             d = drawing().run(run)
-            problems = [p for s in seams(font, run, bar) for p in s["problems"]]
+            problems = []
             for s in seams(font, run, bar):
-                for y, _ in s["problems"]:
+                for y, message in s["problems"]:
                     d.mark(s["x"], y)
+                    problems.append((y, message))
             if problems:
                 bad_pairs.append((a, b, problems))
             title = f"{LETTERS[a][0]} + {LETTERS[b][0]}" + \
@@ -300,9 +253,8 @@ def main():
     vowelled_big = "".join(f"<div>{words_svg(' '.join(line), 150)}</div>"
                            for line in chunks(VOWELLED_PRAYER.split(), 5))
     # Marks beside every letter: the neighbour collisions the QA found.
-    neighbour = "".join(
-        f"<figure>{words_svg(i['message'].rsplit('in ', 1)[1].lstrip(chr(0x200e)), 110)}</figure>"
-        for i in qa["items"] if i["check"] == "mark-neighbour")
+    neighbour = "".join(f"<figure>{words_svg(i['example'], 110)}</figure>"
+                        for i in qa["items"] if i["check"] == "mark-neighbour")
 
     waterfall = "".join(f'<p class="syr live" style="font-size:{s}px">'
                         f'<span class="size">{s}px</span>{esc(PRAYER[:90])}</p>'
@@ -323,7 +275,8 @@ def main():
         words=word_svgs, stress=stress, prayer=esc(PRAYER), alphabet=esc(ALPHABET),
         spaced=esc(" ".join(ALPHABET)), waterfall=waterfall,
         big=words_svg(PRAYER[:60], 160), alpha_svg=words_svg(ALPHABET, 120),
-        MARK_TOUCH=MARK_TOUCH, MARK_GAP=MARK_GAP, mark_head=mark_head, mark_rows="".join(mark_rows), mark_bad=mark_bad,
+        MARK_TOUCH=MARK_TOUCH, MARK_GAP=MARK_GAP, mark_head=mark_head,
+        mark_rows="".join(mark_rows), mark_bad=mark_bad,
         mark_total=len(letters) * len(marks), vowelled=vowelled, vowelled_big=vowelled_big,
         neighbour=neighbour or "<p>None.</p>", vprayer=esc(VOWELLED_PRAYER),
         signs=sign_svgs, punctuated=punctuated, punctuated_live=esc(PUNCTUATED))

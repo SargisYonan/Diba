@@ -16,7 +16,7 @@ help:
 	@echo "  make all         build, qa, proof, images, then test"
 	@echo "  make ci          what GitHub runs on every push: fails on any QA error,"
 	@echo "                   failing test or fontbakery failure"
-	@echo "  make clean       remove out/ and the built font"
+	@echo "  make clean       remove out/ and caches (the committed font is kept)"
 	@echo ""
 	@echo "To check a font exported from Glyphs instead of building one:"
 	@echo "  make qa proof FONT=path/to/Diba-Regular.ttf"
@@ -28,6 +28,15 @@ $(VENV)/.done: requirements.txt
 	touch $@
 
 venv: $(VENV)/.done
+
+# Stamp the font with the source's last commit time rather than the build
+# time, so rebuilding an unchanged source gives an identical font.
+SOURCE_DATE_EPOCH ?= $(shell git log -1 --format=%ct -- $(SOURCE) 2>/dev/null)
+ifneq ($(SOURCE_DATE_EPOCH),)
+export SOURCE_DATE_EPOCH
+else
+unexport SOURCE_DATE_EPOCH
+endif
 
 $(FONT): $(SOURCE) $(VENV)/.done
 	@mkdir -p fonts
@@ -61,7 +70,7 @@ IMAGES := $(addprefix documentation/,word-1.svg word-2.svg word-3.svg word-4.svg
 	alphabet.svg proof-charset.svg proof-forms.svg proof-joins.svg proof-vowels.svg)
 
 # One run writes all the images.
-documentation/word-1.svg: $(FONT) qa/specimen.py qa/proof.py $(VENV)/.done
+documentation/word-1.svg: $(FONT) qa/specimen.py qa/texts.py qa/common.py $(VENV)/.done
 	FONT=$(FONT) $(PY) qa/specimen.py
 $(filter-out documentation/word-1.svg,$(IMAGES)): documentation/word-1.svg
 
@@ -79,6 +88,6 @@ ci: $(VENV)/.done
 	$(MAKE) fontbakery proof images
 
 clean:
-	rm -rf out $(FONT) master_ufo instance_ufo .pytest_cache
+	rm -rf out master_ufo instance_ufo .pytest_cache qa/__pycache__ tests/__pycache__
 
 .PHONY: help venv build qa test fontbakery proof images all ci clean

@@ -1,40 +1,25 @@
-# Problems you have looked at and decided are intentional.
-# One per line: <glyph name> <check name>   # why
-# Use * as the glyph to silence a check everywhere. For mark-neighbour, a
-# third field names the one mark excused: <glyph> mark-neighbour <mark>.
+# Problems looked at and accepted as intentional. qa/check.py and the tests
+# skip anything listed here.
 #
-# uni0722 overhang   # Nun's tail is meant to sweep under the letter before
-uni0718 corner        # Waw: bottom-left corner is rounded on purpose
-uni0718.fina corner   # Waw: bottom-left corner is rounded on purpose
-uni071F.fina corner   # Kaph final: corners are as intended
-uni0712 corner        # Beth: radius-5 inside corner on purpose
+#   <glyph> <check>                   # why
+#   * <check>                         # silence a check everywhere
+#   <glyph> mark-neighbour <mark>     # excuse one mark next to this letter
+
+# Not drawn, and not needed.
+uni0714 missing          # Gamal Garshuni
+uni071C missing          # Teth Garshuni
+uni071E missing          # Yudh He
+uni0727 missing          # Reversed Pe
+
+# Corners rounded differently from the rest, by design.
+uni0710 corner           # Alaph: the long curve from the diagonal into the bottom stroke
+uni0710.fin2 corner
+uni0710.fin3 corner
+uni0712 corner           # Beth: radius-5 inside corner
 uni0712.fina corner
 uni0712.medi corner
 uni0712.init corner
-uni0717 corner        # He: corners as intended
-uni0717.fina corner
-uni0722.init corner   # Nun: corners as intended
-uni0722.medi corner
-uni0721 corner        # Mim: corners as intended
-uni0721.fina corner
-uni0726 corner        # Pe: radius-5 corners on purpose
-uni0726.fina corner
-uni0726.medi corner
-uni0726.init corner
-uni072B corner        # Shin: sharp inside corner on purpose
-uni072B.fina corner
-uni072B.medi corner
-uni072B.init corner
-uni0722 overhang      # Nun: tail sweeps under the letter before on purpose
-uni0714 missing       # Gamal Garshuni: not needed
-uni071C missing       # Teth Garshuni: not needed
-uni0727 missing       # Reversed Pe: not needed
-uni0722 mark-neighbour # Nun: tail sweeps under below-vowels on the letter before; accepted
-uni071E missing       # Yudh He: not needed
-uni0710 corner        # Alaph: the long curve from the diagonal into the bottom stroke
-uni0710.fin2 corner
-uni0710.fin3 corner
-uni0715 corner        # Dalath/Rish: rounded tip of the slanted end, as designed
+uni0715 corner           # Dalath, Dotless Dalath Rish, Rish: rounded tip of the slanted end
 uni0715.fina corner
 uni0716 corner
 uni0716.fina corner
@@ -42,5 +27,30 @@ uni072A corner
 uni072A.fina corner
 uni072A.syame corner
 uni072A.fina.syame corner
-uni071F mark-neighbour uni032E   # Kaph isolated: semicircle under the letter before comes within 21; accepted
-uni0722.fina mark-neighbour uni032E   # Nun final: semicircle under the letter before comes within 30; accepted
+uni0717 corner           # He
+uni0717.fina corner
+uni0718 corner           # Waw: rounded bottom-left corner
+uni0718.fina corner
+uni071F.fina corner      # Kaph final
+uni0721 corner           # Mim
+uni0721.fina corner
+uni0722.init corner      # Nun
+uni0722.medi corner
+uni0726 corner           # Pe: radius-5 corners
+uni0726.fina corner
+uni0726.medi corner
+uni0726.init corner
+uni072B corner           # Shin: sharp inside corner
+uni072B.fina corner
+uni072B.medi corner
+uni072B.init corner
+
+# Nun's tail sweeps under the letter before it, by design: past its own
+# edge, and into vowels written under that letter.
+uni0722 overhang
+uni0722 mark-neighbour
+
+# The semicircle below comes close to these letters when it sits on the
+# letter before them (within 21 and 30 units). Accepted.
+uni071F mark-neighbour uni032E        # Kaph isolated
+uni0722.fina mark-neighbour uni032E   # Nun final

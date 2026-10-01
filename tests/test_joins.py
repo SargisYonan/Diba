@@ -12,22 +12,18 @@ import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "qa"))
 from check import bar_metrics  # noqa: E402
-from common import (LETTERS, Font, joins, joint_problems, label,  # noqa: E402
-                    load_allow, seams, shape)
+from common import (LETTERS, Font, is_allowed, joins, joint_problems,  # noqa: E402
+                    label, load_allow, seams, shape)
 
 FONT = Font()
 LETTER_GLYPHS = FONT.letters()
 BAR = bar_metrics(FONT, LETTER_GLYPHS)
-MID = (BAR[0] + BAR[1]) / 2
 DRAWN = FONT.drawn_codepoints()
 ALLOW = load_allow()
 
 SIDES = [(g, side) for g in LETTER_GLYPHS
          for side, on in zip(("right", "left"), joins(g)) if on]
 
-
-def allowed(glyph, check):
-    return (glyph, check) in ALLOW or ("*", check) in ALLOW
 
 
 @pytest.mark.parametrize("cp", [cp for cp in LETTERS if cp in DRAWN],
@@ -47,7 +43,7 @@ def test_joint_matches_connecting_stroke(glyph, side):
     past the stroke are fine."""
     problems = [msg for check, (_, size, msg) in
                 joint_problems(FONT.glyph(glyph), side, BAR).items()
-                if not allowed(glyph, check) and size >= (1 if check == "join-sag" else 0.5)]
+                if not is_allowed(ALLOW, glyph, check) and size >= (1 if check == "join-sag" else 0.5)]
     assert not problems, f"{label(glyph)}, {side} edge: " + "; ".join(problems)
 
 

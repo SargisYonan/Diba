@@ -1,14 +1,16 @@
-"""Checks the letters of Diba for joining and outline problems.
+"""Checks Diba's letters, joins and marks.
 
     python qa/check.py            report everything
-    python qa/check.py --strict   exit 1 if there are errors (used by make test)
+    python qa/check.py --strict   exit 1 if there are errors (used by make ci)
+    python qa/check.py --quiet    only write out/qa.json
 
-Joins are measured on the built font (fonts/Diba-Regular.ttf), which is what
-applications see. Corners and alignment are measured on the Glyphs source,
-which is what you edit. Every problem is written to out/qa.json as well, for
-qa/proof.py to draw on the proof sheet.
+Joins and marks are measured on the built font (fonts/Diba-Regular.ttf), which
+is what applications see. Corners and alignment are measured on the Glyphs
+source, which is what you edit. Every problem is written to out/qa.json as
+well, for qa/proof.py to draw on the proof sheet.
 
-Silence something you meant to do by adding "<glyph> <check>" to qa/allow.txt.
+Silence something you meant to do by adding "<glyph> <check>" to
+qa/allow.txt, or "<glyph> mark-neighbour <mark>" to excuse a single mark.
 """
 
 import argparse
@@ -21,11 +23,11 @@ import sys
 import glyphsLib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import (LETTERS, MARK_GAP, MARK_TOUCH, OUT, PROBE, SAG,  # noqa: E402
-                    bases_for,
-                    SOURCE, Font, clearance, drawn_marks, edge_reach,
-                    is_allowed, joint_problems, joins, label, load_allow, load_anchors,
-                    mark_collisions, mode, neighbour_texts, place_mark, run_at, shape, split_name)
+from common import (LETTERS, MARK_GAP, MARK_TOUCH, OUT, PROBE, SAG, SOURCE,  # noqa: E402
+                    Font, bases_for, clearance, drawn_marks, edge_reach,
+                    is_allowed, joint_problems, joins, label, load_allow,
+                    load_anchors, mark_collisions, mode, neighbour_texts,
+                    place_mark, run_at, shape, split_name)
 
 OVERHANG = 10      # ink this far past the advance width is flagged
 NEAR_LEVEL = 15    # a flat edge this close to a common height is flagged
@@ -39,18 +41,27 @@ class Report:
     def __init__(self, allowed):
         self.items, self.allowed, self.silenced = [], allowed, 0
 
-    def add(self, severity, check, glyph, message, x=None, y=None, mark=None):
+    def add(self, severity, check, glyph, message, x=None, y=None, mark=None, example=None):
+        """Record a problem; `x`, `y` place it on the glyph for the proof sheet,
+        `mark` names the mark involved, and `example` is text that shows it."""
         if is_allowed(self.allowed, glyph, check, mark):
             self.silenced += 1
             return
-        self.items.append(dict(severity=severity, check=check, glyph=glyph,
-                               label=label(glyph), message=message,
-                               x=None if x is None else round(x),
-                               y=None if y is None else round(y)))
+        item = dict(severity=severity, check=check, glyph=glyph, label=label(glyph),
+                    message=message, x=None if x is None else round(x),
+                    y=None if y is None else round(y))
+        if example:
+            item["example"] = example
+        self.items.append(item)
 
 
 def r1(v):
     return round(v, 1) if abs(v - round(v)) > 0.05 else int(round(v))
+
+
+def distance(d):
+    """How close a mark comes, in words."""
+    return f"overlaps it by {-round(d)}" if d < 0 else f"comes within {round(d)}"
 
 
 # --- joins ------------------------------------------------------------------
@@ -367,7 +378,8 @@ def check_marks(font, letters, report):
 
     gdef = font.tt["GDEF"].table.GlyphClassDef.classDefs
     for g, cls in gdef.items():
-        if cls == 3 and font.glyph(g).polys and not any(a.startswith("_") for a in anchors.get(g, {})):
+        attaches = any(a.startswith("_") for a in anchors.get(g, {}))
+        if cls == 3 and font.glyph(g).polys and not attaches:
             report.add("error", "anchor", g, "mark has no attaching anchor, so it is "
                        "drawn beside the letter instead of on it")
 
@@ -389,8 +401,8 @@ def check_marks(font, letters, report):
             d = clearance(font.glyph(mark), x, y, font.glyph(g), 0, 0)
             if d is not None and d < MARK_GAP:
                 report.add(grade(d), "mark-clearance", g,
-                           f"{mark} {'overlaps it by ' + str(-round(d)) if d < 0 else 'comes within ' + str(round(d))} "
-                           f"units; move the {pair[0]} anchor", *anchors[g][pair[0]])
+                           f"{mark} {distance(d)} units; move the {pair[0]} anchor",
+                           *anchors[g][pair[0]])
 
     # Marks running into the letters beside their own, in shaped text.
     worst = {}
@@ -401,8 +413,8 @@ def check_marks(font, letters, report):
                     worst[mark, other] = (d, text)
     for (mark, other), (d, text) in sorted(worst.items()):
         report.add(grade(d), "mark-neighbour", other,
-                   f"{mark} on the letter beside it {'overlaps it by ' + str(-round(d)) if d < 0 else 'comes within ' + str(round(d))} "
-                   f"units, e.g. in \u200e{text}", mark=mark)
+                   f"{mark} on the letter beside it {distance(d)} units, e.g. in \u200e{text}",
+                   mark=mark, example=text)
 
     for side in ("top", "bottom"):
         group = [m for m, (base, _) in drawn.items() if base == side]
@@ -412,7 +424,8 @@ def check_marks(font, letters, report):
                 d = clearance(font.glyph(second), x, y, font.glyph(first), 0, 0)
                 if d is not None and d < MARK_GAP:
                     report.add(grade(d), "mark-stack", first,
-                               f"{second} stacked on it comes within {round(d)} units", *anchors[first][side])
+                               f"{second} stacked on it {distance(d)} units",
+                               *anchors[first][side])
 
 
 # --- output -------------------------------------------------------------------
