@@ -2,33 +2,9 @@
 .appVersion = "3532";
 .formatVersion = 3;
 DisplayStrings = (
-"ܵ",
-"/uni0728.fina",
-"ܟ",
-"/uni070F",
-"݇",
-"/uni0732.above",
-"܁",
-"܊",
-"/uni0710.fina",
-"ܑ",
-"܀",
-"/uni0726.init",
-"̮",
-"̰",
-"/uni0713.init",
-"/uni0726.fina",
-"/uni0726.medi",
 "̃",
-"/uni072A.fina",
-"̄",
-"݂",
-"̈",
-"̇",
-"̠",
-"̱",
-"̤",
-"̣"
+"̰",
+"/uni0330.gamal"
 );
 customParameters = (
 {
@@ -1940,12 +1916,12 @@ layers = (
 {
 anchors = (
 {
-name = majlyana;
-pos = (205,-50);
-},
-{
 name = bottom;
 pos = (328,-231);
+},
+{
+name = majlyana;
+pos = (205,-50);
 },
 {
 name = top;
@@ -2047,12 +2023,12 @@ layers = (
 {
 anchors = (
 {
-name = majlyana;
-pos = (205,-50);
-},
-{
 name = bottom;
 pos = (328,-231);
+},
+{
+name = majlyana;
+pos = (205,-50);
 },
 {
 name = top;
@@ -2150,12 +2126,12 @@ layers = (
 {
 anchors = (
 {
-name = majlyana;
-pos = (132,-50);
-},
-{
 name = bottom;
 pos = (246,-231);
+},
+{
+name = majlyana;
+pos = (132,-50);
 },
 {
 name = top;
@@ -2253,12 +2229,12 @@ layers = (
 {
 anchors = (
 {
-name = majlyana;
-pos = (132,-50);
-},
-{
 name = bottom;
 pos = (246,-231);
+},
+{
+name = majlyana;
+pos = (132,-50);
 },
 {
 name = top;
@@ -5799,12 +5775,12 @@ layers = (
 {
 anchors = (
 {
-name = semicircle;
-pos = (380,2);
-},
-{
 name = bottom;
 pos = (380,-50);
+},
+{
+name = semicircle;
+pos = (380,2);
 },
 {
 name = top;
@@ -5877,12 +5853,12 @@ layers = (
 {
 anchors = (
 {
-name = semicircle;
-pos = (380,2);
-},
-{
 name = bottom;
 pos = (380,-50);
+},
+{
+name = semicircle;
+pos = (380,2);
 },
 {
 name = top;
@@ -5948,12 +5924,12 @@ layers = (
 {
 anchors = (
 {
-name = semicircle;
-pos = (298,2);
-},
-{
 name = bottom;
 pos = (298,-50);
+},
+{
+name = semicircle;
+pos = (298,2);
 },
 {
 name = top;
@@ -6016,12 +5992,12 @@ layers = (
 {
 anchors = (
 {
-name = semicircle;
-pos = (298,2);
-},
-{
 name = bottom;
 pos = (298,-50);
+},
+{
+name = semicircle;
+pos = (298,2);
 },
 {
 name = top;
@@ -7784,7 +7760,7 @@ unicode = 1866;
 },
 {
 glyphname = uni0303;
-lastChange = "2026-09-30 06:56:34 +0000";
+lastChange = "2026-10-01 04:13:49 +0000";
 layers = (
 {
 anchors = (
@@ -7794,7 +7770,7 @@ pos = (0,431);
 },
 {
 name = top;
-pos = (0,680);
+pos = (0,581);
 }
 );
 layerId = m01;
@@ -7802,18 +7778,35 @@ shapes = (
 {
 closed = 1;
 nodes = (
-(-89,538,o),
-(-82,616,o),
-(-29,528,cs),
-(35,419,o),
-(35,579,o),
-(78,522,cs),
-(99,494,o),
-(20,460,o),
-(20,460,c),
-(-36,441,o),
-(-35,540,o),
-(-99,508,c)
+);
+},
+{
+closed = 1;
+nodes = (
+(112,530,c),
+(108,501,o),
+(80,489,o),
+(57,489,cs),
+(42,489,o),
+(25,499,o),
+(8,509,cs),
+(-11,520,o),
+(-31,531,o),
+(-53,531,cs),
+(-97,531,o),
+(-107,499,o),
+(-112,442,c),
+(-106,471,o),
+(-79,483,o),
+(-56,483,cs),
+(-41,483,o),
+(-26,475,o),
+(-8,464,cs),
+(10,453,o),
+(31,441,o),
+(54,441,cs),
+(98,441,o),
+(108,473,o)
 );
 }
 );
@@ -8722,7 +8715,7 @@ note = uni032E;
 },
 {
 glyphname = uni0330;
-lastChange = "2026-09-30 06:56:59 +0000";
+lastChange = "2026-10-01 04:13:45 +0000";
 layers = (
 {
 anchors = (
@@ -8732,7 +8725,7 @@ pos = (0,62);
 },
 {
 name = bottom;
-pos = (0,-187);
+pos = (0,-79);
 }
 );
 layerId = m01;
@@ -8740,18 +8733,30 @@ shapes = (
 {
 closed = 1;
 nodes = (
-(-89,-1,o),
-(-82,77,o),
-(-29,-11,cs),
-(35,-120,o),
-(35,40,o),
-(78,-17,cs),
-(99,-45,o),
-(20,-79,o),
-(20,-79,c),
-(-36,-98,o),
-(-35,1,o),
-(-99,-31,c)
+(113,60,c),
+(109,31,o),
+(81,19,o),
+(58,19,cs),
+(43,19,o),
+(26,29,o),
+(9,39,cs),
+(-10,50,o),
+(-30,61,o),
+(-52,61,cs),
+(-96,61,o),
+(-107,29,o),
+(-112,-28,c),
+(-106,1,o),
+(-78,13,o),
+(-55,13,cs),
+(-40,13,o),
+(-25,5,o),
+(-7,-6,cs),
+(11,-17,o),
+(32,-29,o),
+(55,-29,cs),
+(99,-29,o),
+(108,3,o)
 );
 }
 );
@@ -8763,7 +8768,7 @@ unicode = 816;
 },
 {
 glyphname = uni0330.gamal;
-lastChange = "2026-09-30 06:56:59 +0000";
+lastChange = "2026-10-01 04:13:41 +0000";
 layers = (
 {
 anchors = (
@@ -8773,7 +8778,7 @@ pos = (0,62);
 },
 {
 name = bottom;
-pos = (0,-187);
+pos = (0,-79);
 }
 );
 layerId = m01;
@@ -8781,18 +8786,30 @@ shapes = (
 {
 closed = 1;
 nodes = (
-(-89,-1,o),
-(-82,77,o),
-(-29,-11,cs),
-(35,-120,o),
-(35,40,o),
-(78,-17,cs),
-(99,-45,o),
-(20,-79,o),
-(20,-79,c),
-(-36,-98,o),
-(-35,1,o),
-(-99,-31,c)
+(113,60,c),
+(109,31,o),
+(81,19,o),
+(58,19,cs),
+(43,19,o),
+(26,29,o),
+(9,39,cs),
+(-10,50,o),
+(-30,61,o),
+(-52,61,cs),
+(-96,61,o),
+(-107,29,o),
+(-112,-28,c),
+(-106,1,o),
+(-78,13,o),
+(-55,13,cs),
+(-40,13,o),
+(-25,5,o),
+(-7,-6,cs),
+(11,-17,o),
+(32,-29,o),
+(55,-29,cs),
+(99,-29,o),
+(108,3,o)
 );
 }
 );
@@ -9902,6 +9919,15 @@ value = "Copyright 2026 Sargis S Yonan (yonan.org)";
 );
 },
 {
+key = descriptions;
+values = (
+{
+language = dflt;
+value = "A mid-century Assyrian typeface inspired by calligraphy of Issa Benyamin";
+}
+);
+},
+{
 key = designers;
 values = (
 {
@@ -9928,7 +9954,34 @@ key = licenseURL;
 value = "https://openfontlicense.org";
 },
 {
+key = manufacturers;
+values = (
+{
+language = dflt;
+value = "Sargis S Yonan";
+}
+);
+},
+{
 key = postscriptFullNames;
+values = (
+{
+language = dflt;
+value = "";
+}
+);
+},
+{
+key = sampleTexts;
+values = (
+{
+language = dflt;
+value = "ܫܠܡܐ ܘܫܝܢܐ";
+}
+);
+},
+{
+key = trademarks;
 values = (
 {
 language = dflt;
@@ -9946,6 +9999,6 @@ disablesAutomaticAlignment = 1;
 disablesNiceNames = 1;
 };
 unitsPerEm = 1000;
-versionMajor = 0;
-versionMinor = 1;
+versionMajor = 1;
+versionMinor = 0;
 }

@@ -7,13 +7,16 @@ PY     := $(VENV)/bin/python
 
 help:
 	@echo "Diba"
-	@echo "  make build   compile $(FONT) from $(SOURCE)"
-	@echo "  make qa      report problems with the letters and joins"
-	@echo "  make test    pass/fail tests for joins and marks"
-	@echo "  make proof   write out/proof.html and open it"
-	@echo "  make images  render the text proofs in documentation/ (linked from the README)"
-	@echo "  make all     build, qa, proof, images, then test"
-	@echo "  make clean   remove out/ and the built font"
+	@echo "  make build       compile $(FONT) from $(SOURCE)"
+	@echo "  make qa          report problems with the letters, joins and marks"
+	@echo "  make test        pass/fail tests for joins, marks and coverage"
+	@echo "  make fontbakery  run fontbakery's universal checks (report in out/)"
+	@echo "  make proof       write out/proof.html and open it"
+	@echo "  make images      render the README images into documentation/"
+	@echo "  make all         build, qa, proof, images, then test"
+	@echo "  make ci          what GitHub runs on every push: fails on any QA error,"
+	@echo "                   failing test or fontbakery failure"
+	@echo "  make clean       remove out/ and the built font"
 	@echo ""
 	@echo "To check a font exported from Glyphs instead of building one:"
 	@echo "  make qa proof FONT=path/to/Diba-Regular.ttf"
@@ -35,29 +38,47 @@ $(FONT): $(SOURCE) $(VENV)/.done
 
 build: $(FONT)
 
-qa: $(if $(filter command line,$(origin FONT)),,$(FONT)) $(VENV)/.done
+# Use the font given on the command line as is; otherwise build it first.
+FONT_DEP := $(if $(filter command line,$(origin FONT)),,$(FONT))
+
+qa: $(FONT_DEP) $(VENV)/.done
 	FONT=$(FONT) $(PY) qa/check.py
 
-test: $(if $(filter command line,$(origin FONT)),,$(FONT)) $(VENV)/.done
+test: $(FONT_DEP) $(VENV)/.done
 	FONT=$(FONT) $(PY) -m pytest tests -q
 
-proof: $(if $(filter command line,$(origin FONT)),,$(FONT)) $(VENV)/.done
+fontbakery: $(FONT_DEP) $(VENV)/.done
+	@mkdir -p out
+	$(VENV)/bin/fontbakery check-universal $(FONT) --succinct -C \
+		--html out/fontbakery.html --ghmarkdown out/fontbakery.md
+
+proof: $(FONT_DEP) $(VENV)/.done
 	FONT=$(FONT) $(PY) qa/check.py --quiet
 	FONT=$(FONT) $(PY) qa/proof.py
-	@open out/proof.html 2>/dev/null || true
+	@[ -n "$$CI" ] || open out/proof.html 2>/dev/null || true
 
-IMAGES := documentation/proof-text.png documentation/proof-joins.png documentation/proof-vowels.png
+IMAGES := $(addprefix documentation/,word-1.svg word-2.svg word-3.svg word-4.svg word-5.svg \
+	proof-charset.svg proof-joins.svg proof-vowels.svg)
 
 # One run writes all the images.
-documentation/proof-text.png: $(FONT) qa/specimen.py qa/proof.py $(VENV)/.done
+documentation/word-1.svg: $(FONT) qa/specimen.py qa/proof.py $(VENV)/.done
 	FONT=$(FONT) $(PY) qa/specimen.py
-documentation/proof-joins.png documentation/proof-vowels.png: documentation/proof-text.png
+$(filter-out documentation/word-1.svg,$(IMAGES)): documentation/word-1.svg
 
 images: $(IMAGES)
 
 all: build qa proof images test
 
+# Always rebuild from the source, so CI tests the source rather than a stale
+# committed font.
+ci: $(VENV)/.done
+	rm -f $(FONT)
+	$(MAKE) build
+	FONT=$(FONT) $(PY) qa/check.py --strict
+	FONT=$(FONT) $(PY) -m pytest tests -q
+	$(MAKE) fontbakery proof images
+
 clean:
 	rm -rf out $(FONT) master_ufo instance_ufo .pytest_cache
 
-.PHONY: help venv build qa test proof images all clean
+.PHONY: help venv build qa test fontbakery proof images all ci clean
