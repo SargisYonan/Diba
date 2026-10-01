@@ -113,3 +113,38 @@ def test_oblique_line_over_kaph(text, want, gone):
     the tall letter before it."""
     names = [g for g, _, _ in shape(FONT.path, text)]
     assert want in names and gone not in names, f"got {names}"
+
+
+@pytest.mark.parametrize("text,want", [
+    ("\u072C\u0710", "uni072C0710"),                        # Taw Alaph
+    ("\u0712\u072C\u0710", "uni072C0710.fina"),            # joined to the letter before
+    ("\u072C\u0735\u0710", "uni072C0710"),                 # a vowel on the Taw in between
+    ("\u0725\u0715\u072C\u0710", "uni072C0710"),          # ending a word: ܥܕܬܐ
+    ("\u072C\u0710 \u0712", "uni072C0710"),                # before a space
+    ("\u072C\u0710.", "uni072C0710"),                       # before punctuation
+], ids=["isolated", "final", "vowel-between", "word", "space", "punctuation"])
+def test_taw_alaph_ligature(text, want):
+    """Taw followed by Alaph at the end of a word is set as one ligature."""
+    names = [g for g, _, _ in shape(FONT.path, text)]
+    assert want in names and "uni072C" not in names and not any(
+        n.startswith("uni0710") for n in names), f"got {names}"
+
+
+@pytest.mark.parametrize("text", ["\u072C", "\u0710\u072C", "\u072C\u0712",
+                                  "\u072C\u0715\u0710", "\u072C\u0710\u0712"],
+                         ids=["taw", "alaph-taw", "taw-beth", "taw-dalath-alaph", "mid-word"])
+def test_no_taw_alaph_ligature(text):
+    """Only Taw directly followed by a word-final Alaph forms the ligature."""
+    names = [g for g, _, _ in shape(FONT.path, text)]
+    assert not any(n.startswith("uni072C0710") for n in names), f"got {names}"
+
+
+@pytest.mark.parametrize("text,ligated", [
+    ("\u072C\u0710\u072C\u0710", "uni072C0710"),               # ܬܐܬܐ
+    ("\u0712\u072C\u0710\u072C\u0710", "uni072C0710"),        # ܒܬܐܬܐ
+])
+def test_taw_alaph_only_at_word_end(text, ligated):
+    """In ܬܐܬܐ only the last Taw–Alaph is a ligature; the first pair stays as
+    two letters."""
+    names = [g for g, _, _ in shape(FONT.path, text)]
+    assert names.count(ligated) == 1 and "uni0710" in names, f"got {names}"

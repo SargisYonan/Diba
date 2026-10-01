@@ -144,6 +144,7 @@ def main():
     right = [chr(cp) for cp in drawn if LETTERS[cp][1] == "R"]
     plain_signs, marks = signs(font)
     beth = "ܒ"
+    ligatures = font.ligatures()
 
     for i, (text, size) in enumerate(WORDS, 1):
         word_image(font, text, size, os.path.join(DOCS, f"word-{i}.svg"))
@@ -167,6 +168,10 @@ def main():
         ch = chr(cp)
         joined = [ch + zwj, zwj + ch + zwj] if LETTERS[cp][1] == "D" else []
         forms.append(" ".join([ch] + joined + [zwj + ch]))
+    # Ligatures: each drawn one, isolated then final.
+    for first, second in ligatures:
+        pair = chr(first) + chr(second)
+        forms.append(pair + " " + zwj + pair)
     page = Page(font)
     page.words(forms, 100, leading=2.0, sep="     ")
     page.render(os.path.join(DOCS, "proof-forms.svg"))
@@ -176,7 +181,8 @@ def main():
     page = Page(font)
     page.words(" ".join(beth + c + beth for c in dual), 84, gap=30)
     page.words(" ".join(c * 3 for c in dual), 84, gap=30)
-    page.words(" ".join(beth + c for c in right), 84)
+    page.words(" ".join([beth + c for c in right] +
+                        [beth + chr(a) + chr(b) for a, b in ligatures]), 84)
     page.render(os.path.join(DOCS, "proof-joins.svg"))
 
     # Vowels and other marks, each on a dotted circle.

@@ -13,11 +13,11 @@ A mid-century modern Assyrian typeface design inspired by the calligraphic style
 
 ## Connecting forms
 
-![Every letter in each of its forms: isolated, initial, medial and final](documentation/proof-forms.svg)
+![Every letter in each of its forms: isolated, initial, medial and final, and the Taw–Alaph ligature](documentation/proof-forms.svg)
 
 ## Joining
 
-![Each dual-joining letter between two Beths, the same letters three in a row, and each right-joining letter after Beth](documentation/proof-joins.svg)
+![Each dual-joining letter between two Beths, the same letters three in a row, and each right-joining letter and the Taw–Alaph ligature after Beth](documentation/proof-joins.svg)
 
 ## Vowels and marks
 
@@ -49,7 +49,7 @@ or one step at a time:
 |--------------|--------------|
 | `make build` | Compiles `sources/Diba.glyphs` to `fonts/Diba-Regular.ttf` and adds dropout control (`scripts/fix_hinting.py`), since ttfautohint can't hint Syriac. |
 | `make qa`    | Lists problems letter by letter: joins that don't line up, gaps, flat cuts on sides that never join, corners rounded differently from the rest, edges a few units off a common height, lines almost but not quite flat, marks too close to a letter or its neighbours. |
-| `make test`  | Pass/fail tests that every joint meets the connecting stroke exactly, that HarfBuzz picks the right forms, that every vowel and mark attaches at its anchor without touching its own letter, the letters beside it, or a mark stacked on it, and that no character in the font draws nothing. |
+| `make test`  | Pass/fail tests that every joint meets the connecting stroke exactly, that HarfBuzz picks the right forms, that every vowel and mark attaches at its anchor without touching its own letter, the letters beside it, or a mark stacked on it, that inner top-right corners are rounded, and that no character in the font draws nothing. |
 | `make fontbakery` | Runs [fontbakery](https://github.com/fonttools/fontbakery)'s universal checks. Reports go to `out/fontbakery.html` and `out/fontbakery.md`. |
 | `make proof` | Writes and opens `out/proof.html`: every problem circled on the glyph, every letter in every form, every joining pair, vowels and marks on every letter, punctuation and live text. |
 | `make images`| Renders the images above into `documentation/`. |

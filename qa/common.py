@@ -12,6 +12,7 @@ import re
 
 import glyphsLib
 import uharfbuzz as hb
+from glyphsLib import glyphdata
 from fontTools.pens.basePen import BasePen
 from fontTools.ttLib import TTFont
 
@@ -53,17 +54,28 @@ FORM_NAMES = {
 STEPS = 32  # segments per curve when flattening
 
 
+LETTER_NAME = re.compile(r"uni(07[12][0-9A-F])((?:_?(?:uni)?07[12][0-9A-F])*)((?:\.\w+)*)")
+
+
 def split_name(glyph):
     """'uni0712.init' -> (0x0712, 'init'); None for anything not a letter.
 
     Extra suffixes name variants of a form: 'uni072A.fina.syame' is a final
-    Rish, 'uni072A.syame' an isolated one."""
-    m = re.fullmatch(r"uni(07[12][0-9A-F])((?:\.\w+)*)", glyph)
+    Rish, 'uni072A.syame' an isolated one. A ligature is named after its
+    letters, 'uni072C_uni0710' in the source and 'uni072C0710' once built,
+    and joins like its first letter."""
+    m = LETTER_NAME.fullmatch(glyph)
     if not m or int(m.group(1), 16) not in LETTERS:
         return None
-    suffixes = m.group(2).split(".")[1:]
+    suffixes = m.group(3).split(".")[1:]
     form = suffixes[0] if suffixes and suffixes[0] in FORMS else ""
     return int(m.group(1), 16), form
+
+
+def components(glyph):
+    """The letters a glyph stands for: one, or several for a ligature."""
+    m = LETTER_NAME.fullmatch(glyph)
+    return [int(m.group(1), 16)] + [int(c, 16) for c in re.findall(r"07[12][0-9A-F]", m.group(2))]
 
 
 def label(glyph):
@@ -71,8 +83,10 @@ def label(glyph):
     if not parts:
         return glyph
     cp, form = parts
+    names = "–".join(LETTERS[c][0] for c in components(glyph))
+    kind = " ligature" if len(components(glyph)) > 1 else ""
     variants = [v for v in glyph.split(".")[1:] if v != form]
-    return f"{LETTERS[cp][0]} {FORM_NAMES[form]}" + "".join(f" ({v})" for v in variants)
+    return f"{names}{kind} {FORM_NAMES[form]}" + "".join(f" ({v})" for v in variants)
 
 
 def joins(glyph):
@@ -178,6 +192,10 @@ class Font:
         """Every letter glyph in the font that has outlines, in glyph order."""
         return [g for g in self.tt.getGlyphOrder()
                 if split_name(g) and self.glyph(g).polys]
+
+    def ligatures(self):
+        """(first, second) letters of every drawn ligature, e.g. Taw–Alaph."""
+        return sorted({tuple(components(g)) for g in self.letters() if len(components(g)) > 1})
 
     def drawn_codepoints(self):
         return sorted(cp for cp in LETTERS
@@ -373,11 +391,27 @@ def bases_for(mark, letters):
     return [g for g in letters if g in CONTEXT_MARKS.get(mark, letters)]
 
 
+def production_name(name):
+    """The name a source glyph has in the built font ('uni072C_uni0710' is
+    built as 'uni072C0710'; every other name stays as it is)."""
+    return glyphdata.get_glyph(name).production_name or name
+
+
 def load_anchors(path=SOURCE):
-    """{glyph: {anchor name: (x, y)}} from the Glyphs source."""
+    """{glyph: {anchor name: (x, y)}} from the Glyphs source, by built name."""
     font = glyphsLib.GSFont(path)
-    return {g.name: {a.name: (a.position.x, a.position.y) for a in g.layers[0].anchors}
+    return {production_name(g.name): {a.name: (a.position.x, a.position.y)
+                                      for a in g.layers[0].anchors}
             for g in font.glyphs}
+
+
+def spots(anchors, glyph, side):
+    """The anchors on `glyph` where a mark on `side` ('top' or 'bottom') can
+    sit: `side` itself, or `side_1`, `side_2`, ... on a ligature, one per letter."""
+    names = anchors.get(glyph, {})
+    if side in names:
+        return [side]
+    return sorted(n for n in names if re.fullmatch(side + r"_\d+", n))
 
 
 def drawn_marks(font, anchors):
@@ -422,10 +456,11 @@ def clearance(a, ax, ay, b, bx, by, step=3, enough=None):
     return best
 
 
-def place_mark(anchors, base, mark, pair):
-    """Where `mark` lands on `base` (drawn at the origin), from the anchors."""
+def place_mark(anchors, base, mark, pair, spot=None):
+    """Where `mark` lands on `base` (drawn at the origin), from the anchors:
+    at `spot` if given (one letter of a ligature), else at the base anchor."""
     base_anchor, mark_anchor = pair
-    (bx, by), (mx, my) = anchors[base][base_anchor], anchors[mark][mark_anchor]
+    (bx, by), (mx, my) = anchors[base][spot or base_anchor], anchors[mark][mark_anchor]
     return bx - mx, by - my
 
 

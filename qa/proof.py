@@ -15,9 +15,9 @@ from fontTools.pens.svgPathPen import SVGPathPen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import (FONT, FORM_NAMES, LETTERS, MARK_GAP, MARK_TOUCH, OUT,  # noqa: E402
-                    Font, bases_for, clearance, drawn_marks, joins, label,
+                    Font, bases_for, clearance, components, drawn_marks, joins, label,
                     load_anchors, mark_collisions, place_mark, seams, shape,
-                    signs, split_name)
+                    signs, split_name, spots)
 from texts import (ALPHABET, PRAYER, PUNCTUATED, VOWELLED_PRAYER,  # noqa: E402
                    VOWELLED_WORDS, WORDS)
 
@@ -92,8 +92,8 @@ def main():
     anchors = load_anchors()
     marks = drawn_marks(font, anchors)
     # Tall enough for the highest letter with a mark on it, and the lowest.
-    tops = [anchors[g]["top"][1] for g in letters if "top" in anchors[g]]
-    bottoms = [anchors[g]["bottom"][1] for g in letters if "bottom" in anchors[g]]
+    tops = [anchors[g][a][1] for g in letters for a in spots(anchors, g, "top")]
+    bottoms = [anchors[g][a][1] for g in letters for a in spots(anchors, g, "bottom")]
     above = [font.glyph(m).bounds[3] - anchors[m]["_top"][1]
              for m, (side, _) in marks.items() if side == "top"]
     below = [font.glyph(m).bounds[1] - anchors[m]["_bottom"][1]
@@ -173,6 +173,15 @@ def main():
                 cells.append("<td></td>")
         form_rows.append(f"<tr><th>{esc(name)}<br><span class=syr>{chr(cp)}</span></th>"
                          f"{''.join(cells)}</tr>")
+    for g in [g for g in letters if len(components(g)) > 1 and not split_name(g)[1]]:
+        cells = []
+        for form in ["", "init", "medi", "fina", "med2", "fin2", "fin3"]:
+            name = g + (f".{form}" if form else "")
+            cells.append(f'<td>{drawing().run([(name, 0, 0)], edges=True).svg(120)}'
+                         f'<small>{esc(name)}</small></td>' if name in font.glyphset else "<td></td>")
+        text = "".join(chr(c) for c in components(g))
+        form_rows.append(f"<tr><th>{esc(label(g).rsplit(' ', 1)[0])}<br>"
+                         f"<span class=syr>{text}</span></th>{''.join(cells)}</tr>")
 
     # ---- every joining pair ------------------------------------------------
     drawn = font.drawn_codepoints()
@@ -209,18 +218,25 @@ def main():
             if g not in bases_for(m, letters):
                 cells.append("<td></td>")
                 continue
-            if marks[m][0] not in anchors.get(g, {}):
+            places = spots(anchors, g, marks[m][0])
+            if not places:
                 cells.append('<td class="bad" title="no anchor">–</td>')
                 mark_bad += 1
                 continue
-            x, y = place_mark(anchors, g, m, marks[m])
-            d = clearance(font.glyph(m), x, y, font.glyph(g), 0, 0)
+            # One copy of the mark on each letter (two on a ligature).
+            run, gaps = [(g, 0, 0)], []
+            for spot in places:
+                x, y = place_mark(anchors, g, m, marks[m], spot)
+                run.append((m, x, y))
+                gaps.append(clearance(font.glyph(m), x, y, font.glyph(g), 0, 0))
+            known = [d for d in gaps if d is not None]
+            d = min(known) if known else None
             cls = "bad" if d is not None and d < MARK_TOUCH else \
                 "warn" if d is not None and d < MARK_GAP else ""
             mark_bad += cls == "bad"
             title = f"{label(g)} + {m}: " + ("clear" if d is None else f"{d:.0f} units apart")
             cells.append(f'<td class="{cls}" title="{esc(title)}">'
-                         f'{drawing().run([(g, 0, 0), (m, x, y)]).svg(70, pad=30)}</td>')
+                         f'{drawing().run(run).svg(70, pad=30)}</td>')
         mark_rows.append(f"<tr><th>{esc(label(g))}<br><small>{esc(g)}</small></th>"
                          f"{''.join(cells)}</tr>")
 

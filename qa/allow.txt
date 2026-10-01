@@ -45,6 +45,10 @@ uni072B.fina corner
 uni072B.medi corner
 uni072B.init corner
 
+# Inner top-right corners are rounded on every letter (tests/test_outlines.py),
+# except where the design calls for a sharp one.
+uni071F.fina inner-corner   # Kaph final: sharp corner under its arm
+
 # Nun's tail sweeps under the letter before it, by design: past its own
 # edge, and into vowels written under that letter.
 uni0722 overhang

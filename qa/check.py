@@ -24,10 +24,10 @@ import glyphsLib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import (LETTERS, MARK_GAP, MARK_TOUCH, OUT, PROBE, SAG, SOURCE,  # noqa: E402
-                    Font, bases_for, clearance, drawn_marks, edge_reach,
+                    Font, bases_for, clearance, components, drawn_marks, edge_reach,
                     is_allowed, joint_problems, joins, label, load_allow,
                     load_anchors, mark_collisions, mode, neighbour_texts,
-                    place_mark, run_at, shape, split_name)
+                    place_mark, production_name, run_at, shape, split_name, spots)
 
 OVERHANG = 10      # ink this far past the advance width is flagged
 NEAR_LEVEL = 15    # a flat edge this close to a common height is flagged
@@ -162,9 +162,11 @@ def segments(path):
 
 
 def source_letters(font_source, built):
+    """(built name, layer) for every letter in the source that is in the font."""
     for g in font_source.glyphs:
-        if g.export and g.name in built:
-            yield g, g.layers[0]
+        name = production_name(g.name)
+        if g.export and name in built:
+            yield name, g.layers[0]
 
 
 def check_outlines(source, font, report):
@@ -180,23 +182,23 @@ def check_outlines(source, font, report):
                 if len(pts) == 1 and a.position.y == b.position.y and \
                         abs(a.position.x - b.position.x) >= 20:
                     flat[a.position.y] += 1
-                    users[a.position.y].add(g.name)
+                    users[a.position.y].add(g)
     levels = sorted(y for y, n in flat.items() if n >= 6 and len(users[y]) >= 3)
 
     mixed = []
     for g, layer in letters:
         kinds = {n.type for p in layer.paths for n in p.nodes}
         if "qcurve" in kinds and "curve" in kinds:
-            mixed.append(g.name)
+            mixed.append(g)
         for path in layer.paths:
             if not path.closed:
                 x, y = path.nodes[0].position.x, path.nodes[0].position.y
                 if len(path.nodes) == 1:
-                    report.add("warning", "stray-point", g.name,
+                    report.add("warning", "stray-point", g,
                                f"a lone point at ({r1(x)},{r1(y)}) that belongs to no "
                                f"outline; select it and delete it", x, y)
                 else:
-                    report.add("error", "open-path", g.name,
+                    report.add("error", "open-path", g,
                                f"outline starting at ({r1(x)},{r1(y)}) is not closed, "
                                f"so it will not be filled", x, y)
             for a, pts in segments(path):
@@ -206,18 +208,18 @@ def check_outlines(source, font, report):
                     (pts[0].position.x, pts[0].position.y)
                 dx, dy = abs(x1 - x0), abs(y1 - y0)
                 if 0 < dy <= SLANT and dx >= 20:
-                    report.add("warning", "slanted-line", g.name,
+                    report.add("warning", "slanted-line", g,
                                f"line from ({r1(x0)},{r1(y0)}) to ({r1(x1)},{r1(y1)}) "
                                f"is {r1(dy)} units off flat", (x0 + x1) / 2, (y0 + y1) / 2)
                 elif 0 < dx <= SLANT and dy >= 20:
-                    report.add("warning", "slanted-line", g.name,
+                    report.add("warning", "slanted-line", g,
                                f"line from ({r1(x0)},{r1(y0)}) to ({r1(x1)},{r1(y1)}) "
                                f"is {r1(dx)} units off upright", (x0 + x1) / 2, (y0 + y1) / 2)
                 elif dy == 0 and dx >= 20 and y0 not in levels:
                     near = [lv for lv in levels if 0 < abs(lv - y0) <= NEAR_LEVEL]
                     if near:
                         lv = min(near, key=lambda v: abs(v - y0))
-                        report.add("warning", "off-level", g.name,
+                        report.add("warning", "off-level", g,
                                    f"flat edge at y={r1(y0)} is {r1(abs(y0 - lv))} units "
                                    f"{'above' if y0 > lv else 'below'} the common height "
                                    f"y={r1(lv)} ({flat[lv]} edges use it)",
@@ -239,7 +241,7 @@ def corners(g, layer, ink):
     lines) or sharp (two lines). `ink` is the built glyph, used to tell outer
     corners from inside ones."""
     width = layer.width
-    right_join, left_join = joins(g.name)
+    right_join, left_join = joins(g)
     for path in layer.paths:
         segs = segments(path)
         n = len(segs)
@@ -313,11 +315,11 @@ def corners(g, layer, ink):
 def check_corners(letters, levels, report, font):
     groups = collections.defaultdict(list)
     for g, layer in letters:
-        for c in corners(g, layer, font.glyph(g.name)):
+        for c in corners(g, layer, font.glyph(g)):
             near = [lv for lv in levels if abs(lv - c["y"]) <= NEAR_LEVEL]
             level = min(near, key=lambda v: abs(v - c["y"])) if near else None
             key = (c["convex"], c["vert"], c["horiz"], level)
-            groups[key].append((g.name, c))
+            groups[key].append((g, c))
 
     for (convex, vert, horiz, level), rows in groups.items():
         if len(rows) < 4:
@@ -371,10 +373,12 @@ def check_marks(font, letters, report):
         return "error" if d < MARK_TOUCH else "warning"
 
     for g in letters:
-        missing = {"top", "bottom"} - set(anchors.get(g, {}))
-        if missing:
-            report.add("error", "anchor", g, f"no {' or '.join(sorted(missing))} anchor, "
-                       f"so marks cannot attach there")
+        wanted = len(components(g))
+        for side in ("top", "bottom"):
+            if len(spots(anchors, g, side)) != wanted:
+                need = side if wanted == 1 else f"{side}_1 to {side}_{wanted}"
+                report.add("error", "anchor", g, f"needs {need} anchors so marks can "
+                           f"attach to every letter")
 
     gdef = font.tt["GDEF"].table.GlyphClassDef.classDefs
     for g, cls in gdef.items():
@@ -394,15 +398,14 @@ def check_marks(font, letters, report):
             report.add("warning", "anchor", mark, f"{own} anchor is inside the mark's ink, "
                        f"so a stacked mark would overlap it", *a[own])
 
-        for g in letters:
-            if pair[0] not in anchors.get(g, {}) or g not in bases_for(mark, letters):
-                continue
-            x, y = place_mark(anchors, g, mark, pair)
-            d = clearance(font.glyph(mark), x, y, font.glyph(g), 0, 0)
-            if d is not None and d < MARK_GAP:
-                report.add(grade(d), "mark-clearance", g,
-                           f"{mark} {distance(d)} units; move the {pair[0]} anchor",
-                           *anchors[g][pair[0]])
+        for g in bases_for(mark, letters):
+            for spot in spots(anchors, g, pair[0]):
+                x, y = place_mark(anchors, g, mark, pair, spot)
+                d = clearance(font.glyph(mark), x, y, font.glyph(g), 0, 0)
+                if d is not None and d < MARK_GAP:
+                    report.add(grade(d), "mark-clearance", g,
+                               f"{mark} {distance(d)} units; move the {spot} anchor",
+                               *anchors[g][spot])
 
     # Marks running into the letters beside their own, in shaped text.
     worst = {}

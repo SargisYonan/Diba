@@ -8,15 +8,16 @@ check that the built font follows them and that no mark touches a letter.
 """
 
 import os
+import re
 import sys
 
 import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "qa"))
 from common import (LETTER_ONLY_ANCHORS, MARK_TOUCH, Font, bases_for,  # noqa: E402
-                    clearance, drawn_marks, is_allowed, label, load_allow,
+                    clearance, components, drawn_marks, is_allowed, label, load_allow,
                     load_anchors, mark_collisions, neighbour_texts, place_mark,
-                    shape, split_name)
+                    shape, split_name, spots)
 
 FONT = Font()
 ANCHORS = load_anchors()
@@ -33,27 +34,35 @@ def placed(run, glyph):
     return x, y
 
 
+def expected_anchors(glyph):
+    """`top` and `bottom`, or `top_1`, `bottom_1`, ... per letter of a ligature."""
+    n = len(components(glyph))
+    if n == 1:
+        return {"top", "bottom"}
+    return {f"{side}_{i}" for side in ("top", "bottom") for i in range(1, n + 1)}
+
+
 @pytest.mark.parametrize("glyph", LETTERS)
 def test_letter_has_top_and_bottom(glyph):
-    names = set(ANCHORS[glyph])
-    assert {"top", "bottom"} <= names and names - {"top", "bottom"} <= LETTER_ONLY_ANCHORS, \
-        f"{label(glyph)} has anchors {sorted(names)}, expected top and bottom"
+    names, wanted = set(ANCHORS[glyph]), expected_anchors(glyph)
+    assert wanted <= names and names - wanted <= LETTER_ONLY_ANCHORS, \
+        f"{label(glyph)} has anchors {sorted(names)}, expected {sorted(wanted)}"
 
 
 @pytest.mark.parametrize("glyph", LETTERS)
 def test_letter_anchors_clear_the_ink(glyph):
-    """Marks must not land on the letter: `top` above everything under it,
-    `bottom` below everything over it."""
+    """Marks must not land on the letter: each top anchor above everything
+    under it, each bottom anchor below everything over it."""
     g = FONT.glyph(glyph)
-    (tx, ty), (bx, by) = ANCHORS[glyph]["top"], ANCHORS[glyph]["bottom"]
-    assert 0 <= tx <= g.width, f"top anchor x={tx} is outside the letter"
-    assert 0 <= bx <= g.width, f"bottom anchor x={bx} is outside the letter"
-    over = [t for dx in range(-REACH, REACH + 1, 4) for _, t in g.ink_at_x(tx + dx + 0.5)]
-    under = [b for dx in range(-REACH, REACH + 1, 4) for b, _ in g.ink_at_x(bx + dx + 0.5)]
-    assert not over or ty > max(over), \
-        f"top anchor y={ty} is inside the ink (reaches {max(over):.0f})"
-    assert not under or by < min(under), \
-        f"bottom anchor y={by} is inside the ink (reaches {min(under):.0f})"
+    for side in ("top", "bottom"):
+        for spot in spots(ANCHORS, glyph, side):
+            x, y = ANCHORS[glyph][spot]
+            assert 0 <= x <= g.width, f"{spot} anchor x={x} is outside the letter"
+            runs = [r for dx in range(-REACH, REACH + 1, 4) for r in g.ink_at_x(x + dx + 0.5)]
+            if side == "top" and runs:
+                assert y > max(t for _, t in runs), f"{spot} anchor y={y} is inside the ink"
+            if side == "bottom" and runs:
+                assert y < min(b for b, _ in runs), f"{spot} anchor y={y} is inside the ink"
 
 
 @pytest.mark.parametrize("mark", sorted(MARKS))
@@ -69,11 +78,13 @@ def test_mark_anchors(mark):
 def test_no_stray_anchor_names():
     allowed = {"top", "bottom", "_top", "_bottom"} | LETTER_ONLY_ANCHORS | \
         {"_" + a for a in LETTER_ONLY_ANCHORS}
-    odd = {f"{g}: {n}" for g, a in ANCHORS.items() for n in a if n not in allowed}
+    odd = {f"{g}: {n}" for g, a in ANCHORS.items() for n in a
+           if n not in allowed and not re.fullmatch(r"(top|bottom)_\d+", n)}
     assert not odd, "unexpected anchors: " + ", ".join(sorted(odd))
 
 
-@pytest.mark.parametrize("glyph", [g for g in LETTERS if "." not in g])
+@pytest.mark.parametrize("glyph", [g for g in LETTERS
+                                   if "." not in g and len(components(g)) == 1])
 def test_marks_attach_at_anchors(glyph):
     """Shaping a letter with a mark above and one below must put each mark at
     the letter's anchor. Fails if a hand-written mark feature overrides them."""
@@ -117,10 +128,11 @@ def test_mark_clears_every_letter(mark):
     """Placed by the anchors, the mark must not touch any form of any letter."""
     bad = []
     for glyph in bases_for(mark, LETTERS):
-        x, y = place_mark(ANCHORS, glyph, mark, DRAWN[mark])
-        d = clearance(FONT.glyph(mark), x, y, FONT.glyph(glyph), 0, 0)
-        if d is not None and d < MARK_TOUCH:
-            bad.append(f"{label(glyph)} ({d:.0f})")
+        for spot in spots(ANCHORS, glyph, DRAWN[mark][0]):
+            x, y = place_mark(ANCHORS, glyph, mark, DRAWN[mark], spot)
+            d = clearance(FONT.glyph(mark), x, y, FONT.glyph(glyph), 0, 0)
+            if d is not None and d < MARK_TOUCH:
+                bad.append(f"{label(glyph)} at {spot} ({d:.0f})")
     assert not bad, f"{mark} touches: " + ", ".join(bad)
 
 
@@ -181,3 +193,20 @@ def test_majlyana_under_gamal_stroke(text, base):
         f"majlyana centre x={centre:.0f} is over the tail (starts {tail_left:.0f})"
     d = clearance(mark, mx, my, gamal, bx, by)
     assert d is not None and d >= 30, f"majlyana comes within {d:.0f} units of Gamal's tail"
+
+
+@pytest.mark.parametrize("text,mark,spot", [
+    ("\u072C\u0735\u0710", "uni0735", "top_1"),      # zqapa on the Taw
+    ("\u072C\u0710\u0735", "uni0735", "top_2"),      # zqapa on the Alaph
+    ("\u072C\u073C\u0710", "uni073C", "bottom_1"),   # dot below the Taw
+    ("\u072C\u0710\u073C", "uni073C", "bottom_2"),   # dot below the Alaph
+])
+def test_marks_on_taw_alaph(text, mark, spot):
+    """A vowel on either letter of the Taw–Alaph ligature sits over that
+    letter, at its own anchor."""
+    run = shape(FONT.path, text)
+    (mx, my), (bx, by) = placed(run, mark), placed(run, "uni072C0710")
+    side = spot.split("_")[0]
+    want = (bx + ANCHORS["uni072C0710"][spot][0] - ANCHORS[mark]["_" + side][0],
+            by + ANCHORS["uni072C0710"][spot][1] - ANCHORS[mark]["_" + side][1])
+    assert (mx, my) == want, f"{mark} at {(mx, my)}, {spot} says {want}"
