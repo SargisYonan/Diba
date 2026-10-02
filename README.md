@@ -4,6 +4,8 @@
 
 A mid-century modern Assyrian typeface design inspired by the calligraphic style of Issa Benyamin and the font designs in his book, [ܫܦܝܪܘܬ-ܟܬܝܒܬܐ: ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ](https://16209.rmwebopac.com/item/YF2zBolt1ESHSlLWcwZrmQ_tFCUl6V_bUCk20oxa64kGw). The font in this project is adapted from Benyamin's general style with some twists, adaptions and changes.
 
+**[See the official Diba proof page at yonan.org/fonts/diba](https://yonan.org/fonts/diba/)**
+
 
 ## Character set
 
