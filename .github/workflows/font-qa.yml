@@ -1,6 +1,6 @@
 # Builds Diba from sources/Diba.glyphs and checks it on every push and pull
 # request. The job fails if QA finds an error, a test fails, or fontbakery
-# reports a failure. The font, proofs and reports are attached to each run.
+# reports a failure. The fonts, proofs and reports are attached to each run.
 name: Font QA
 
 on:
@@ -31,7 +31,12 @@ jobs:
             echo '```'
             venv/bin/python qa/check.py 2>&1 | tail -n 30 || true
             echo '```'
-            [ -f out/fontbakery.md ] && cat out/fontbakery.md
+            for f in out/fontbakery-*.txt; do
+              echo "## fontbakery: $(basename "$f" .txt | sed 's/^fontbakery-//')"
+              echo '```'
+              cat "$f"
+              echo '```'
+            done
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload font, proofs and reports
@@ -41,8 +46,9 @@ jobs:
           name: diba-qa
           path: |
             fonts/Diba-Regular.ttf
+            fonts/Diba-Regular.otf
             out/proof.html
             out/qa.json
-            out/fontbakery.html
-            out/fontbakery.md
+            out/fontbakery-*.html
+            out/fontbakery-*.txt
             documentation/*.svg

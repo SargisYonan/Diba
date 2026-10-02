@@ -47,13 +47,13 @@ or one step at a time:
 
 | Command      | What it does |
 |--------------|--------------|
-| `make build` | Compiles `sources/Diba.glyphs` to `fonts/Diba-Regular.ttf` and adds dropout control (`scripts/fix_hinting.py`), since ttfautohint can't hint Syriac. |
+| `make build` | Compiles `sources/Diba.glyphs` to `fonts/Diba-Regular.ttf` (TrueType) and `fonts/Diba-Regular.otf` (OpenType/CFF). The TTF gets dropout control (`scripts/fix_hinting.py`), since ttfautohint can't hint Syriac. |
 | `make qa`    | Lists problems letter by letter: joins that don't line up, gaps, flat cuts on sides that never join, corners rounded differently from the rest, edges a few units off a common height, lines almost but not quite flat, marks too close to a letter or its neighbours. |
 | `make test`  | Pass/fail tests that every joint meets the connecting stroke exactly, that HarfBuzz picks the right forms, that every vowel and mark attaches at its anchor without touching its own letter, the letters beside it, or a mark stacked on it, that inner top-right corners are rounded, and that no character in the font draws nothing. |
-| `make fontbakery` | Runs [fontbakery](https://github.com/fonttools/fontbakery)'s universal checks. Reports go to `out/fontbakery.html` and `out/fontbakery.md`. |
+| `make fontbakery` | Runs [fontbakery](https://github.com/fonttools/fontbakery)'s universal checks on each font separately. Reports go to `out/fontbakery-*.html` and `.txt`. |
 | `make proof` | Writes and opens `out/proof.html`: every problem circled on the glyph, every letter in every form, every joining pair, vowels and marks on every letter, punctuation and live text. |
 | `make images`| Renders the images above into `documentation/`. |
-| `make ci`    | Rebuilds the font from the source, then fails on any QA error, failing test or fontbakery failure; then writes the proofs and images. |
+| `make ci`    | Rebuilds both fonts from the source, then fails on any QA error, failing test (run against both fonts) or fontbakery failure; then writes the proofs and images. |
 
 To check a font exported from Glyphs instead: `make qa proof test FONT=path/to/Diba-Regular.ttf`.
 

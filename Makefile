@@ -1,5 +1,6 @@
 SOURCE := sources/Diba.glyphs
 FONT   := fonts/Diba-Regular.ttf
+OTF    := fonts/Diba-Regular.otf
 VENV   := venv
 PY     := $(VENV)/bin/python
 
@@ -7,10 +8,10 @@ PY     := $(VENV)/bin/python
 
 help:
 	@echo "Diba"
-	@echo "  make build       compile $(FONT) from $(SOURCE)"
+	@echo "  make build       compile $(FONT) and $(OTF) from $(SOURCE)"
 	@echo "  make qa          report problems with the letters, joins and marks"
 	@echo "  make test        pass/fail tests for joins, marks and coverage"
-	@echo "  make fontbakery  run fontbakery's universal checks (report in out/)"
+	@echo "  make fontbakery  run fontbakery's universal checks on each font (reports in out/)"
 	@echo "  make proof       write out/proof.html and open it"
 	@echo "  make images      render the README images into documentation/"
 	@echo "  make all         build, qa, proof, images, then test"
@@ -45,10 +46,18 @@ $(FONT): $(SOURCE) $(VENV)/.done
 	@test -f $(FONT)
 	$(PY) scripts/fix_hinting.py $(FONT)
 
-build: $(FONT)
+$(OTF): $(SOURCE) $(VENV)/.done
+	@mkdir -p fonts
+	$(VENV)/bin/fontmake -g $(SOURCE) -o otf --overlaps-backend pathops \
+		--output-path $(OTF) 2>&1 | grep -v "^INFO" || true
+	@test -f $(OTF)
+
+build: $(FONT) $(OTF)
 
 # Use the font given on the command line as is; otherwise build it first.
 FONT_DEP := $(if $(filter command line,$(origin FONT)),,$(FONT))
+# Fontbakery checks both builds, or just the one given on the command line.
+CHECKED  := $(if $(filter command line,$(origin FONT)),$(FONT),$(FONT) $(OTF))
 
 qa: $(FONT_DEP) $(VENV)/.done
 	FONT=$(FONT) $(PY) qa/check.py
@@ -56,10 +65,19 @@ qa: $(FONT_DEP) $(VENV)/.done
 test: $(FONT_DEP) $(VENV)/.done
 	FONT=$(FONT) $(PY) -m pytest tests -q
 
-fontbakery: $(FONT_DEP) $(VENV)/.done
+# Each file is checked on its own: run together, fontbakery takes the TTF and
+# OTF for two styles of one family and objects to two Regulars. The console
+# report is kept as .txt beside the HTML one (fontbakery 1.1's Markdown report
+# crashes on a font with nothing to report).
+fontbakery: $(if $(filter command line,$(origin FONT)),,build) $(VENV)/.done
 	@mkdir -p out
-	$(VENV)/bin/fontbakery check-universal $(FONT) --succinct -C \
-		--html out/fontbakery.html --ghmarkdown out/fontbakery.md
+	@for f in $(CHECKED); do \
+		n=$$(basename $$f | tr . -); \
+		echo "fontbakery: $$f"; \
+		$(VENV)/bin/fontbakery check-universal $$f --succinct -C \
+			--html out/fontbakery-$$n.html > out/fontbakery-$$n.txt; \
+		status=$$?; cat out/fontbakery-$$n.txt; [ $$status -eq 0 ] || exit 1; \
+	done
 
 proof: $(FONT_DEP) $(VENV)/.done
 	FONT=$(FONT) $(PY) qa/check.py --quiet
@@ -81,10 +99,11 @@ all: build qa proof images test
 # Always rebuild from the source, so CI tests the source rather than a stale
 # committed font.
 ci: $(VENV)/.done
-	rm -f $(FONT)
+	rm -f $(FONT) $(OTF)
 	$(MAKE) build
 	FONT=$(FONT) $(PY) qa/check.py --strict
 	FONT=$(FONT) $(PY) -m pytest tests -q
+	FONT=$(OTF) $(PY) -m pytest tests -q
 	$(MAKE) fontbakery proof images
 
 clean:
