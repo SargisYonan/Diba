@@ -6,6 +6,7 @@ import unicodedata
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "qa"))
 from common import Font  # noqa: E402
+from fontTools.ttLib import TTFont  # noqa: E402
 
 FONT = Font()
 # Characters that are meant to draw nothing.
@@ -24,3 +25,14 @@ def test_no_character_draws_nothing():
 
 def test_notdef_is_visible():
     assert FONT.glyph(".notdef").polys, ".notdef must be drawn, so missing characters show"
+
+
+def test_declares_syriac():
+    """macOS (Font Book, the font menus) lists a font under a language only if
+    it covers that language's whole character set, which for Syriac includes
+    letters, vowels and punctuation Diba doesn't draw, or if its meta table
+    names the script. Without this Diba isn't listed as Assyrian."""
+    meta = TTFont(FONT.path).get("meta")
+    assert meta, "the font has no meta table"
+    for tag in ("dlng", "slng"):
+        assert "Syrc" in meta.data.get(tag, "").split(","), f"meta {tag} does not list Syrc"

@@ -22,6 +22,19 @@ value = (
 );
 },
 {
+name = "meta Table";
+value = (
+{
+data = Syrc;
+tag = dlng;
+},
+{
+data = Syrc;
+tag = slng;
+}
+);
+},
+{
 name = panose;
 value = (
 0,
@@ -10263,5 +10276,5 @@ disablesNiceNames = 1;
 };
 unitsPerEm = 1000;
 versionMajor = 1;
-versionMinor = 700;
+versionMinor = 800;
 }
