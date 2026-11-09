@@ -30,6 +30,10 @@ from common import (LETTERS, MARK_GAP, MARK_TOUCH, OUT, PROBE, SAG, SOURCE,  # n
                     place_mark, production_name, run_at, shape, split_name, spots)
 
 OVERHANG = 10      # ink this far past the advance width is flagged
+# Joints reach this far past the edge into the stroke of the letter they join,
+# so renderers that smooth each glyph on its own (Canva, browsers) leave no
+# hairline seam. The overhang check allows this much on a joining side.
+JOIN_OVERLAP = 20
 NEAR_LEVEL = 15    # a flat edge this close to a common height is flagged
 SLANT = 4          # a line this close to flat/upright is flagged
 CORNER_SLACK = 3   # rounding this far from the usual radius is flagged
@@ -130,12 +134,13 @@ def check_overhang(font, letters, report):
     for g in letters:
         glyph = font.glyph(g)
         x0, y0, x1, y1 = glyph.bounds
-        if x1 > glyph.width + OVERHANG:
+        right, left = (JOIN_OVERLAP if on else 0 for on in joins(g))
+        if x1 > glyph.width + right + OVERHANG:
             ys = [y for p in glyph.polys for x, y in p if x == x1]
             report.add("warning", "overhang", g,
                        f"ink reaches x={r1(x1)}, {r1(x1 - glyph.width)} units past the "
                        f"right edge, under or into the letter before", x1, ys[0])
-        if x0 < -OVERHANG:
+        if x0 < -left - OVERHANG:
             ys = [y for p in glyph.polys for x, y in p if x == x0]
             report.add("warning", "overhang", g,
                        f"ink reaches x={r1(x0)}, {r1(-x0)} units past the left "
